@@ -1,6 +1,9 @@
 
 var corT = 5;
 var corG = 255;
+var charCod = 1;
+
+
 
 function setup(){
 	createCanvas(1024,768);
@@ -8,7 +11,12 @@ function setup(){
 }
 
 function draw(){
-	isometricGrid(6);
+	move(10);
+}
+
+function move(mod){
+	isometricGrid(mod);
+	drawCharacter(mod);
 }
 
 function isometricGrid(mod){
@@ -25,10 +33,41 @@ function isometricGrid(mod){
 function colorGrid(){
 	if((corG > 255) || (corG < 125))
 		corT = -corT;
-	corG += corT;
-	if(keyIsPressed){
-		stroke(255,0,0);
-	}else{
-		stroke(0,corG,255);
-	}	
+	corG += corT;	
+		stroke(0,corG,255);	
 }
+
+function drawCharacter(mod){
+	var dim = 200/mod;
+	switch (keyCode){
+		case 87:
+			charCod = 1;
+			break;
+		case 65:
+			charCod = 2;
+			break;
+		case 83:
+			charCod = 3;
+				break;
+		case 68:
+			charCod = 4;
+			break;
+	}	
+	switch(charCod){
+		case 1:
+			triangle(width/2 - dim, height/2, width/2, height/2 + dim/2, width/2 + dim/2, height/2 - dim/4);
+			break;
+		case 2:
+			triangle(width/2, height/2 + dim/2, width/2 - mod/2, height/2 - dim/4, width/2 + dim, height/2);
+			break;
+		case 3:
+			triangle(width/2 - dim/2, height/2 + dim/4, width/2, height/2 - dim/2, width/2 + dim, height/2);
+			break;
+		case 4:
+			triangle(width/2 - dim, height/2, width/2, height/2 - dim/2, width/2 + dim/2, height/2 + dim/4);
+			break;
+
+	}
+	
+}
+
