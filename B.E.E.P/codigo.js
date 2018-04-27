@@ -1,4 +1,3 @@
-
 var corT = 5;
 var corG = 255;
 var charCod = 1;
@@ -15,7 +14,6 @@ function setup(){
 function draw(){
 	isometricGrid(sizeStage);
 	character.drawCharacter();
-	character.moveCharacter();
 }
 
 
@@ -42,70 +40,67 @@ class Character{
 	constructor(x,y,dim){
 		this.x = x;
 		this.y = y;
-		this.dim = 200/dim;
-		this.xNext = this.x;
-		this.yNext = this.y;
-		this.i = 0;
-	}
-
-	moveCharacter(){
-		if(keyReleased){
-			switch (keyCode){
-				case 87:
-					this.x = this.x + 2*this.dim;
-					this.y = this.y - this.dim; 
-					break;
-				case 65:
-					this.x = this.x - 2*this.dim;
-					this.y = this.y - this.dim;
-					break;
-				case 83:
-					this.x = this.x - 2*this.dim;
-					this.y = this.y + this.dim;
-					break;
-				case 68:
-					this.x = this.x + 2*this.dim;
-					this.y = this.y + this.dim;
-					break;
-			}	
-		}
+		this.dim = 200/dim;		
+		this.move = false;
+		this.i = 0;		
 	}
 
 	drawCharacter(){		
-		switch (keyCode){
-			case 87:
-				charCod = 1;
-				break;
-			case 65:
-				charCod = 2;
-				break;
-			case 83:
-				charCod = 3;
+		if (this.i==0){
+			this.move = false;
+			switch (keyCode){
+				case 87:
+					charCod = 1;
 					break;
-			case 68:
-				charCod = 4;
-				break;
-		}	
+				case 65:
+					charCod = 2;
+					break;
+				case 83:
+					charCod = 3;
+					break;
+				case 68:
+					charCod = 4;
+					break;
+			}	
+		}else{
+			this.i--;
+		}		
 		switch(charCod){
 			case 1:
 				triangle(this.x - this.dim, this.y, this.x, this.y + this.dim/2, this.x + this.dim/2, this.y - this.dim/4);
+				if(this.move) {
+					this.x+=2;
+					this.y--; 
+				}
 				break;
 			case 2:
 				triangle(this.x, this.y + this.dim/2, this.x - this.dim/2, this.y - this.dim/4, this.x + this.dim, this.y);
+				if(this.move) {
+					this.x-=2;
+					this.y--; 
+				}
 				break;
 			case 3:
 				triangle(this.x - this.dim/2, this.y + this.dim/4, this.x, this.y - this.dim/2, this.x + this.dim, this.y);
+				if(this.move) {
+					this.x-=2;
+					this.y++; 
+				}
 				break;
 			case 4:
 				triangle(this.x - this.dim, this.y, this.x, this.y - this.dim/2, this.x + this.dim/2, this.y + this.dim/4);
+				if(this.move) {
+					this.x+=2;
+					this.y++; 
+				}
 				break;
-
-		}
-		
+		}		
 	}
-
 }
 
 function keyReleased(){
-	return true;
+	if((character.i == 0)&&(!character.move)){
+		character.i = 25;	
+		character.move = true;
+	}	
 }
