@@ -38,16 +38,19 @@ function colorGrid(){
 
 class Character{
 	constructor(x,y,dim){
-		this.x = x;
-		this.y = y;
+		this.position = createVector(x,y);		
 		this.dim = 200/dim;		
 		this.move = false;
+		this.stayMove = false;
 		this.i = 0;		
 	}
 
 	drawCharacter(){		
 		if (this.i==0){
-			this.move = false;
+			this.move = false;	
+		}else{
+			this.i--;
+		}if(this.stayMove){
 			switch (keyCode){
 				case 87:
 					charCod = 1;
@@ -60,38 +63,39 @@ class Character{
 					break;
 				case 68:
 					charCod = 4;
-					break;
-			}	
-		}else{
-			this.i--;
-		}		
+					break;				
+			}
+			this.stayMove = false;	
+		}	
+		
+			
 		switch(charCod){
 			case 1:
-				triangle(this.x - this.dim, this.y, this.x, this.y + this.dim/2, this.x + this.dim/2, this.y - this.dim/4);
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4);
 				if(this.move) {
-					this.x+=2;
-					this.y--; 
+					this.position.x+=2;
+					this.position.y--; 
 				}
 				break;
 			case 2:
-				triangle(this.x, this.y + this.dim/2, this.x - this.dim/2, this.y - this.dim/4, this.x + this.dim, this.y);
+				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
 				if(this.move) {
-					this.x-=2;
-					this.y--; 
+					this.position.x-=2;
+					this.position.y--; 
 				}
 				break;
 			case 3:
-				triangle(this.x - this.dim/2, this.y + this.dim/4, this.x, this.y - this.dim/2, this.x + this.dim, this.y);
+				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
 				if(this.move) {
-					this.x-=2;
-					this.y++; 
+					this.position.x-=2;
+					this.position.y++; 
 				}
 				break;
 			case 4:
-				triangle(this.x - this.dim, this.y, this.x, this.y - this.dim/2, this.x + this.dim/2, this.y + this.dim/4);
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
 				if(this.move) {
-					this.x+=2;
-					this.y++; 
+					this.position.x+=2;
+					this.position.y++; 
 				}
 				break;
 		}		
@@ -101,6 +105,7 @@ class Character{
 function keyReleased(){
 	if((character.i == 0)&&(!character.move)){
 		character.i = 25;	
-		character.move = true;
+		character.move = true;	
+		character.stayMove = true;
 	}	
 }
