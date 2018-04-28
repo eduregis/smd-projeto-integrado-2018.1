@@ -48,7 +48,8 @@ class Character{
 		this.dim = 200/dim;		
 		this.move = false;
 		this.stayMove = false;
-		this.i = 0;		
+		this.i = 0;
+		this.direction = 0;		
 	}
 
 	drawCharacter(){		
@@ -65,70 +66,85 @@ class Character{
 				case 65:
 					charCod = 2;					
 					break;
-				case 83:
-					charCod = 3;					
-					break;
 				case 68:
-					charCod = 4;					
-					break;				
+					charCod = 3;					
+					break;						
 			}
 			this.stayMove = false;	
 		}
-			
-		switch(charCod){
-			case 1:
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4);
-				if(this.move) {
-					if(this.positionGrid.x > 0){
-						this.position.x+=2;
-						this.position.y--;
-						if (this.i == 1) this.positionGrid.x--;
-					}else{
 
+		switch(this.direction){
+			case 0:
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4);
+				break;
+			case 1:
+				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
+				break;
+			case 2:
+				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
+				break;
+			case 3:
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
+				break;
+			}
+
+		switch(charCod){
+			case 1:				
+				if(this.move) {
+					switch(this.direction){
+						case 0: 
+							if(this.positionGrid.x > 0){
+								this.position.x+=2;
+								this.position.y--; 
+								if (this.i == 1) this.positionGrid.x--;
+							}
+							break;
+						case 1: 
+							if(this.positionGrid.y > 0){
+								this.position.x-=2;
+								this.position.y--; 
+								if (this.i == 1) this.positionGrid.y--;
+							}
+							break;
+						case 2: 
+							if(this.positionGrid.y < sizeStage){
+								this.position.x-=2;
+								this.position.y++; 
+								if (this.i == 1) this.positionGrid.x++;
+							}
+							break;
+						case 3: 
+							if(this.positionGrid.y < sizeStage){
+								this.position.x+=2;
+								this.position.y++; 
+								if (this.i == 1) this.positionGrid.y++;
+							}
+							break;
 					}
-					
 				}
 				break;
 			case 2:
-				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
-				if(this.move) {
-					if(this.positionGrid.y > 0){
-						this.position.x-=2;
-						this.position.y--; 
-						if (this.i == 1) this.positionGrid.y--;
+				if(this.i == 20){
+					if(this.direction == 3){
+						this.direction = 0;
 					}else{
-
-					}					 
-				}
-				break;
+						this.direction++;
+					}						
+				}	
+				break;				
 			case 3:
-				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
-				if(this.move) {
-					if(this.positionGrid.x < sizeStage){
-						this.position.x-=2;
-						this.position.y++;	
-						if (this.i == 1) this.positionGrid.x++;
+				if(this.i == 20){
+					if(this.direction == 0){
+						this.direction =3;
 					}else{
-
-					}				  
-				}
-				break;
-			case 4:
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
-				if(this.move) {
-					if(this.positionGrid.y < sizeStage){
-						this.position.x+=2;
-						this.position.y++; 	
-						if (this.i == 1) this.positionGrid.y++;
-					}else{
-
-					}				 
-				}
-				break;
+						this.direction--;
+					}
+				}				
+				break;	
 		}
 		fill(255);
 		text(this.positionGrid.x + " , " + this.positionGrid.y,40,40);		
-	}
+		}		
 }
 function keyReleased(){
 	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68)){
