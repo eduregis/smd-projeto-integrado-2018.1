@@ -3,11 +3,13 @@ var corG = 255;
 var charCod = 1;
 var character;
 var sizeStage;
+var block;
 
 function setup(){
 	createCanvas(1024,768);
-	sizeStage = 9;
+	sizeStage = 6;
 	background(0);
+	block = new Block(width/2, height/2);
 	if(sizeStage%2 == 0){
 		character = new Character(width/2,height/2,sizeStage);	
 	}else{
@@ -19,6 +21,7 @@ function setup(){
 function draw(){
 	isometricGrid(sizeStage);
 	character.drawCharacter();
+	block.drawBlock();
 }
 
 
@@ -48,8 +51,7 @@ class Character{
 		this.dim = 200/dim;		
 		this.move = false;
 		this.stayMove = false;
-		this.i = 0;
-		this.direction = 0;		
+		this.i = 0;		
 	}
 
 	drawCharacter(){		
@@ -66,86 +68,91 @@ class Character{
 				case 65:
 					charCod = 2;					
 					break;
-				case 68:
+				case 83:
 					charCod = 3;					
-					break;						
+					break;
+				case 68:
+					charCod = 4;					
+					break;				
 			}
 			this.stayMove = false;	
 		}
+		this.moveCharacter();	
+	}
 
-		switch(this.direction){
-			case 0:
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4);
-				break;
-			case 1:
-				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
-				break;
-			case 2:
-				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
-				break;
-			case 3:
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
-				break;
-			}
-
+	moveCharacter(){
 		switch(charCod){
-			case 1:				
+			case 1:
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4);
 				if(this.move) {
-					switch(this.direction){
-						case 0: 
-							if(this.positionGrid.x > 0){
-								this.position.x+=2;
-								this.position.y--; 
-								if (this.i == 1) this.positionGrid.x--;
-							}
-							break;
-						case 1: 
-							if(this.positionGrid.y > 0){
-								this.position.x-=2;
-								this.position.y--; 
-								if (this.i == 1) this.positionGrid.y--;
-							}
-							break;
-						case 2: 
-							if(this.positionGrid.x < sizeStage){
-								this.position.x-=2;
-								this.position.y++; 
-								if (this.i == 1) this.positionGrid.x++;
-							}
-							break;
-						case 3: 
-							if(this.positionGrid.y < sizeStage){
-								this.position.x+=2;
-								this.position.y++; 
-								if (this.i == 1) this.positionGrid.y++;
-							}
-							break;
+					if(this.positionGrid.x > 0){
+						this.position.x+=2;
+						this.position.y--;
+						if (this.i == 1) this.positionGrid.x--;
+					}else{
+
 					}
+					
 				}
 				break;
 			case 2:
-				if(this.i == 20){
-					if(this.direction == 3){
-						this.direction = 0;
+				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
+				if(this.move) {
+					if(this.positionGrid.y > 0){
+						this.position.x-=2;
+						this.position.y--; 
+						if (this.i == 1) this.positionGrid.y--;
 					}else{
-						this.direction++;
-					}						
-				}	
-				break;				
+
+					}					 
+				}
+				break;
 			case 3:
-				if(this.i == 20){
-					if(this.direction == 0){
-						this.direction =3;
+				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
+				if(this.move) {
+					if(this.positionGrid.x < sizeStage){
+						this.position.x-=2;
+						this.position.y++;	
+						if (this.i == 1) this.positionGrid.x++;
 					}else{
-						this.direction--;
-					}
-				}				
-				break;	
+
+					}				  
+				}
+				break;
+			case 4:
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
+				if(this.move) {
+					if(this.positionGrid.y < sizeStage){
+						this.position.x+=2;
+						this.position.y++; 	
+						if (this.i == 1) this.positionGrid.y++;
+					}else{
+
+					}				 
+				}
+				break;
 		}
 		fill(255);
-		text(this.positionGrid.x + " , " + this.positionGrid.y,40,40);		
-		}		
+		text(this.positionGrid.x + " , " + this.positionGrid.y,40,40);	
+	}
 }
+
+class Block{
+	constructor(x,y){
+		this.x = x;
+		this.y = y;
+	}	
+	drawBlock(){
+		var mod = 200/sizeStage;
+		fill(100);
+		quad(this.x + mod, this.y - mod, this.x + mod, this.y, this.x, this.y + mod/2, this.x, this.y - mod/2);
+		fill(150);
+		quad(this.x - mod, this.y - mod, this.x - mod, this.y, this.x, this.y + mod/2, this.x, this.y - mod/2);
+		fill(200);
+		quad(this.x, this.y - mod/2, this.x - mod, this.y - mod, this.x, this.y - 3*mod/2, this.x + mod, this.y - mod);
+	}
+}
+
 function keyReleased(){
 	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68)){
 		if((character.i == 0) && (!character.move)){
