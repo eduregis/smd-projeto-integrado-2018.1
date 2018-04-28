@@ -10,7 +10,8 @@ class Character{
 		this.block = null; // variável que armazena o bloco que o personagem pode carregar.
 	}
 
-	drawCharacter(){		
+	drawCharacter(){
+		print(this.block);
 		if (this.i==0){
 			this.move = false; // quando i chega a zero, significa que o personagem chegou no cruzamento desejado, então ele não irá mais se mover, até que outro comando seja dado.	
 		}else{
@@ -33,6 +34,9 @@ class Character{
 				case 68: //seta para a direita.
 					this.direction = 3;
 					charCod = 4;					
+					break;
+				case 82:
+					charCod = 5;
 					break;				
 			}
 			this.stayMove = false; // mudando o valor de stayMove, para impedir que o jogador dê novos comandos.
@@ -116,6 +120,73 @@ class Character{
 					}			 
 				}
 				break;
+			case 5:				
+				if(this.block == null){ // checamos se já existe um bloco armazenado como personagem.
+					switch(this.direction){// de acordo com a direção que o personagem estiver olhando, pegamos o bloco à sua frente.
+						case 0:													
+							this.block = grid[this.positionGrid.x][this.positionGrid.y - 1]; // passamos o objeto para dentro do personagem.
+							grid[this.positionGrid.x][this.positionGrid.y - 1] = null; // excluímos o objeto do cenário.
+							charCod = 1;
+							break;
+						case 1:
+							this.block = grid[this.positionGrid.x - 1][this.positionGrid.y];
+							grid[this.positionGrid.x - 1][this.positionGrid.y] = null;
+							charCod = 2;
+							break;
+						case 2:
+							this.block = grid[this.positionGrid.x][this.positionGrid.y + 1];
+							grid[this.positionGrid.x][this.positionGrid.y + 1] = null;
+							charCod = 3;
+							break;
+						case 3:
+							this.block = grid[this.positionGrid.x + 1][this.positionGrid.y];
+							grid[this.positionGrid.x + 1][this.positionGrid.y] = null;
+							charCod = 4;
+							break;
+					}
+					if (this.block != null) this.block.positionGrid = null;
+				}else{
+					var vectorAux;
+					switch(this.direction){ // caso o personagem já tenha um bloco consigo, temos que fazer ele soltar o bloco no chão.
+						case 0:
+							if((grid[this.positionGrid.x][this.positionGrid.y - 1] == null) && (this.positionGrid.y > 0)){
+								vectorAux = createVector(this.positionGrid.x,this.positionGrid.y - 1);
+								this.block.positionGrid = vectorAux;
+								grid[this.positionGrid.x][this.positionGrid.y - 1] = this.block; // devolvemos o objeto para o cenário.
+								this.block = null; // excluímos o objeto do personagem.								
+							}	
+							charCod = 1;					
+							break;
+						case 1:
+							if((grid[this.positionGrid.x - 1][this.positionGrid.y] == null) && (this.positionGrid.x > 0)){
+								vectorAux = createVector(this.positionGrid.x - 1,this.positionGrid.y);
+								this.block.positionGrid = vectorAux;
+								grid[this.positionGrid.x - 1][this.positionGrid.y] = this.block;
+								this.block = null;
+							}							
+							charCod = 2;
+							break;
+						case 2:
+							if((grid[this.positionGrid.x][this.positionGrid.y + 1] = null) && (this.positionGrid.y < sizeStage)){
+								vectorAux = createVector(this.positionGrid.x,this.positionGrid.y + 1);
+								this.block.positionGrid = vectorAux;
+								grid[this.positionGrid.x][this.positionGrid.y + 1] = this.block;
+								this.block = null;
+							}							
+							charCod = 3;
+							break;
+						case 3:
+							if((grid[this.positionGrid.x + 1][this.positionGrid.y] == null) && (this.positionGrid.x < sizeStage)){
+								vectorAux = createVector(this.positionGrid.x + 1,this.positionGrid.y);
+								this.block.positionGrid = vectorAux;
+								grid[this.positionGrid.x + 1][this.positionGrid.y] = this.block;
+								this.block = null;
+							}
+							charCod = 4;
+							break;
+				}				
+			}
+			this.move = false;			
 		}
 		fill(255);
 		text(this.positionGrid.x + " , " + this.positionGrid.y,40,40);	

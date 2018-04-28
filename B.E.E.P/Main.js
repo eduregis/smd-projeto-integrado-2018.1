@@ -83,7 +83,7 @@ function colorGrid(){
 }
 
 function keyReleased(){
-	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68)){ // recebendo os valores do teclado.
+	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68) || (keyCode == 82)){ // recebendo os valores do teclado (W, A, S, D e espaço).
 		if((character.i == 0) && (!character.move)){
 			character.i = int(200/sizeStage); // ajuste do contador para a dimensão da fase.
 			character.move = true;	// movimentando o personagem.
