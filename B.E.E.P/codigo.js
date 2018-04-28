@@ -1,27 +1,52 @@
-var corT = 5;
-var corG = 255;
-var charCod = 1;
-var character;
-var sizeStage;
-var block;
+var corT = 5; // controla o tempo da mudança de cor.
+var corG = 255; // controla a mudança de cor.
+var charCod = 1; // controla o movimento do personagem.
+var character; // personagem.
+var sizeStage; // dimensão da fase.
+var grid = []; // matriz a ser preenchida com blocos.
 
 function setup(){
 	createCanvas(1024,768);
-	sizeStage = 6; // dimensão da fase, cria um grid quadrado com o número dado.
+	sizeStage = 7; // dimensão da fase, cria um grid quadrado com o número dado.
 	background(0);
-	block = new Block(1, 5);
+	fillGridNull(); // enche a matriz de objetos nulos.
+	addBlock(1,5);
 	if(sizeStage%2 == 0){
 		character = new Character(width/2,height/2,sizeStage);	
 	}else{
 		character = new Character(width/2,height/2 - 200/sizeStage,sizeStage);
+	}	
+}
+
+function fillGridNull(){
+	for(var i = 0; i <= sizeStage; i++){
+		var arrayAux = []; // vetor auxiliar que será anexado a matriz do grid.
+		for(var j = 0; j <= sizeStage; j++){
+			arrayAux.push(null); // inserindo objetos nulos no vetor auxiliar.
+		}
+		grid.push(arrayAux); // inserir vetor preenchido com objetos nulos na matriz do grid.
 	}
-	
+}
+
+function addBlock(x,y){
+	block = new Block(x, y); // cria um bloco na posição especificada.
+	grid[x][y] = block; // insere o bloco criado acima no grid.
 }
 
 function draw(){
-	isometricGrid(sizeStage);
-	character.drawCharacter();
-	block.drawBlock();
+	isometricGrid(sizeStage); // desenha o grid isométrico.
+	character.drawCharacter(); // desenha o personagem.
+	drawBlocks(); // desenha os blocos existentes no grid.
+}
+
+function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá existem.
+	for(var i = 0; i <= sizeStage; i++){
+		for(var j = 0; j <= sizeStage; j++){
+			if(grid[i][j] != null){ // checa se o objeto é nulo, se não, ele desenha o bloco.
+				grid[i][j].drawBlock(); 		
+			}		
+		}
+	}
 }
 
 function isometricGrid(mod){
@@ -52,6 +77,7 @@ class Character{
 		this.move = false; // variável de controle do movimento, utilizando a interpolação.
 		this.stayMove = false; // variável de controle que impede que outros comando sejam recebidos enquanto o personagem se desloca.
 		this.i = 0;	// contador que permite continuidade ao movimento do personagem.
+		this.direction = 0; // variável que informa para que direção o personagem está olhando. 0-) frente, 1-) esquerda, 2-) trás, 3-) direita.
 	}
 
 	drawCharacter(){		
@@ -82,7 +108,8 @@ class Character{
 
 	moveCharacter(){
 		switch(charCod){ //dando funções para cada tecla.
-			case 1:
+			case 1: // os comentários do case 1 se aplicam a todos os outros cases.
+				this.direction = 0;// adequa a direção do personagem.
 				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.
 				if(this.move) { // funciona só quando o booleano move está ativo.
 					if(this.positionGrid.x > 0){ // testa se está no limite do grid
@@ -93,6 +120,7 @@ class Character{
 				}
 				break;
 			case 2:
+				this.direction = 1;
 				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
 				if(this.move) {
 					if(this.positionGrid.y > 0){
@@ -103,6 +131,7 @@ class Character{
 				}
 				break;
 			case 3:
+				this.direction = 2;
 				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
 				if(this.move) {
 					if(this.positionGrid.x < sizeStage){
@@ -113,6 +142,7 @@ class Character{
 				}
 				break;
 			case 4:
+				this.direction = 3;
 				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
 				if(this.move) {
 					if(this.positionGrid.y < sizeStage){
@@ -131,15 +161,19 @@ class Character{
 class Block{
 	constructor(x,y){
 		this.positionGrid = createVector(x,y); // recebe a posição no grid que o bloco será inicialmente colocado.
-		this.position = createVector(width/2,height/2); // posição do bloco.
+		if(sizeStage%2 == 0){
+			this.position = createVector(width/2,height/2); // posição do bloco. 
+		}else{
+			this.position = createVector(width/2 + 400/sizeStage,height/2); // posição do bloco ajustada para o caso da dimensão da fase ser ímpar.
+		}
 		this.drawController = true;	// variável de controle para ajustar a posição do bloco.
 	}			
 
 	drawBlock(){
 		if(this.drawController){
-			if(this.positionGrid.x > sizeStage/2){
-				for(var i = this.positionGrid.x; i > sizeStage/2; i--){
-					this.position.x += int(400/sizeStage);
+			if(this.positionGrid.x > sizeStage/2){ // verifica a posição do bloco e faz os ajustes necessários. 
+				for(var i = this.positionGrid.x; i > sizeStage/2; i--){ 
+					this.position.x += int(400/sizeStage); 
 					this.position.y += int(200/sizeStage);
 				}			
 			}else{
