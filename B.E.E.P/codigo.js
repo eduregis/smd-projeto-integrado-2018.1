@@ -107,7 +107,7 @@ class Character{
 							}
 							break;
 						case 2: 
-							if(this.positionGrid.y < sizeStage){
+							if(this.positionGrid.x < sizeStage){
 								this.position.x-=2;
 								this.position.y++; 
 								if (this.i == 1) this.positionGrid.x++;
