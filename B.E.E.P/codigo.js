@@ -7,7 +7,7 @@ var block;
 
 function setup(){
 	createCanvas(1024,768);
-	sizeStage = 6;
+	sizeStage = 6; // dimensão da fase, cria um grid quadrado com o número dado.
 	background(0);
 	block = new Block(1, 5);
 	if(sizeStage%2 == 0){
@@ -26,9 +26,11 @@ function draw(){
 
 function isometricGrid(mod){
 	background(0);
-	colorGrid();	
-	var ver = 200/mod;
+	colorGrid(); // função que altera as cores do grid
+	// espaçamento entre as linhas baseado na quantidade de casas
+	var ver = 200/mod; 
 	var hor = 400/mod;
+	//criando o grid com base no espaçamento definido
 	for(var i = 0; i <= mod; i++){		
 		line(width/2+ i*hor, height/2 - 200 + i*ver, width/2 - 400 + i*hor, height/2 + i*ver);
 		line(width/2- i*hor, height/2 - 200 + i*ver, width/2 + 400 - i*hor, height/2 + i*ver);
@@ -36,7 +38,7 @@ function isometricGrid(mod){
 }
 
 function colorGrid(){
-	if((corG > 255) || (corG < 125))
+	if((corG > 255) || (corG < 125)) // dá o efeito de neon
 		corT = -corT;
 	corG += corT;	
 		stroke(0,corG,255);	
@@ -44,53 +46,50 @@ function colorGrid(){
 
 class Character{
 	constructor(x,y,dim){
-		this.position = createVector(x,y);
-		this.positionGrid = createVector(int(sizeStage/2),int(sizeStage/2));
-		this.dim = 200/dim;		
-		this.move = false;
-		this.stayMove = false;
-		this.i = 0;		
+		this.position = createVector(x,y); // posição do personagem
+		this.positionGrid = createVector(int(sizeStage/2),int(sizeStage/2)); // posição do personagem no grid.
+		this.dim = 200/dim;	// dimensão no personagem, baseado no número de casas.
+		this.move = false; // variável de controle do movimento, utilizando a interpolação.
+		this.stayMove = false; // variável de controle que impede que outros comando sejam recebidos enquanto o personagem se desloca.
+		this.i = 0;	// contador que permite continuidade ao movimento do personagem.
 	}
 
 	drawCharacter(){		
 		if (this.i==0){
-			this.move = false;	
+			this.move = false; // quando i chega a zero, significa que o personagem chegou no cruzamento desejado, então ele não irá mais se mover, até que outro comando seja dado.	
 		}else{
-			this.i--;
+			this.i--; // contador regressivo funcionando.
 		}
-		if(this.stayMove){
+		if(this.stayMove){ // stayMove sendo usado, para impedir que, enquanto ele se desloca, o jogador dê novos comandos ao personagem.
 			switch (keyCode){
-				case 87:
+				case 87: // seta para cima.
 					charCod = 1;					
 					break;
-				case 65:
+				case 65: // seta para à esquerda.
 					charCod = 2;					
 					break;
-				case 83:
+				case 83: // seta para baixo.
 					charCod = 3;					
 					break;
-				case 68:
+				case 68: //seta para a direita
 					charCod = 4;					
 					break;				
 			}
-			this.stayMove = false;	
+			this.stayMove = false; // mudando o valor de stayMove, para impedir que o jogador dê novos comandos.
 		}
-		this.moveCharacter();	
+		this.moveCharacter(); // indo a parte de movimentação do personagem.
 	}
 
 	moveCharacter(){
-		switch(charCod){
+		switch(charCod){ //dando funções para cada tecla.
 			case 1:
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4);
-				if(this.move) {
-					if(this.positionGrid.x > 0){
-						this.position.x+=2;
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.
+				if(this.move) { // funciona só quando o booleano move está ativo.
+					if(this.positionGrid.x > 0){ // testa se está no limite do grid
+						this.position.x+=2; //acréscimos e decrécimos na posição do personagem.
 						this.position.y--;
-						if (this.i == 1) this.positionGrid.x--;
-					}else{
-
-					}
-					
+						if (this.i == 1) this.positionGrid.x--; // quando i é igual a 1, significa que o movimento está no último loop, então mudamos a posição no grid do personagem.
+					}					
 				}
 				break;
 			case 2:
@@ -100,9 +99,7 @@ class Character{
 						this.position.x-=2;
 						this.position.y--; 
 						if (this.i == 1) this.positionGrid.y--;
-					}else{
-
-					}					 
+					}
 				}
 				break;
 			case 3:
@@ -112,9 +109,7 @@ class Character{
 						this.position.x-=2;
 						this.position.y++;	
 						if (this.i == 1) this.positionGrid.x++;
-					}else{
-
-					}				  
+					}			  
 				}
 				break;
 			case 4:
@@ -124,9 +119,7 @@ class Character{
 						this.position.x+=2;
 						this.position.y++; 	
 						if (this.i == 1) this.positionGrid.y++;
-					}else{
-
-					}				 
+					}			 
 				}
 				break;
 		}
@@ -137,35 +130,39 @@ class Character{
 
 class Block{
 	constructor(x,y){
-		this.positionGrid = createVector(x,y);
-		this.position = createVector(width/2,height/2);
-		print(this.positionGrid.x + " , " + this.positionGrid.y);
-		if(this.positionGrid.x > sizeStage/2){
-			for(var i = this.positionGrid.x; i > sizeStage/2; i--){
-				this.position.x += int(400/sizeStage);
-				this.position.y += int(200/sizeStage);
-			}			
-		}else{
-			for(var i = this.positionGrid.x; i < sizeStage/2; i++){
-				this.position.x -= int(400/sizeStage);
-				this.position.y -= int(200/sizeStage);
-			}
-		}
-		if(this.positionGrid.y > sizeStage/2){
-			for(var i = this.positionGrid.y; i > sizeStage/2; i--){
-				this.position.x -= int(400/sizeStage);
-				this.position.y += int(200/sizeStage);
-			}			
-		}else{
-			for(var i = this.positionGrid.y; i < sizeStage/2; i++){
-				this.position.x += int(400/sizeStage);
-				this.position.y -= int(200/sizeStage);
-			}
-		}
+		this.positionGrid = createVector(x,y); // recebe a posição no grid que o bloco será inicialmente colocado.
+		this.position = createVector(width/2,height/2); // posição do bloco.
+		this.drawController = true;	// variável de controle para ajustar a posição do bloco.
 	}			
 
 	drawBlock(){
+		if(this.drawController){
+			if(this.positionGrid.x > sizeStage/2){
+				for(var i = this.positionGrid.x; i > sizeStage/2; i--){
+					this.position.x += int(400/sizeStage);
+					this.position.y += int(200/sizeStage);
+				}			
+			}else{
+				for(var i = this.positionGrid.x; i < sizeStage/2; i++){
+					this.position.x -= int(400/sizeStage);
+					this.position.y -= int(200/sizeStage);
+				}
+			}
+			if(this.positionGrid.y > sizeStage/2){
+				for(var i = this.positionGrid.y; i > sizeStage/2; i--){
+					this.position.x -= int(400/sizeStage);
+					this.position.y += int(200/sizeStage);
+				}			
+			}else{
+				for(var i = this.positionGrid.y; i < sizeStage/2; i++){
+					this.position.x += int(400/sizeStage);
+					this.position.y -= int(200/sizeStage);
+				}
+			}
+			this.drawController = false; // alterando a drawController para que não entre de novo na função e tire o bloco do seu lugar., até ele ser reposicionado pelo jogador.
+		}
 		var mod = 200/sizeStage;
+		//placeholder?		
 		fill(100);
 		quad(this.position.x + mod, this.position.y - mod, this.position.x + mod, this.position.y, this.position.x, this.position.y + mod/2, this.position.x, this.position.y - mod/2);
 		fill(150);
@@ -176,11 +173,11 @@ class Block{
 }
 
 function keyReleased(){
-	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68)){
+	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68)){ // recebendo os valores do teclado.
 		if((character.i == 0) && (!character.move)){
-			character.i = int(200/sizeStage);	
-			character.move = true;	
-			character.stayMove = true;
+			character.i = int(200/sizeStage); // ajuste do contador para a dimensão da fase.
+			character.move = true;	// movimentando o personagem.
+			character.stayMove = true; // mexendo na variável de controle, para o personagewm receba o comando do jogador.
 		}	
 	}	
 }
