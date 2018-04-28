@@ -60,24 +60,16 @@ class Character{
 		if(this.stayMove){
 			switch (keyCode){
 				case 87:
-					charCod = 1;
-					if(this.positionGrid.x > 0)
-						this.positionGrid.x--;
+					charCod = 1;					
 					break;
 				case 65:
-					charCod = 2;
-					if(this.positionGrid.y > 0)
-						this.positionGrid.y--;
+					charCod = 2;					
 					break;
 				case 83:
-					charCod = 3;
-					if(this.positionGrid.x < sizeStage)
-						this.positionGrid.x++;
+					charCod = 3;					
 					break;
 				case 68:
-					charCod = 4;
-					if(this.positionGrid.y < sizeStage)
-						this.positionGrid.y++;
+					charCod = 4;					
 					break;				
 			}
 			this.stayMove = false;	
@@ -87,9 +79,10 @@ class Character{
 			case 1:
 				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4);
 				if(this.move) {
-					if(this.positionGrid.x >= 0){
+					if(this.positionGrid.x > 0){
 						this.position.x+=2;
 						this.position.y--;
+						if (this.i == 1) this.positionGrid.x--;
 					}else{
 
 					}
@@ -99,9 +92,10 @@ class Character{
 			case 2:
 				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
 				if(this.move) {
-					if(this.positionGrid.y >= 0){
+					if(this.positionGrid.y > 0){
 						this.position.x-=2;
 						this.position.y--; 
+						if (this.i == 1) this.positionGrid.y--;
 					}else{
 
 					}					 
@@ -113,6 +107,7 @@ class Character{
 					if(this.positionGrid.x < sizeStage){
 						this.position.x-=2;
 						this.position.y++;	
+						if (this.i == 1) this.positionGrid.x++;
 					}else{
 
 					}				  
@@ -124,6 +119,7 @@ class Character{
 					if(this.positionGrid.y < sizeStage){
 						this.position.x+=2;
 						this.position.y++; 	
+						if (this.i == 1) this.positionGrid.y++;
 					}else{
 
 					}				 
