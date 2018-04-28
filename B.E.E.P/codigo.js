@@ -11,12 +11,11 @@ function setup(){
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
-	addBlock(1,5);
-	addBlock(0,0);
-	addBlock(3,3);
-	addBlock(0,7);
-	addBlock(7,0);
-	addBlock(7,7);
+	addBlock(3,0);
+	addBlock(1,1);
+	addBlock(1,6);
+	addBlock(6,1);
+	addBlock(6,6);
 	if(sizeStage%2 == 0){
 		character = new Character(width/2,height/2,sizeStage);	
 	}else{
@@ -34,7 +33,7 @@ function fillGridNull(){
 	}
 }
 
-function fillGrid(){
+function fillGrid(){ // função auxiliar, preenche todo o grid com blocos, será cortada em versões posteriores.
 	for(var i = 0; i <= sizeStage; i++){
 		for(var j = 0; j <= sizeStage; j++){
 			addBlock(i,j);	
@@ -103,66 +102,100 @@ class Character{
 		if(this.stayMove){ // stayMove sendo usado, para impedir que, enquanto ele se desloca, o jogador dê novos comandos ao personagem.
 			switch (keyCode){
 				case 87: // seta para cima.
+					this.direction = 0;// adequa a direção do personagem.
 					charCod = 1;					
 					break;
 				case 65: // seta para à esquerda.
+					this.direction = 1;
 					charCod = 2;					
 					break;
 				case 83: // seta para baixo.
+					this.direction = 2;
 					charCod = 3;					
 					break;
-				case 68: //seta para a direita
+				case 68: //seta para a direita.
+					this.direction = 3;
 					charCod = 4;					
 					break;				
 			}
 			this.stayMove = false; // mudando o valor de stayMove, para impedir que o jogador dê novos comandos.
 		}
+		this.checkBlockCollision(); // checa colisão com algum bloco.
 		this.moveCharacter(); // indo a parte de movimentação do personagem.
+	}
+
+	checkBlockCollision(){		
+		switch(this.direction){ // utilizando a variável de controle para testar colisão.
+			case 0:
+				if(this.positionGrid.y > 0){ // testa se o personagem está na borda do grid, se sim, ele faria um teste de colisão com um objeto fora do escopo e daria erro, por isso esse teste.
+					if(grid[this.positionGrid.x][this.positionGrid.y - 1] != null){ // baseado na posição do personagem, fazemos uma checagem se existe um bloco na posição em que o personagem está olhando.
+						this.move = false; // caso tenha, impedimos o movimento colocando a variável de controle move para false.
+					}
+				}				
+				break;
+			case 1:
+				if(this.positionGrid.x > 0){
+					if(grid[this.positionGrid.x - 1][this.positionGrid.y] != null){
+						this.move = false;
+					}
+				}				
+				break;
+			case 2:
+				if(this.positionGrid.y < sizeStage){
+					if(grid[this.positionGrid.x][this.positionGrid.y + 1] != null){
+						this.move = false;
+					}
+				}				
+				break;
+			case 3:
+				if(this.positionGrid.x < sizeStage){
+					if(grid[this.positionGrid.x + 1][this.positionGrid.y] != null){
+						this.move = false;
+					}
+				}				
+				break;
+		}
 	}
 
 	moveCharacter(){
 		switch(charCod){ // dando funções para cada tecla.
 			case 1: // os comentários do case 1 se aplicam a todos os outros cases.
-				this.direction = 0;// adequa a direção do personagem.
 				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.
 				if(this.move){ // funciona só quando o booleano move está ativo.
-					if(this.positionGrid.x > 0){ // testa se está no limite do grid.
+					if(this.positionGrid.y > 0){ // testa se está no limite do grid.
 						this.position.x+=2; //acréscimos e decrécimos na posição do personagem.
 						this.position.y--;
-						if (this.i == 1) this.positionGrid.x--; // quando i é igual a 1, significa que o movimento está no último loop, então mudamos a posição no grid do personagem.
+						if (this.i == 1) this.positionGrid.y--; // quando i é igual a 1, significa que o movimento está no último loop, então mudamos a posição no grid do personagem.
 					}					
 				}
 				break;
 			case 2:
-				this.direction = 1;
 				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
 				if(this.move) {
-					if(this.positionGrid.y > 0){
+					if(this.positionGrid.x > 0){
 						this.position.x-=2;
 						this.position.y--; 
-						if (this.i == 1) this.positionGrid.y--;
+						if (this.i == 1) this.positionGrid.x--;
 					}
 				}
 				break;
 			case 3:
-				this.direction = 2;
 				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
 				if(this.move) {
-					if(this.positionGrid.x < sizeStage){
+					if(this.positionGrid.y < sizeStage){
 						this.position.x-=2;
 						this.position.y++;	
-						if (this.i == 1) this.positionGrid.x++;
+						if (this.i == 1) this.positionGrid.y++;
 					}			  
 				}
 				break;
 			case 4:
-				this.direction = 3;
 				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
 				if(this.move) {
-					if(this.positionGrid.y < sizeStage){
+					if(this.positionGrid.x < sizeStage){
 						this.position.x+=2;
 						this.position.y++; 	
-						if (this.i == 1) this.positionGrid.y++;
+						if (this.i == 1) this.positionGrid.x++;
 					}			 
 				}
 				break;
