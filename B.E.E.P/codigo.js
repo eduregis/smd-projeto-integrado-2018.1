@@ -9,7 +9,7 @@ function setup(){
 	createCanvas(1024,768);
 	sizeStage = 6;
 	background(0);
-	block = new Block(width/2, height/2);
+	block = new Block(1, 5);
 	if(sizeStage%2 == 0){
 		character = new Character(width/2,height/2,sizeStage);	
 	}else{
@@ -23,8 +23,6 @@ function draw(){
 	character.drawCharacter();
 	block.drawBlock();
 }
-
-
 
 function isometricGrid(mod){
 	background(0);
@@ -139,17 +137,41 @@ class Character{
 
 class Block{
 	constructor(x,y){
-		this.x = x;
-		this.y = y;
-	}	
+		this.positionGrid = createVector(x,y);
+		this.position = createVector(width/2,height/2);
+		print(this.positionGrid.x + " , " + this.positionGrid.y);
+		if(this.positionGrid.x > sizeStage/2){
+			for(var i = this.positionGrid.x; i > sizeStage/2; i--){
+				this.position.x += int(400/sizeStage);
+				this.position.y += int(200/sizeStage);
+			}			
+		}else{
+			for(var i = this.positionGrid.x; i < sizeStage/2; i++){
+				this.position.x -= int(400/sizeStage);
+				this.position.y -= int(200/sizeStage);
+			}
+		}
+		if(this.positionGrid.y > sizeStage/2){
+			for(var i = this.positionGrid.y; i > sizeStage/2; i--){
+				this.position.x -= int(400/sizeStage);
+				this.position.y += int(200/sizeStage);
+			}			
+		}else{
+			for(var i = this.positionGrid.y; i < sizeStage/2; i++){
+				this.position.x += int(400/sizeStage);
+				this.position.y -= int(200/sizeStage);
+			}
+		}
+	}			
+
 	drawBlock(){
 		var mod = 200/sizeStage;
 		fill(100);
-		quad(this.x + mod, this.y - mod, this.x + mod, this.y, this.x, this.y + mod/2, this.x, this.y - mod/2);
+		quad(this.position.x + mod, this.position.y - mod, this.position.x + mod, this.position.y, this.position.x, this.position.y + mod/2, this.position.x, this.position.y - mod/2);
 		fill(150);
-		quad(this.x - mod, this.y - mod, this.x - mod, this.y, this.x, this.y + mod/2, this.x, this.y - mod/2);
+		quad(this.position.x - mod, this.position.y - mod, this.position.x - mod, this.position.y, this.position.x, this.position.y + mod/2, this.position.x, this.position.y - mod/2);
 		fill(200);
-		quad(this.x, this.y - mod/2, this.x - mod, this.y - mod, this.x, this.y - 3*mod/2, this.x + mod, this.y - mod);
+		quad(this.position.x, this.position.y - mod/2, this.position.x - mod, this.position.y - mod, this.position.x, this.position.y - 3*mod/2, this.position.x + mod, this.position.y - mod);
 	}
 }
 
