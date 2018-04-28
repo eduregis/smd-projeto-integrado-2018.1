@@ -10,21 +10,35 @@ function setup(){
 	sizeStage = 7; // dimensão da fase, cria um grid quadrado com o número dado.
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
+	//fillGrid();
 	addBlock(1,5);
+	addBlock(0,0);
+	addBlock(3,3);
+	addBlock(0,7);
+	addBlock(7,0);
+	addBlock(7,7);
 	if(sizeStage%2 == 0){
 		character = new Character(width/2,height/2,sizeStage);	
 	}else{
 		character = new Character(width/2,height/2 - 200/sizeStage,sizeStage);
-	}	
+	}
 }
 
 function fillGridNull(){
 	for(var i = 0; i <= sizeStage; i++){
 		var arrayAux = []; // vetor auxiliar que será anexado a matriz do grid.
 		for(var j = 0; j <= sizeStage; j++){
-			arrayAux.push(null); // inserindo objetos nulos no vetor auxiliar.
+			arrayAux.push(null); // inserindo objetos nulos no vetor auxiliar.		
 		}
 		grid.push(arrayAux); // inserir vetor preenchido com objetos nulos na matriz do grid.
+	}
+}
+
+function fillGrid(){
+	for(var i = 0; i <= sizeStage; i++){
+		for(var j = 0; j <= sizeStage; j++){
+			addBlock(i,j);	
+		}		
 	}
 }
 
@@ -36,7 +50,7 @@ function addBlock(x,y){
 function draw(){
 	isometricGrid(sizeStage); // desenha o grid isométrico.
 	character.drawCharacter(); // desenha o personagem.
-	drawBlocks(); // desenha os blocos existentes no grid.
+	drawBlocks(); // desenha os blocos existentes no grid.	
 }
 
 function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá existem.
@@ -107,12 +121,12 @@ class Character{
 	}
 
 	moveCharacter(){
-		switch(charCod){ //dando funções para cada tecla.
+		switch(charCod){ // dando funções para cada tecla.
 			case 1: // os comentários do case 1 se aplicam a todos os outros cases.
 				this.direction = 0;// adequa a direção do personagem.
 				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.
-				if(this.move) { // funciona só quando o booleano move está ativo.
-					if(this.positionGrid.x > 0){ // testa se está no limite do grid
+				if(this.move){ // funciona só quando o booleano move está ativo.
+					if(this.positionGrid.x > 0){ // testa se está no limite do grid.
 						this.position.x+=2; //acréscimos e decrécimos na posição do personagem.
 						this.position.y--;
 						if (this.i == 1) this.positionGrid.x--; // quando i é igual a 1, significa que o movimento está no último loop, então mudamos a posição no grid do personagem.
@@ -164,31 +178,31 @@ class Block{
 		if(sizeStage%2 == 0){
 			this.position = createVector(width/2,height/2); // posição do bloco. 
 		}else{
-			this.position = createVector(width/2 + 400/sizeStage,height/2); // posição do bloco ajustada para o caso da dimensão da fase ser ímpar.
+			this.position = createVector(width/2 ,height/2 - 200/sizeStage); // posição do bloco ajustada para o caso da dimensão da fase ser ímpar.
 		}
 		this.drawController = true;	// variável de controle para ajustar a posição do bloco.
 	}			
 
 	drawBlock(){
 		if(this.drawController){
-			if(this.positionGrid.x > sizeStage/2){ // verifica a posição do bloco e faz os ajustes necessários. 
-				for(var i = this.positionGrid.x; i > sizeStage/2; i--){ 
+			if(this.positionGrid.x > int(sizeStage/2)){ // verifica a posição do bloco e faz os ajustes necessários. 
+				for(var i = this.positionGrid.x ; i > int(sizeStage/2); i--){ 
 					this.position.x += int(400/sizeStage); 
 					this.position.y += int(200/sizeStage);
 				}			
-			}else{
-				for(var i = this.positionGrid.x; i < sizeStage/2; i++){
+			}else if(this.positionGrid.x < int(sizeStage/2)){
+				for(var i = this.positionGrid.x ; i < int(sizeStage/2); i++){
 					this.position.x -= int(400/sizeStage);
 					this.position.y -= int(200/sizeStage);
 				}
 			}
-			if(this.positionGrid.y > sizeStage/2){
-				for(var i = this.positionGrid.y; i > sizeStage/2; i--){
+			if(this.positionGrid.y > int(sizeStage/2)){
+				for(var i = this.positionGrid.y; i > int(sizeStage/2); i--){
 					this.position.x -= int(400/sizeStage);
 					this.position.y += int(200/sizeStage);
 				}			
-			}else{
-				for(var i = this.positionGrid.y; i < sizeStage/2; i++){
+			}else if(this.positionGrid.y < int(sizeStage/2)){
+				for(var i = this.positionGrid.y; i < int(sizeStage/2); i++){
 					this.position.x += int(400/sizeStage);
 					this.position.y -= int(200/sizeStage);
 				}
