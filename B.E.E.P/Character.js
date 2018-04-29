@@ -18,23 +18,23 @@ class Character{
 		}
 		if(this.stayMove){ // stayMove sendo usado, para impedir que, enquanto ele se desloca, o jogador dê novos comandos ao personagem.
 			switch (keyCode){
-				case 87: // seta para cima.
+				case 87: // tecla W, para cima.
 					this.direction = 0;// adequa a direção do personagem.
 					charCod = 1;					
 					break;
-				case 65: // seta para à esquerda.
+				case 65: // tecla A, para à esquerda.
 					this.direction = 1;
 					charCod = 2;					
 					break;
-				case 83: // seta para baixo.
+				case 83: // tecla S, para baixo.
 					this.direction = 2;
 					charCod = 3;					
 					break;
-				case 68: //seta para a direita.
+				case 68: // tecla D, para a direita.
 					this.direction = 3;
 					charCod = 4;					
 					break;
-				case 82:
+				case 82: // tecla R, para pegar ou colocar um bloco.
 					charCod = 5;
 					break;				
 			}
@@ -150,49 +150,56 @@ class Character{
 				}else{
 					var vectorPosition, vectorPositionGrid;
 					switch(this.direction){ // caso o personagem já tenha um bloco consigo, temos que fazer ele soltar o bloco no chão.
-						case 0:
-							//testamos se já existe um objeto no local à frente do personagem, testamos também se ele não está de frente para os limites da fase.
-							if((grid[this.positionGrid.x][this.positionGrid.y - 1] == null) && (this.positionGrid.y > 0)){ 
-								vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y - (200/sizeStage)); // usamos a posição do personagem de referência para posicionar o bloco.
-								this.block.position = vectorPosition; // passamos a referência para o bloco sendo carregado.
-								vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y - 1); // usamos a posição do personagem no grid de referência para posicionar o bloco.
-								this.block.positionGrid = vectorPositionGrid; // passamos também a referência para o bloco sendo carregado.					
-								grid[this.positionGrid.x][this.positionGrid.y - 1] = this.block; // devolvemos o objeto para o cenário.
-								this.block = null; // excluímos o objeto do personagem.								
-							}	
+						case 0:// os comentários do case 0 se aplicam igualmente a todos os outros cases.							 						
+							if(this.positionGrid.y > 0){ // testamos se o personagem não está não está de frente para os limites da fase.	
+								if(grid[this.positionGrid.x][this.positionGrid.y - 1] == null){ //testamos se já existe um objeto no local à frente do personagem.
+									vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y - (200/sizeStage)); // usamos a posição do personagem de referência para posicionar o bloco.
+									this.block.position = vectorPosition; // passamos a referência para o bloco sendo carregado.
+									vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y - 1); // usamos a posição do personagem no grid de referência para posicionar o bloco.
+									this.block.positionGrid = vectorPositionGrid; // passamos também a referência para o bloco sendo carregado.					
+									grid[this.positionGrid.x][this.positionGrid.y - 1] = this.block; // devolvemos o objeto para o cenário.
+									this.block = null; // excluímos o objeto do personagem.								
+								}
+							}							
 							charCod = 1;					
 							break;
 						case 1:
-							if((grid[this.positionGrid.x - 1][this.positionGrid.y] == null) && (this.positionGrid.x > 0)){
-								vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y - (200/sizeStage));
-								this.block.position = vectorPosition;
-								vectorPositionGrid = createVector(this.positionGrid.x - 1,this.positionGrid.y);
-								this.block.positionGrid = vectorPositionGrid;
-								grid[this.positionGrid.x - 1][this.positionGrid.y] = this.block;
-								this.block = null;
-							}							
+							if (this.positionGrid.x > 0){
+								if(grid[this.positionGrid.x - 1][this.positionGrid.y] == null){
+									vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y - (200/sizeStage));
+									this.block.position = vectorPosition;
+									vectorPositionGrid = createVector(this.positionGrid.x - 1,this.positionGrid.y);
+									this.block.positionGrid = vectorPositionGrid;
+									grid[this.positionGrid.x - 1][this.positionGrid.y] = this.block;
+									this.block = null;
+								}		
+							}												
 							charCod = 2;
 							break;
 						case 2:
-							if((grid[this.positionGrid.x][this.positionGrid.y + 1] == null) && (this.positionGrid.y < sizeStage)){
-								vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y + (200/sizeStage));
-								this.block.position = vectorPosition;
-								vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y + 1);
-								this.block.positionGrid = vectorPositionGrid;
-								grid[this.positionGrid.x][this.positionGrid.y + 1] = this.block;
-								this.block = null;
-							}							
+							if(this.positionGrid.y < sizeStage){
+								if(grid[this.positionGrid.x][this.positionGrid.y + 1] == null){
+									vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y + (200/sizeStage));
+									this.block.position = vectorPosition;
+									vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y + 1);
+									this.block.positionGrid = vectorPositionGrid;
+									grid[this.positionGrid.x][this.positionGrid.y + 1] = this.block;
+									this.block = null;
+								}	
+							}													
 							charCod = 3;
 							break;
 						case 3:
-							if((grid[this.positionGrid.x + 1][this.positionGrid.y] == null) && (this.positionGrid.x < sizeStage)){
-								vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y + (200/sizeStage));
-								this.block.position = vectorPosition;
-								vectorPositionGrid = createVector(this.positionGrid.x + 1,this.positionGrid.y);
-								this.block.positionGrid = vectorPositionGrid;
-								grid[this.positionGrid.x + 1][this.positionGrid.y] = this.block;
-								this.block = null;
-							}
+							if(this.positionGrid.x < sizeStage){
+								if(grid[this.positionGrid.x + 1][this.positionGrid.y] == null){
+									vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y + (200/sizeStage));
+									this.block.position = vectorPosition;
+									vectorPositionGrid = createVector(this.positionGrid.x + 1,this.positionGrid.y);
+									this.block.positionGrid = vectorPositionGrid;
+									grid[this.positionGrid.x + 1][this.positionGrid.y] = this.block;
+									this.block = null;
+								}
+							}							
 							charCod = 4;
 							break;
 				}				
