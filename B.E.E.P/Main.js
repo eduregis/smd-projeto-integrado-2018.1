@@ -4,6 +4,7 @@ var charCod = 1; // controla o movimento do personagem.
 var character; // personagem.
 var sizeStage; // dimensão da fase.
 var grid = []; // matriz a ser preenchida com blocos.
+var test = true;
 
 function setup(){
 	createCanvas(1024,768);
@@ -20,6 +21,18 @@ function setup(){
 		character = new Character(width/2,height/2,sizeStage);	
 	}else{
 		character = new Character(width/2,height/2 - 200/sizeStage,sizeStage);
+	}
+}
+
+function draw(){
+	isometricGrid(sizeStage); // desenha o grid isométrico.
+	character.drawCharacter(); // desenha o personagem.
+	drawBlocks(); // desenha os blocos existentes no grid.
+	if(test){
+		print("");
+		print(character);
+		print("");
+		test = false;
 	}
 }
 
@@ -44,12 +57,6 @@ function fillGrid(){ // função auxiliar, preenche todo o grid com blocos, ser�
 function addBlock(x,y){
 	block = new Block(x, y); // cria um bloco na posição especificada.
 	grid[x][y] = block; // insere o bloco criado acima no grid.
-}
-
-function draw(){
-	isometricGrid(sizeStage); // desenha o grid isométrico.
-	character.drawCharacter(); // desenha o personagem.
-	drawBlocks(); // desenha os blocos existentes no grid.	
 }
 
 function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá existem.
@@ -82,7 +89,7 @@ function colorGrid(){
 		stroke(0,corG,255);	
 }
 
-function keyReleased(){
+function keyReleased(){	
 	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68) || (keyCode == 82)){ // recebendo os valores do teclado (W, A, S, D e espaço).
 		if((character.i == 0) && (!character.move)){
 			character.i = int(200/sizeStage); // ajuste do contador para a dimensão da fase.

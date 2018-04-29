@@ -11,7 +11,6 @@ class Character{
 	}
 
 	drawCharacter(){
-		print(this.block);
 		if (this.i==0){
 			this.move = false; // quando i chega a zero, significa que o personagem chegou no cruzamento desejado, então ele não irá mais se mover, até que outro comando seja dado.	
 		}else{
@@ -144,14 +143,20 @@ class Character{
 							charCod = 4;
 							break;
 					}
-					if (this.block != null) this.block.positionGrid = null;
+					if (this.block != null) {
+						this.block.position = null;
+						this.block.positionGrid = null;
+					}
 				}else{
-					var vectorAux;
+					var vectorPosition, vectorPositionGrid;
 					switch(this.direction){ // caso o personagem já tenha um bloco consigo, temos que fazer ele soltar o bloco no chão.
 						case 0:
-							if((grid[this.positionGrid.x][this.positionGrid.y - 1] == null) && (this.positionGrid.y > 0)){
-								vectorAux = createVector(this.positionGrid.x,this.positionGrid.y - 1);
-								this.block.positionGrid = vectorAux;
+							//testamos se já existe um objeto no local à frente do personagem, testamos também se ele não está de frente para os limites da fase.
+							if((grid[this.positionGrid.x][this.positionGrid.y - 1] == null) && (this.positionGrid.y > 0)){ 
+								vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y - (200/sizeStage)); // usamos a posição do personagem de referência para posicionar o bloco.
+								this.block.position = vectorPosition; // passamos a referência para o bloco sendo carregado.
+								vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y - 1); // usamos a posição do personagem no grid de referência para posicionar o bloco.
+								this.block.positionGrid = vectorPositionGrid; // passamos também a referência para o bloco sendo carregado.					
 								grid[this.positionGrid.x][this.positionGrid.y - 1] = this.block; // devolvemos o objeto para o cenário.
 								this.block = null; // excluímos o objeto do personagem.								
 							}	
@@ -159,17 +164,21 @@ class Character{
 							break;
 						case 1:
 							if((grid[this.positionGrid.x - 1][this.positionGrid.y] == null) && (this.positionGrid.x > 0)){
-								vectorAux = createVector(this.positionGrid.x - 1,this.positionGrid.y);
-								this.block.positionGrid = vectorAux;
+								vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y - (200/sizeStage));
+								this.block.position = vectorPosition;
+								vectorPositionGrid = createVector(this.positionGrid.x - 1,this.positionGrid.y);
+								this.block.positionGrid = vectorPositionGrid;
 								grid[this.positionGrid.x - 1][this.positionGrid.y] = this.block;
 								this.block = null;
 							}							
 							charCod = 2;
 							break;
 						case 2:
-							if((grid[this.positionGrid.x][this.positionGrid.y + 1] = null) && (this.positionGrid.y < sizeStage)){
-								vectorAux = createVector(this.positionGrid.x,this.positionGrid.y + 1);
-								this.block.positionGrid = vectorAux;
+							if((grid[this.positionGrid.x][this.positionGrid.y + 1] == null) && (this.positionGrid.y < sizeStage)){
+								vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y + (200/sizeStage));
+								this.block.position = vectorPosition;
+								vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y + 1);
+								this.block.positionGrid = vectorPositionGrid;
 								grid[this.positionGrid.x][this.positionGrid.y + 1] = this.block;
 								this.block = null;
 							}							
@@ -177,8 +186,10 @@ class Character{
 							break;
 						case 3:
 							if((grid[this.positionGrid.x + 1][this.positionGrid.y] == null) && (this.positionGrid.x < sizeStage)){
-								vectorAux = createVector(this.positionGrid.x + 1,this.positionGrid.y);
-								this.block.positionGrid = vectorAux;
+								vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y + (200/sizeStage));
+								this.block.position = vectorPosition;
+								vectorPositionGrid = createVector(this.positionGrid.x + 1,this.positionGrid.y);
+								this.block.positionGrid = vectorPositionGrid;
 								grid[this.positionGrid.x + 1][this.positionGrid.y] = this.block;
 								this.block = null;
 							}
