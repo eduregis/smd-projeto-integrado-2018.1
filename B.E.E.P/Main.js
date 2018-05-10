@@ -4,19 +4,18 @@ var charCod = 1; // controla o movimento do personagem.
 var character; // personagem.
 var sizeStage; // dimensão da fase.
 var grid = []; // matriz a ser preenchida com blocos.
-var test = true;
 
 function setup(){
 	createCanvas(1024,768);
-	sizeStage = 6; // dimensão da fase, cria um grid quadrado com o número dado.
+	sizeStage = 8; // dimensão da fase, cria um grid quadrado com o número dado.
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
 	addBlock(3,0);
 	addBlock(1,1);
-	addBlock(1,6);
-	addBlock(6,1);
-	addBlock(6,6);
+	addBlock(1,4);
+	addBlock(4,1);
+	addBlock(4,4);
 	if(sizeStage%2 == 0){
 		character = new Character(width/2,height/2,sizeStage);	
 	}else{
@@ -27,13 +26,7 @@ function setup(){
 function draw(){
 	isometricGrid(sizeStage); // desenha o grid isométrico.
 	character.drawCharacter(); // desenha o personagem.
-	drawBlocks(); // desenha os blocos existentes no grid.
-	if(test){
-		print("");
-		print(character);
-		print("");
-		test = false;
-	}
+	drawBlocks(); // desenha os blocos existentes no grid.	
 }
 
 function fillGridNull(){

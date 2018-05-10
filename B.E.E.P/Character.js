@@ -122,24 +122,32 @@ class Character{
 			case 5:				
 				if(this.block == null){ // checamos se já existe um bloco armazenado como personagem.
 					switch(this.direction){// de acordo com a direção que o personagem estiver olhando, pegamos o bloco à sua frente.
-						case 0:													
-							this.block = grid[this.positionGrid.x][this.positionGrid.y - 1]; // passamos o objeto para dentro do personagem.
-							grid[this.positionGrid.x][this.positionGrid.y - 1] = null; // excluímos o objeto do cenário.
-							charCod = 1;
+						case 0:
+							if(this.positionGrid.y > 0){ // impede que o personagem tente pegar algo fora do grid											
+								this.block = grid[this.positionGrid.x][this.positionGrid.y - 1]; // passamos o objeto para dentro do personagem.
+								grid[this.positionGrid.x][this.positionGrid.y - 1] = null; // excluímos o objeto do cenário.								
+							}
+							charCod = 1; // mantém a posição do personagem
 							break;
 						case 1:
-							this.block = grid[this.positionGrid.x - 1][this.positionGrid.y];
-							grid[this.positionGrid.x - 1][this.positionGrid.y] = null;
+							if (this.positionGrid.x > 0){
+								this.block = grid[this.positionGrid.x - 1][this.positionGrid.y];
+								grid[this.positionGrid.x - 1][this.positionGrid.y] = null;								
+							}
 							charCod = 2;
 							break;
 						case 2:
-							this.block = grid[this.positionGrid.x][this.positionGrid.y + 1];
-							grid[this.positionGrid.x][this.positionGrid.y + 1] = null;
+							if(this.positionGrid.y < sizeStage){
+								this.block = grid[this.positionGrid.x][this.positionGrid.y + 1];
+								grid[this.positionGrid.x][this.positionGrid.y + 1] = null;								
+							}
 							charCod = 3;
 							break;
 						case 3:
-							this.block = grid[this.positionGrid.x + 1][this.positionGrid.y];
-							grid[this.positionGrid.x + 1][this.positionGrid.y] = null;
+							if(this.positionGrid.x < sizeStage){
+								this.block = grid[this.positionGrid.x + 1][this.positionGrid.y];
+								grid[this.positionGrid.x + 1][this.positionGrid.y] = null;								
+							}
 							charCod = 4;
 							break;
 					}
