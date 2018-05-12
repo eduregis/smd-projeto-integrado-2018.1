@@ -48,8 +48,10 @@ function fillGrid(){ // função auxiliar, preenche todo o grid com blocos, ser�
 }
 
 function addBlock(x,y){
-	block = new Block(x, y); // cria um bloco na posição especificada.
-	grid[x][y] = block; // insere o bloco criado acima no grid.
+	if ((x >= 0) && (x <= sizeStage) && (y >= 0) && (y <= sizeStage)){
+		block = new Block(x, y); // cria um bloco na posição especificada.
+		grid[x][y] = block; // insere o bloco criado acima no grid.
+	}	
 }
 
 function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá existem.
