@@ -2,28 +2,27 @@ var corT = 5; // controla o tempo da mudança de cor.
 var corG = 255; // controla a mudança de cor.
 var charCod = 1; // controla o movimento do personagem.
 var character; // personagem.
-var sizeStage; // dimensão da fase.
+
 var sizeStageX; 
 var sizeStageY;
 var grid = []; // matriz a ser preenchida com blocos.
 
 function setup(){
-	createCanvas(1024,768);
-	//sizeStage = 6; // dimensão da fase, cria um grid quadrado com o número dado.
-	sizeStageX = 6;
-	sizeStageY = 7;
+	createCanvas(1024,768);	
+	sizeStageX = 4;
+	sizeStageY = 10;
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
 	character = new Character(width/2,height/2,8);	
-	addBlock(3,0);
+	addBlock(0,0);
 	addBlock(1,1);
 	addBlock(1,4);
 	addBlock(4,1);
 	addBlock(4,4);
 }
 
-function draw(){
+function draw(){	
 	isometricGrid(); // desenha o grid isométrico.
 	character.updateCharacter(); // desenha o personagem.
 	drawBlocks(); // desenha os blocos existentes no grid.	
@@ -70,6 +69,29 @@ function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá 
 function isometricGrid(){
 	var hor = width/2;
 	var ver = height/2 - 50*int(sizeStageY/2);
+	var dif = sizeStageX - sizeStageY;
+	// ajustes do grid com as caixas.
+	if(sizeStageX != sizeStageY){ // caso não seja um grid quadrado, alguns ajustes precisam ser feitos.
+		if (sizeStageX%2 == 0){ // no caso da largura do grid ser par.
+			if(dif < 0){ // no caso da largura ser menor que o comprimento.
+				hor -= 50*int(dif/2);
+				ver -= 25*int(dif/2);				
+			}else{ // no caso da largura ser maior que o comprimento.
+				hor -= 50*int((1 + dif)/2);
+				ver -= 25*int((1 + dif)/2);				
+			}			
+		}else{ // no caso da largura do grid ser par
+			if(dif < 0){ // no caso da largura ser menor que o comprimento.			
+				hor -= 50*int((dif - 1)/2);
+				ver -= 25*int((dif - 1)/2);
+				
+			}else{ // no caso da largura ser maior que o comprimento.
+				hor -= 50*int(dif/2);
+				ver -= 25*int(dif/2);
+			}
+		}
+
+	}	
 	background(0);
 	colorGrid(); // função que altera as cores do grid
 	for(var i = 0; i < sizeStageY ; i++){ // criamos uma matriz parqa desenhar o grid	
@@ -82,8 +104,8 @@ function isometricGrid(){
 			hor += 50;
 			ver += 25;
 		}
-		hor -= 50*(sizeStageX - (sizeStageX - sizeStageY));
-		ver -= 25*(sizeStageY - 2);
+		hor -= 50*(sizeStageX + 1);
+		ver -= 25*(sizeStageX - 1);
 
 	}
 
