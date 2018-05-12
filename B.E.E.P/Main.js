@@ -7,7 +7,7 @@ var grid = []; // matriz a ser preenchida com blocos.
 
 function setup(){
 	createCanvas(1024,768);
-	sizeStage = 8; // dimensão da fase, cria um grid quadrado com o número dado.
+	sizeStage = 7; // dimensão da fase, cria um grid quadrado com o número dado.
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
@@ -25,7 +25,7 @@ function setup(){
 
 function draw(){
 	isometricGrid(sizeStage); // desenha o grid isométrico.
-	character.drawCharacter(); // desenha o personagem.
+	character.updateCharacter(); // desenha o personagem.
 	drawBlocks(); // desenha os blocos existentes no grid.	
 }
 
@@ -83,10 +83,10 @@ function colorGrid(){
 }
 
 function keyReleased(){	
-	if((keyCode == 87) || (keyCode == 65) || (keyCode == 83) || (keyCode == 68) || (keyCode == 82)){ // recebendo os valores do teclado (W, A, S, D e espaço).
+	if((keyCode == 87) || (keyCode == 65) || (keyCode == 68) || (keyCode == 82)){ // recebendo os valores do teclado (W, A, S, D e espaço).
 		if((character.i == 0) && (!character.move)){
 			character.i = int(200/sizeStage); // ajuste do contador para a dimensão da fase.
-			character.move = true;	// movimentando o personagem.
+			if (keyCode == 87) character.move = true;	// movimentando o personagem, só se move quando o comando for para cima.			
 			character.stayMove = true; // mexendo na variável de controle, para o personagewm receba o comando do jogador.
 		}	
 	}	

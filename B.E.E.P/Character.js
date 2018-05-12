@@ -10,7 +10,8 @@ class Character{
 		this.block = null; // variável que armazena o bloco que o personagem pode carregar.
 	}
 
-	drawCharacter(){
+	updateCharacter(){
+		this.drawCharacter(); // desenha o personagem mesmo se este estiver parado.
 		if (this.i==0){
 			this.move = false; // quando i chega a zero, significa que o personagem chegou no cruzamento desejado, então ele não irá mais se mover, até que outro comando seja dado.	
 		}else{
@@ -19,21 +20,26 @@ class Character{
 		if(this.stayMove){ // stayMove sendo usado, para impedir que, enquanto ele se desloca, o jogador dê novos comandos ao personagem.
 			switch (keyCode){
 				case 87: // tecla W, para cima.
-					this.direction = 0;// adequa a direção do personagem.
 					charCod = 1;					
 					break;
 				case 65: // tecla A, para à esquerda.
-					this.direction = 1;
-					charCod = 2;					
-					break;
-				case 83: // tecla S, para baixo.
-					this.direction = 2;
-					charCod = 3;					
-					break;
+					if (this.direction != 3){
+						this.direction++;
+						charCod++;
+					}else{
+						this.direction = 0;
+						charCod = 1;
+					}															
+					break;				
 				case 68: // tecla D, para a direita.
-					this.direction = 3;
-					charCod = 4;					
-					break;
+					if (this.direction != 0){
+						this.direction--;
+						charCod--;
+					}else{
+						this.direction = 3;
+						charCod = 4;
+					}															
+					break;	
 				case 82: // tecla R, para pegar ou colocar um bloco.
 					charCod = 5;
 					break;				
@@ -77,47 +83,68 @@ class Character{
 		}
 	}
 
+	drawCharacter(){ // função que desenha o personagem.
+		switch (this.direction){
+			case 0:	
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.									
+				break;
+			case 1:
+				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);  																		
+				break;				
+			case 2: 
+				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y); 										
+				break;	
+			case 3:
+				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4)
+				break;				
+		}
+	}
+
 	moveCharacter(){
 		switch(charCod){ // dando funções para cada tecla.
-			case 1: // os comentários do case 1 se aplicam a todos os outros cases.
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.
-				if(this.move){ // funciona só quando o booleano move está ativo.
-					if(this.positionGrid.y > 0){ // testa se está no limite do grid.
-						this.position.x+=2; //acréscimos e decrécimos na posição do personagem.
-						this.position.y--;
-						if (this.i == 1) this.positionGrid.y--; // quando i é igual a 1, significa que o movimento está no último loop, então mudamos a posição no grid do personagem.
-					}					
+			case 1: movimenta o personagem
+				if(this.move){
+					this.drawCharacter(); // desenha o personagem em movimento.
+					switch(this.direction){
+					case 0: 						
+						if(this.positionGrid.y > 0){ // testa se está na borda do grid
+							this.position.x+=2;
+							this.position.y--; 
+							if (this.i == 1) this.positionGrid.y--; // quando o movimento está para terminar, a posição do personagem no grid é atualizada.
+						}
+						break;
+					case 1:						
+						if(this.positionGrid.x > 0){
+							this.position.x-=2;
+							this.position.y--; 
+							if (this.i == 1) this.positionGrid.x--;
+						}
+						break;
+					case 2:						
+						if(this.positionGrid.y < sizeStage){
+							this.position.x-=2;
+							this.position.y++; 
+							if (this.i == 1) this.positionGrid.y++;
+							}
+						break;
+					case 3: 
+						if(this.positionGrid.x < sizeStage){
+							this.position.x+=2;
+							this.position.y++; 
+							if (this.i == 1) this.positionGrid.x++;
+						}
+						break;
+					}					 
 				}
 				break;
 			case 2:
-				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);
-				if(this.move) {
-					if(this.positionGrid.x > 0){
-						this.position.x-=2;
-						this.position.y--; 
-						if (this.i == 1) this.positionGrid.x--;
-					}
-				}
+				this.drawCharacter(); // atualiza o desenha do personagem.
 				break;
 			case 3:
-				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y);
-				if(this.move) {
-					if(this.positionGrid.y < sizeStage){
-						this.position.x-=2;
-						this.position.y++;	
-						if (this.i == 1) this.positionGrid.y++;
-					}			  
-				}
+				this.drawCharacter(); // atualiza o desenha do personagem.
 				break;
 			case 4:
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4);
-				if(this.move) {
-					if(this.positionGrid.x < sizeStage){
-						this.position.x+=2;
-						this.position.y++; 	
-						if (this.i == 1) this.positionGrid.x++;
-					}			 
-				}
+				this.drawCharacter(); // atualiza o desenha do personagem.
 				break;
 			case 5:				
 				if(this.block == null){ // checamos se já existe um bloco armazenado como personagem.
