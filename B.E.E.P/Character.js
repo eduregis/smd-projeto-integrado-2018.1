@@ -85,32 +85,32 @@ class Character{
 
 	drawCharacter(){ // função que desenha o personagem.
 		switch (this.direction){
-			case 0:	
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.									
-				break;
-			case 1:
-				triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);  																		
-				break;				
-			case 2: 
-				triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y); 										
-				break;	
-			case 3:
-				triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4)
-				break;				
-		}
+				case 0:	
+					triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.									
+					break;
+				case 1:
+					triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);  																		
+					break;				
+				case 2: 
+					triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y); 										
+					break;	
+				case 3:
+					triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4)
+					break;				
+			}
 	}
 
 	moveCharacter(){
 		switch(charCod){ // dando funções para cada tecla.
-			case 1: movimenta o personagem
+			case 1: //movimenta o personagem
 				if(this.move){
-					this.drawCharacter(); // desenha o personagem em movimento.
+					this.drawCharacter(); // desenha o personagem em movimento
 					switch(this.direction){
 					case 0: 						
-						if(this.positionGrid.y > 0){ // testa se está na borda do grid
+						if(this.positionGrid.y > 0){ // verifica se o personagem está na borda do grid
 							this.position.x+=2;
 							this.position.y--; 
-							if (this.i == 1) this.positionGrid.y--; // quando o movimento está para terminar, a posição do personagem no grid é atualizada.
+							if (this.i == 1) this.positionGrid.y--; // quando está no fim do movimento, a posição no grid do personagem é atualizada.
 						}
 						break;
 					case 1:						
