@@ -1,11 +1,7 @@
 class Block{
 	constructor(x,y){
 		this.positionGrid = createVector(x,y); // recebe a posição no grid que o bloco será inicialmente colocado.
-		if(sizeStageY%2 == 0){
-			this.position = createVector(width/2,height/2); // posição do bloco. 
-		}else{
-			this.position = createVector(width/2 ,height/2 - 200/sizeStageY); // posição do bloco ajustada para o caso da dimensão da fase ser ímpar.
-		}
+		this.position = createVector(width/2,height/2); // posição do bloco. 
 		this.drawController = true;	// variável de controle para ajustar a posição do bloco.
 	}			
 
@@ -13,24 +9,24 @@ class Block{
 		if(this.drawController){
 			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do bloco e faz os ajustes necessários. 
 				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
-					this.position.x += int(400/sizeStageX); 
-					this.position.y += int(200/sizeStageY);
+					this.position.x += 50; 
+					this.position.y += 25;
 				}			
 			}else if(this.positionGrid.x < int(sizeStageX/2)){
 				for(var i = this.positionGrid.x ; i < int(sizeStageX/2); i++){
-					this.position.x -= int(400/sizeStageX);
-					this.position.y -= int(200/sizeStageY);
+					this.position.x -= 50;
+					this.position.y -= 25;
 				}
 			}
 			if(this.positionGrid.y > int(sizeStageY/2)){
 				for(var i = this.positionGrid.y; i > int(sizeStageY/2); i--){
-					this.position.x -= int(400/sizeStageX);
-					this.position.y += int(200/sizeStageY);
+					this.position.x -= 50;
+					this.position.y += 25;
 				}			
 			}else if(this.positionGrid.y < int(sizeStageY/2)){
 				for(var i = this.positionGrid.y; i < int(sizeStageY/2); i++){
-					this.position.x += int(400/sizeStageX);
-					this.position.y -= int(200/sizeStageY);
+					this.position.x += 50;
+					this.position.y -= 25;
 				}
 			}
 			this.drawController = false; // alterando a drawController para que não entre de novo na função e tire o bloco do seu lugar., até ele ser reposicionado pelo jogador.

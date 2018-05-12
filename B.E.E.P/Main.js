@@ -9,17 +9,13 @@ var grid = []; // matriz a ser preenchida com blocos.
 
 function setup(){
 	createCanvas(1024,768);
-	sizeStage = 5; // dimensão da fase, cria um grid quadrado com o número dado.
-	sizeStageX = sizeStage;
-	sizeStageY = sizeStage;
+	//sizeStage = 6; // dimensão da fase, cria um grid quadrado com o número dado.
+	sizeStageX = 6;
+	sizeStageY = 7;
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
-	if(sizeStageY%2 == 0){
-		character = new Character(width/2,height/2,8);	
-	}else{
-		character = new Character(width/2,height/2 - 200/sizeStageY,8);
-	}
+	character = new Character(width/2,height/2,8);	
 	addBlock(3,0);
 	addBlock(1,1);
 	addBlock(1,4);
@@ -28,7 +24,7 @@ function setup(){
 }
 
 function draw(){
-	isometricGrid(sizeStageX,sizeStageY); // desenha o grid isométrico.
+	isometricGrid(); // desenha o grid isométrico.
 	character.updateCharacter(); // desenha o personagem.
 	drawBlocks(); // desenha os blocos existentes no grid.	
 }
@@ -71,26 +67,28 @@ function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá 
 	}
 }
 
-function isometricGrid(sizeX,sizeY){
+function isometricGrid(){
+	var hor = width/2;
+	var ver = height/2 - 50*int(sizeStageY/2);
 	background(0);
 	colorGrid(); // função que altera as cores do grid
-	// espaçamento entre as linhas baseado na quantidade de casas
-	var ver = 25; 
-	var hor = 50;
-	var plusVer = 0; // variável auxiliar para ajustar o desenho.	
-	//criando o grid com base no espaçamento definido
-	if(sizeX == sizeY){
-		if (sizeY%2 != 0){
-			plusVer = -15;
+	for(var i = 0; i < sizeStageY ; i++){ // criamos uma matriz parqa desenhar o grid	
+		for(var j = 0; j < sizeStageX ; j++){
+			//desenhamos um losango partindo do vértice superior	
+			line(hor ,ver ,hor + 50 ,ver + 25);
+			line(hor ,ver ,hor - 50 ,ver + 25);
+			line(hor + 50 ,ver + 25, hor ,ver + 50);
+			line(hor - 50 ,ver + 25, hor ,ver + 50);
+			hor += 50;
+			ver += 25;
 		}
-		for(var i = 0; i <= sizeX; i++){		
-			line(width/2+ i*hor, height/2 - ver*sizeStageY + i*ver + plusVer, width/2 - hor*sizeStageX + i*hor, height/2 + i*ver + plusVer);		
-		}	
-		for(var i = 0; i <= sizeY; i++){
-			line(width/2- i*hor, height/2 - ver*sizeStageY + i*ver + plusVer, width/2 + hor*sizeStageX - i*hor, height/2 + i*ver + plusVer);
-		}
+		hor -= 50*(sizeStageX - (sizeStageX - sizeStageY));
+		ver -= 25*(sizeStageY - 2);
+
 	}
-	
+
+	// espaçamento entre as linhas baseado na quantidade de casas
+		
 }
 
 function colorGrid(){
