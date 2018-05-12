@@ -1,7 +1,7 @@
 class Character{
 	constructor(x,y,dim){
 		this.position = createVector(x,y); // posição do personagem
-		this.positionGrid = createVector(int(sizeStage/2),int(sizeStage/2)); // posição do personagem no grid.
+		this.positionGrid = createVector(int(sizeStageX/2),int(sizeStageY/2)); // posição do personagem no grid.
 		this.dim = 200/dim;	// dimensão no personagem, baseado no número de casas.
 		this.move = false; // variável de controle do movimento, utilizando a interpolação.
 		this.stayMove = false; // variável de controle que impede que outros comando sejam recebidos enquanto o personagem se desloca.
@@ -67,14 +67,14 @@ class Character{
 				}				
 				break;
 			case 2:
-				if(this.positionGrid.y < sizeStage){
+				if(this.positionGrid.y < sizeStageY){
 					if(grid[this.positionGrid.x][this.positionGrid.y + 1] != null){
 						this.move = false;
 					}
 				}				
 				break;
 			case 3:
-				if(this.positionGrid.x < sizeStage){
+				if(this.positionGrid.x < sizeStageX){
 					if(grid[this.positionGrid.x + 1][this.positionGrid.y] != null){
 						this.move = false;
 					}
@@ -121,14 +121,14 @@ class Character{
 						}
 						break;
 					case 2:						
-						if(this.positionGrid.y < sizeStage){
+						if(this.positionGrid.y < sizeStageY){
 							this.position.x-=2;
 							this.position.y++; 
 							if (this.i == 1) this.positionGrid.y++;
 							}
 						break;
 					case 3: 
-						if(this.positionGrid.x < sizeStage){
+						if(this.positionGrid.x < sizeStageX){
 							this.position.x+=2;
 							this.position.y++; 
 							if (this.i == 1) this.positionGrid.x++;
@@ -164,14 +164,14 @@ class Character{
 							charCod = 2;
 							break;
 						case 2:
-							if(this.positionGrid.y < sizeStage){
+							if(this.positionGrid.y < sizeStageY){
 								this.block = grid[this.positionGrid.x][this.positionGrid.y + 1];
 								grid[this.positionGrid.x][this.positionGrid.y + 1] = null;								
 							}
 							charCod = 3;
 							break;
 						case 3:
-							if(this.positionGrid.x < sizeStage){
+							if(this.positionGrid.x < sizeStageX){
 								this.block = grid[this.positionGrid.x + 1][this.positionGrid.y];
 								grid[this.positionGrid.x + 1][this.positionGrid.y] = null;								
 							}
@@ -188,7 +188,7 @@ class Character{
 						case 0:// os comentários do case 0 se aplicam igualmente a todos os outros cases.							 						
 							if(this.positionGrid.y > 0){ // testamos se o personagem não está não está de frente para os limites da fase.	
 								if(grid[this.positionGrid.x][this.positionGrid.y - 1] == null){ //testamos se já existe um objeto no local à frente do personagem.
-									vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y - (200/sizeStage)); // usamos a posição do personagem de referência para posicionar o bloco.
+									vectorPosition = createVector(this.position.x + (400/sizeStageX), this.position.y - (200/sizeStageY)); // usamos a posição do personagem de referência para posicionar o bloco.
 									this.block.position = vectorPosition; // passamos a referência para o bloco sendo carregado.
 									vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y - 1); // usamos a posição do personagem no grid de referência para posicionar o bloco.
 									this.block.positionGrid = vectorPositionGrid; // passamos também a referência para o bloco sendo carregado.					
@@ -201,7 +201,7 @@ class Character{
 						case 1:
 							if (this.positionGrid.x > 0){
 								if(grid[this.positionGrid.x - 1][this.positionGrid.y] == null){
-									vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y - (200/sizeStage));
+									vectorPosition = createVector(this.position.x - (400/sizeStageX), this.position.y - (200/sizeStageY));
 									this.block.position = vectorPosition;
 									vectorPositionGrid = createVector(this.positionGrid.x - 1,this.positionGrid.y);
 									this.block.positionGrid = vectorPositionGrid;
@@ -212,9 +212,9 @@ class Character{
 							charCod = 2;
 							break;
 						case 2:
-							if(this.positionGrid.y < sizeStage){
+							if(this.positionGrid.y < sizeStageY){
 								if(grid[this.positionGrid.x][this.positionGrid.y + 1] == null){
-									vectorPosition = createVector(this.position.x - (400/sizeStage), this.position.y + (200/sizeStage));
+									vectorPosition = createVector(this.position.x - (400/sizeStageX), this.position.y + (200/sizeStageY));
 									this.block.position = vectorPosition;
 									vectorPositionGrid = createVector(this.positionGrid.x,this.positionGrid.y + 1);
 									this.block.positionGrid = vectorPositionGrid;
@@ -225,9 +225,9 @@ class Character{
 							charCod = 3;
 							break;
 						case 3:
-							if(this.positionGrid.x < sizeStage){
+							if(this.positionGrid.x < sizeStageX){
 								if(grid[this.positionGrid.x + 1][this.positionGrid.y] == null){
-									vectorPosition = createVector(this.position.x + (400/sizeStage), this.position.y + (200/sizeStage));
+									vectorPosition = createVector(this.position.x + (400/sizeStageX), this.position.y + (200/sizeStageY));
 									this.block.position = vectorPosition;
 									vectorPositionGrid = createVector(this.positionGrid.x + 1,this.positionGrid.y);
 									this.block.positionGrid = vectorPositionGrid;
