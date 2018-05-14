@@ -7,6 +7,17 @@ var sizeStageX;
 var sizeStageY;
 var grid = []; // matriz a ser preenchida com blocos.
 
+var spr_up, spr_left, spr_down, spr_right;
+var spr_block;
+
+function preload(){
+	spr_up = loadImage('assets/walk_up.png');
+	spr_left = loadImage('assets/walk_left.png');
+	spr_down = loadImage('assets/walk_down.png');
+	spr_right = loadImage('assets/walk_right.png');
+	spr_block = loadImage('assets/cubo.png');
+}
+
 function setup(){
 	createCanvas(1024,768);	
 	sizeStageX = 4;
@@ -23,9 +34,9 @@ function setup(){
 }
 
 function draw(){	
-	isometricGrid(); // desenha o grid isométrico.
-	character.updateCharacter(); // desenha o personagem.
-	drawBlocks(); // desenha os blocos existentes no grid.	
+	isometricGrid(); // desenha o grid isométrico.	
+	drawBlocks(); // desenha os blocos existentes no grid.
+	character.updateCharacter(); // desenha o personagem.	
 }
 
 function fillGridNull(){

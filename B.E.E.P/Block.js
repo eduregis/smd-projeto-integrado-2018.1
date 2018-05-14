@@ -32,12 +32,14 @@ class Block{
 			this.drawController = false; // alterando a drawController para que não entre de novo na função e tire o bloco do seu lugar., até ele ser reposicionado pelo jogador.
 		}
 		var mod = 25;
-		//placeholder?		
+		image(spr_block,this.position.x - 30,this.position.y - 45);
+		/*placeholder?		
 		fill(100);
 		quad(this.position.x + mod, this.position.y - mod, this.position.x + mod, this.position.y, this.position.x, this.position.y + mod/2, this.position.x, this.position.y - mod/2);
 		fill(150);
 		quad(this.position.x - mod, this.position.y - mod, this.position.x - mod, this.position.y, this.position.x, this.position.y + mod/2, this.position.x, this.position.y - mod/2);
 		fill(200);
 		quad(this.position.x, this.position.y - mod/2, this.position.x - mod, this.position.y - mod, this.position.x, this.position.y - 3*mod/2, this.position.x + mod, this.position.y - mod);
+		*/
 	}
 }

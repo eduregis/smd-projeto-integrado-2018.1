@@ -85,17 +85,21 @@ class Character{
 
 	drawCharacter(){ // função que desenha o personagem.
 		switch (this.direction){
-				case 0:	
-					triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.									
+				case 0:
+					image(spr_up,this.position.x - 21,this.position.y - 83,69,86);	
+					//triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.									
 					break;
 				case 1:
-					triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);  																		
+					image(spr_left,this.position.x - 46,this.position.y - 83,69,86);
+					//triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);  																		
 					break;				
-				case 2: 
-					triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y); 										
+				case 2:
+					image(spr_down,this.position.x - 30,this.position.y - 83,52,86); 
+					//triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y); 										
 					break;	
 				case 3:
-					triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4)
+					image(spr_right,this.position.x - 20,this.position.y - 83,52,86);
+					//triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4)
 					break;				
 			}
 	}
