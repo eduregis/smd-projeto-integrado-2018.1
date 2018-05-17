@@ -6,22 +6,19 @@ var character; // personagem.
 var sizeStageX; 
 var sizeStageY;
 var grid = []; // matriz a ser preenchida com blocos.
+var basicButtons = []; // vetor com os botões de baixo.
 
 var spr_up, spr_left, spr_down, spr_right;
 var spr_block;
 
 function preload(){
-	spr_up = loadImage('assets/walk_up.png');
-	spr_left = loadImage('assets/walk_left.png');
-	spr_down = loadImage('assets/walk_down.png');
-	spr_right = loadImage('assets/walk_right.png');
-	spr_block = loadImage('assets/cubo.png');
+	loadSprites();
 }
 
 function setup(){
 	createCanvas(1024,768);	
-	sizeStageX = 4;
-	sizeStageY = 10;
+	sizeStageX = 5;
+	sizeStageY = 6;
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
@@ -31,12 +28,14 @@ function setup(){
 	addBlock(1,4);
 	addBlock(4,1);
 	addBlock(4,4);
+	loadButtons();	
 }
 
-function draw(){	
+function draw(){
 	isometricGrid(); // desenha o grid isométrico.	
 	drawBlocks(); // desenha os blocos existentes no grid.
-	character.updateCharacter(); // desenha o personagem.	
+	character.updateCharacter(); // desenha o personagem.
+	drawButtons();		
 }
 
 function fillGridNull(){
@@ -47,6 +46,14 @@ function fillGridNull(){
 		}
 		grid.push(arrayAux); // inserir vetor preenchido com objetos nulos na matriz do grid.
 	}
+}
+
+function loadSprites(){
+	spr_up = loadImage('assets/walk_up.png');
+	spr_left = loadImage('assets/walk_left.png');
+	spr_down = loadImage('assets/walk_down.png');
+	spr_right = loadImage('assets/walk_right.png');
+	spr_block = loadImage('assets/cubo.png');
 }
 
 function fillGrid(){ // função auxiliar, preenche todo o grid com blocos, será cortada em versões posteriores.
@@ -101,7 +108,6 @@ function isometricGrid(){
 				ver -= 25*int(dif/2);
 			}
 		}
-
 	}	
 	background(0);
 	colorGrid(); // função que altera as cores do grid
@@ -117,11 +123,8 @@ function isometricGrid(){
 		}
 		hor -= 50*(sizeStageX + 1);
 		ver -= 25*(sizeStageX - 1);
-
 	}
-
-	// espaçamento entre as linhas baseado na quantidade de casas
-		
+	// espaçamento entre as linhas baseado na quantidade de casas		
 }
 
 function colorGrid(){
@@ -132,7 +135,7 @@ function colorGrid(){
 }
 
 function keyReleased(){	
-	if((keyCode == 87) || (keyCode == 65) || (keyCode == 68) || (keyCode == 82)){ // recebendo os valores do teclado (W, A, S, D e espaço).
+	if((keyCode == 87) || (keyCode == 65) || (keyCode == 68) || (keyCode == 82)){ // recebendo os valores do teclado (W, A, D e R).
 		if((character.i == 0) && (!character.move)){
 			character.i = 25; // ajuste do contador para a dimensão da fase.
 			if (keyCode == 87) character.move = true;	// movimentando o personagem, só se move quando o comando for para cima.			
@@ -140,3 +143,4 @@ function keyReleased(){
 		}	
 	}	
 }
+
