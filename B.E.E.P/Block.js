@@ -1,7 +1,7 @@
 class Block{
 	constructor(x,y){
 		this.positionGrid = createVector(x,y); // recebe a posição no grid que o bloco será inicialmente colocado.
-		this.position = createVector(width/2,height/2); // posição do bloco. 
+		this.position = createVector(width/3,height/2); // posição do bloco. 
 		this.drawController = true;	// variável de controle para ajustar a posição do bloco.
 	}			
 

@@ -22,7 +22,7 @@ function setup(){
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
-	character = new Character(width/2,height/2,8);	
+	character = new Character(width/3,height/2,8);	
 	addBlock(0,0);
 	addBlock(1,1);
 	addBlock(1,4);
@@ -85,7 +85,7 @@ function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá 
 }
 
 function isometricGrid(){
-	var hor = width/2;
+	var hor = width/3;
 	var ver = height/2 - 50*int(sizeStageY/2);
 	var dif = sizeStageX - sizeStageY;
 	// ajustes do grid com as caixas.
