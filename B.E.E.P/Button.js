@@ -100,17 +100,17 @@ function drawMouseButton(){ // desenha o botão que segue o mouse quando este es
 }
 
 function loadButtons(){ // placeholders?
-	button1 = new Button(100,700,80,80,0,"Andar");
+	button1 = new Button(100,800,80,80,0,"Andar");
 	basicButtons.push(button1);
-	button2 = new Button(200,700,80,80,1,"Girar p/ esquerda");
+	button2 = new Button(200,800,80,80,1,"Girar p/ esquerda");
 	basicButtons.push(button2);
-	button3 = new Button(300,700,80,80,2,"Girar p/ direita");
+	button3 = new Button(300,800,80,80,2,"Girar p/ direita");
 	basicButtons.push(button3);
-	button4 = new Button(400,700,80,80,3,"Pegar/Soltar");
+	button4 = new Button(400,800,80,80,3,"Pegar/Soltar");
 	basicButtons.push(button4);
-	button5 = new Button(500,700,80,80,4,"Atacar");
+	button5 = new Button(500,800,80,80,4,"Atacar");
 	basicButtons.push(button5);
-	button6 = new Button(600,700,80,80,5,"Apertar");
+	button6 = new Button(600,800,80,80,5,"Apertar");
 	basicButtons.push(button6);
 }
 
@@ -133,5 +133,8 @@ function mousePressed(){
 }
 
 function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mouse volta a ser nulo.
+	if((mouseX <= 1380) && (mouseX >= 760) && (mouseY <= 280) && (mouseY >= 60)){
+		actionTab.newButton = mouseButton.id;			
+	}
 	buttonCode = null;
 }

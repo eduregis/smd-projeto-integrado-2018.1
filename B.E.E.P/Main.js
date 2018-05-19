@@ -8,34 +8,42 @@ var sizeStageY;
 var grid = []; // matriz a ser preenchida com blocos.
 var basicButtons = []; // vetor com os botões de baixo.
 
-var spr_up, spr_left, spr_down, spr_right;
-var spr_block;
+var centerGridX, centerGridY;
+var actionTab;
+
+var spr_up, spr_left, spr_down, spr_right; // sprites do personagem
+var spr_block; // sprite caixa
 
 function preload(){
 	loadSprites();
 }
 
 function setup(){
-	createCanvas(1024,768);	
+	createCanvas(1440,900);
+	centerGridX = 365;
+	centerGridY = 450;
+	actionTab = new ActionTab();	
 	sizeStageX = 5;
 	sizeStageY = 6;
 	background(0);
 	fillGridNull(); // enche a matriz de objetos nulos.
 	//fillGrid();
-	character = new Character(width/3,height/2,8);	
+	character = new Character(centerGridX,centerGridY,8);	
 	addBlock(0,0);
 	addBlock(1,1);
 	addBlock(1,4);
 	addBlock(4,1);
 	addBlock(4,4);
 	loadButtons();	
+
 }
 
 function draw(){
 	isometricGrid(); // desenha o grid isométrico.	
+	actionTab.drawTab();
 	drawBlocks(); // desenha os blocos existentes no grid.
 	character.updateCharacter(); // desenha o personagem.
-	drawButtons();		
+	drawButtons();			
 }
 
 function fillGridNull(){
@@ -85,8 +93,8 @@ function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá 
 }
 
 function isometricGrid(){
-	var hor = width/3;
-	var ver = height/2 - 50*int(sizeStageY/2);
+	var hor = centerGridX;
+	var ver = centerGridY - 50*int(sizeStageY/2);
 	var dif = sizeStageX - sizeStageY;
 	// ajustes do grid com as caixas.
 	if(sizeStageX != sizeStageY){ // caso não seja um grid quadrado, alguns ajustes precisam ser feitos.
