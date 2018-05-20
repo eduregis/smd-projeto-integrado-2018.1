@@ -25,7 +25,7 @@ function setup(){
 	centerGridX = 335;
 	centerGridY = 400;
 	actionTab = new ActionTab(9);
-	procedureTab = new ProcedureTab();	
+	procedureTab = new ProcedureTab(10);	
 	p_dTab = new P_DTab(1);
 	sizeStageX = 5;
 	sizeStageY = 6;
