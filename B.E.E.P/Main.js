@@ -11,6 +11,7 @@ var basicButtons = []; // vetor com os botões de baixo.
 var centerGridX, centerGridY; // variáveis para controlar a posição do grid na tela.
 var actionTab; // tabela de ações.
 var p_dTab; // tabela de procedimentos e decisões.
+var procedureTab; // tabela de procedimentos.
 
 var spr_up, spr_left, spr_down, spr_right; // sprites do personagem.
 var spr_block; // sprite da caixa.
@@ -20,11 +21,12 @@ function preload(){
 }
 
 function setup(){
-	createCanvas(1440,900);
-	centerGridX = 365;
-	centerGridY = 450;
-	actionTab = new ActionTab();
-	p_dTab = new P_DTab();	
+	createCanvas(1280,800);
+	centerGridX = 335;
+	centerGridY = 400;
+	actionTab = new ActionTab(9);
+	p_dTab = new P_DTab();
+	procedureTab = new ProcedureTab();	
 	sizeStageX = 5;
 	sizeStageY = 6;
 	background(0);
@@ -44,6 +46,7 @@ function draw(){
 	isometricGrid(); // desenha o grid isométrico.	
 	actionTab.drawTab();
 	p_dTab.drawTab();
+	procedureTab.drawTab();
 	drawBlocks(); // desenha os blocos existentes no grid.
 	character.updateCharacter(); // desenha o personagem.
 	drawButtons();			
