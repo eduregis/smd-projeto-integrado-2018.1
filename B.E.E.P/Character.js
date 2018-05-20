@@ -245,7 +245,8 @@ class Character{
 			}
 			this.move = false;			
 		}
+		textSize(16);
 		fill(255);
-		text(this.positionGrid.x + " , " + this.positionGrid.y,40,40);	
+		text(this.positionGrid.x + " , " + this.positionGrid.y,40,40);// mostra em que posição do grid o personagem está.
 	}
 }
