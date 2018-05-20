@@ -51,7 +51,6 @@ class ActionTab{ // tebela de ações que serão executadas.
 				}	
 				rect(this.position.x - 520 + i*90, this.position.y + 110,70,70);	
 			}					
-		}
-		print(this.actionButtons);
+		}		
 	}
 }

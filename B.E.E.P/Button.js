@@ -1,6 +1,7 @@
 var buttonCode = null; // variável de controle para identificar os botões.
 var contMissButton; // variável de controle para selecionar os botões.
 var mouseButton = null; // botão que seguirá o mouse enquanto ele o arrasta.
+var P_DKey = 0; // variável que abre ou a aba de Procedimentos ou a aba de Decisões.
 
 class Button{
 	constructor(x,y,w,h,id,text){
@@ -130,6 +131,9 @@ function mousePressed(){
 			contMissButton++;
 	}
 	if(contMissButton == 6) buttonCode = null;	
+
+	p_DMouseEvents();
+	procedureTabMouseEvents();	
 }
 
 function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mouse volta a ser nulo.
