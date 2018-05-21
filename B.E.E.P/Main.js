@@ -12,6 +12,7 @@ var centerGridX, centerGridY; // variáveis para controlar a posição do grid n
 var actionTab; // tabela de ações.
 var p_dTab; // tabela de procedimentos e decisões.
 var procedureTab; // tabela de procedimentos.
+var decisionTab; // tabela de decisões.
 
 var spr_up, spr_left, spr_down, spr_right; // sprites do personagem.
 var spr_block; // sprite da caixa.
@@ -25,7 +26,8 @@ function setup(){
 	centerGridX = 335;
 	centerGridY = 400;
 	actionTab = new ActionTab(9);
-	procedureTab = new ProcedureTab(10);	
+	procedureTab = new ProcedureTab(10);
+	decisionTab = new DecisionTab(5,5);	
 	p_dTab = new P_DTab(1);
 	sizeStageX = 5;
 	sizeStageY = 6;
@@ -47,6 +49,7 @@ function draw(){
 	actionTab.drawTab();
 	p_dTab.drawTab();
 	procedureTab.drawTab();
+	decisionTab.drawTab();
 	drawBlocks(); // desenha os blocos existentes no grid.
 	character.updateCharacter(); // desenha o personagem.
 	drawButtons();			

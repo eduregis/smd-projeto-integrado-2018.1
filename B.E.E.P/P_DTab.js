@@ -26,9 +26,18 @@ function p_DMouseEvents(){
 	if(P_Or_D){ // testa se a variável está ativa, para abrir a aba de opções.
 		if(insideRect(mouseX,mouseY,640,355,70,70)){ // caso clique no primeiro botão, este abrirá a aba de procedimentos.
 			P_DKey = 1;
+			while(decisionTab.actionButtonsIf.length > 0) {
+   				decisionTab.actionButtonsIf.pop();
+			}
+			while(decisionTab.actionButtonsElse.length > 0) {
+   				decisionTab.actionButtonsElse.pop();
+			}
 			P_Or_D = false;
 		}else if(insideRect(mouseX,mouseY,730,355,70,70)){ // caso clique no segundo botão, este abrirá a aba de decisões.
 			P_DKey = 2;
+			while(procedureTab.actionButtons.length > 0) {
+   				procedureTab.actionButtons.pop();
+			}
 			P_Or_D = false;
 		}else{
 			P_DKey = 0;

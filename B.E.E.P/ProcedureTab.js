@@ -52,10 +52,6 @@ class ProcedureTab{ // tebela de ações que serão executadas.
 				}
 			}
 		}
-		
-		
-
-	print(this.actionButtons);
 	}	
 }
 

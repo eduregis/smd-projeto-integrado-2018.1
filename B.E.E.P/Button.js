@@ -141,9 +141,18 @@ function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mous
 		actionTab.newButton = mouseButton.id;			
 	}
 	buttonCode = null;
+
 	if(P_DKey == 1){ //arrastando para a aba de procedimentos, caso esteja aberta.
 		if((mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 620) && (mouseY >= 420)){
 			procedureTab.newButton = mouseButton.id;			
+		}
+	}
+
+	if(P_DKey == 2){ //arrastando para a aba de procedimentos, caso esteja aberta.
+		if((mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 545) && (mouseY >= 475)){
+			decisionTab.newButtonIf = mouseButton.id;			
+		}else if((mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 700) && (mouseY >= 610)){
+			decisionTab.newButtonElse = mouseButton.id;			
 		}
 	}
 }
