@@ -14,9 +14,6 @@ var p_dTab; // tabela de procedimentos e decisões.
 var procedureTab; // tabela de procedimentos.
 var decisionTab; // tabela de decisões.
 
-var spr_up, spr_left, spr_down, spr_right; // sprites do personagem.
-var spr_block; // sprite da caixa.
-
 function preload(){
 	loadSprites();
 }
@@ -41,7 +38,6 @@ function setup(){
 	addBlock(4,1);
 	addBlock(4,4);
 	loadButtons();	
-
 }
 
 function draw(){
@@ -63,14 +59,6 @@ function fillGridNull(){
 		}
 		grid.push(arrayAux); // inserir vetor preenchido com objetos nulos na matriz do grid.
 	}
-}
-
-function loadSprites(){
-	spr_up = loadImage('assets/walk_up.png');
-	spr_left = loadImage('assets/walk_left.png');
-	spr_down = loadImage('assets/walk_down.png');
-	spr_right = loadImage('assets/walk_right.png');
-	spr_block = loadImage('assets/cubo.png');
 }
 
 function fillGrid(){ // função auxiliar, preenche todo o grid com blocos, será cortada em versões posteriores.

@@ -31,11 +31,26 @@ class DecisionTab{ // tebela de ações que serão executadas.
 			text("ELSE",this.position.x + 70,this.position.y + 180);
 			for(var i = 0; i < 5; i++){
 				if(i < this.actionButtonsIf.length){
-					fill(255,120,0);
-					rect(this.position.x + 20 + i*90, this.position.y + 65,70,70);
-					fill(255);
-					textSize(40);
-					text(this.actionButtonsIf[i],this.position.x + 60 + i*90, this.position.y + 115);
+					switch(this.actionButtonsIf[i]){
+						case 0:
+							image(spr_btn_walk_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
+						case 1:
+							image(spr_btn_turn_left_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
+						case 2:
+							image(spr_btn_turn_right_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
+						case 3:
+							image(spr_btn_grab_drop_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
+						case 4:
+							image(spr_btn_attack_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
+						case 5:
+							image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
+					}
 				}
 				else{
 					if (i >= this.limitIf){
@@ -48,11 +63,26 @@ class DecisionTab{ // tebela de ações que serão executadas.
 			}
 			for(var i = 0; i < 5; i++){
 				if(i < this.actionButtonsElse.length){
-					fill(255,120,0);
-					rect(this.position.x + 20 + i*90, this.position.y + 200,70,70);
-					fill(255);
-					textSize(40);
-					text(this.actionButtonsElse[i],this.position.x + 60 + i*90, this.position.y + 250);
+					switch(this.actionButtonsElse[i]){
+						case 0:
+							image(spr_btn_walk_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+						case 1:
+							image(spr_btn_turn_left_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+						case 2:
+							image(spr_btn_turn_right_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+						case 3:
+							image(spr_btn_grab_drop_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+						case 4:
+							image(spr_btn_attack_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+						case 5:
+							image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+					}
 				}
 				else{
 					if (i >= this.limitElse){

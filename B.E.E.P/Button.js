@@ -4,11 +4,12 @@ var mouseButton = null; // botão que seguirá o mouse enquanto ele o arrasta.
 var P_DKey = 0; // variável que abre ou a aba de Procedimentos ou a aba de Decisões.
 
 class Button{
-	constructor(x,y,w,h,id,text){
+	constructor(x,y,w,h,id,spr_on,spr_off){
 		this.id = id; // identificador do botão, para controle e unicidade.
 		this.position = createVector(x,y); // posição dos botões estáticos.
 		this.dimension = createVector(w,h); // dimensão dos botões.
-		this.text = text; // texto escrito dentro do botão.
+		this.spr_on = spr_on; // guarda a imagem do botão ativado.
+		this.spr_off = spr_off; // guarda a imagem do botão desativado.
 		this.status = 0; // estado do botão, se este está normal, sob o mouse, ou clicado.
 	}
 	draw(){ // placeholders?
@@ -42,24 +43,10 @@ class Button{
 		}
 	}
 	basic(){
-		stroke(0);
-		fill(200); // cor do botão básico.
-		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
-		fill(30);
-		// diminui a fonte para adequar-se ao tamanho do botão.
-		if((this.id == 1) || (this.id == 2)) textSize(10);
-		if(this.id == 3) textSize(14);
-		text(this.text, this.position.x, this.position.y);
+		image(this.spr_off,this.position.x - 40,this.position.y - 40);
 	}
 	above(){		
-		stroke(0);
-		fill(100); // cor do botão sob o mouse.
-		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
-		fill(30);
-		// diminui a fonte para adequar-se ao tamanho do botão.
-		if((this.id == 1) || (this.id == 2)) textSize(10);
-		if(this.id == 3) textSize(14);
-		text(this.text, this.position.x, this.position.y);		
+		image(this.spr_on,this.position.x - 40,this.position.y - 40);
 	}
 	click(){
 		if(buttonCode == this.id){
@@ -69,8 +56,7 @@ class Button{
 			fill(200);
 			// diminui a fonte para adequar-se ao tamanho do botão.
 			if((this.id == 1) || (this.id == 2)) textSize(10);
-			if(this.id == 3) textSize(14);		
-			text(this.text, this.position.x, this.position.y);
+			if(this.id == 3) textSize(14);	
 		}		
 	}
 }
@@ -95,23 +81,23 @@ function insideRect(mx,my,x,y,w,h){ // testa se uma variável esta dentro de um 
 
 function drawMouseButton(){ // desenha o botão que segue o mouse quando este está o arrastando
 	if(buttonCode != null){
-		mouseButton = new Button(mouseX,mouseY,80,80,basicButtons[buttonCode].id,basicButtons[buttonCode].text);
+		mouseButton = new Button(mouseX,mouseY,80,80,basicButtons[buttonCode].id,basicButtons[buttonCode].spr_off,basicButtons[buttonCode].spr_on);
 		mouseButton.draw();
 	}
 }
 
 function loadButtons(){ // placeholders?
-	button1 = new Button(100,700,70,70,0,"Andar");
+	button1 = new Button(100,700,70,70,0,spr_btn_walk_1, spr_btn_walk_0);
 	basicButtons.push(button1);
-	button2 = new Button(200,700,70,70,1,"Girar p/ esquerda");
+	button2 = new Button(200,700,70,70,1,spr_btn_turn_left_1, spr_btn_turn_left_0);
 	basicButtons.push(button2);
-	button3 = new Button(300,700,70,70,2,"Girar p/ direita");
+	button3 = new Button(300,700,70,70,2,spr_btn_turn_right_1, spr_btn_turn_right_0);
 	basicButtons.push(button3);
-	button4 = new Button(400,700,70,70,3,"Pegar/Soltar");
+	button4 = new Button(400,700,70,70,3,spr_btn_grab_drop_1, spr_btn_grab_drop_0);
 	basicButtons.push(button4);
-	button5 = new Button(500,700,70,70,4,"Atacar");
+	button5 = new Button(500,700,70,70,4,spr_btn_attack_1, spr_btn_attack_0);
 	basicButtons.push(button5);
-	button6 = new Button(600,700,70,70,5,"Apertar");
+	button6 = new Button(600,700,70,70,5,spr_btn_press_1,spr_btn_press_0);
 	basicButtons.push(button6);
 }
 
@@ -137,7 +123,7 @@ function mousePressed(){
 }
 
 function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mouse volta a ser nulo.
-	if((mouseX <= 1380) && (mouseX >= 760) && (mouseY <= 280) && (mouseY >= 60)){ // arrastando para a aba de ações.
+	if((mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 280) && (mouseY >= 60)){ // arrastando para a aba de ações.
 		actionTab.newButton = mouseButton.id;			
 	}
 	buttonCode = null;
