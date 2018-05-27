@@ -157,6 +157,7 @@ function colorGrid(){
 
 function actionController(){
 	print("" + actionIndex);
+	if(actionIndex + 1 > actionTab.actionButtons.length) stayIndex = true;
 	if(starter){
 		if(actionCode == null){
 			switch(actionTab.actionButtons[actionIndex]){
@@ -170,6 +171,9 @@ function actionController(){
 					break;
 				case 2:
 					actionCode = 2;
+					break;
+				case 3:
+					actionCode = 3;
 					break;
 				default:
 					print("não tem nada aqui!");

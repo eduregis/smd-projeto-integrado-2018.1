@@ -39,7 +39,7 @@ class Character{
 					charCod = 4;
 				}															
 				break;	
-			case 82: // tecla R, para pegar ou colocar um bloco.
+			case 3: // tecla R, para pegar ou colocar um bloco.
 				charCod = 5;
 				break;			
 		}
@@ -260,7 +260,11 @@ class Character{
 							break;
 				}				
 			}
-			this.move = false;			
+			this.move = false;
+			if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;
+				}			
 		}
 		textSize(16);
 		fill(255);
