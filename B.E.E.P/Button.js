@@ -86,7 +86,7 @@ function drawMouseButton(){ // desenha o botão que segue o mouse quando este es
 	}
 }
 
-function loadButtons(){ // placeholders?
+function loadButtons(){ // carregando os botões.
 	button1 = new Button(100,700,70,70,0,spr_btn_walk_1, spr_btn_walk_0);
 	basicButtons.push(button1);
 	button2 = new Button(200,700,70,70,1,spr_btn_turn_left_1, spr_btn_turn_left_0);

@@ -13,7 +13,7 @@ class ProcedureTab{ // tebela de ações que serão executadas.
 			this.newButton = null; // a variável de controle fica vaga para um novo botão entrar.
 		}
 		if(P_DKey == 1){
-			fill(100);
+			fill(0,35);
 			rectMode(CORNER);
 			rect(this.position.x,this.position.y,470,200);
 			for(var i = 0; i < 5; i++){

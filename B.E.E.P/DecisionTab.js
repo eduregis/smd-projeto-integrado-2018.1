@@ -22,11 +22,12 @@ class DecisionTab{ // tebela de ações que serão executadas.
 			this.newButtonElse = null; // a variável de controle fica vaga para um novo botão entrar.
 		}		
 		if(P_DKey == 2){
-			fill(100);
+			fill(0,35);
 			rectMode(CORNER);
 			rect(this.position.x,this.position.y,470,290);
 			fill(0);
 			textSize(30);
+			fill(255);			
 			text("IF",this.position.x + 50,this.position.y + 50);
 			text("ELSE",this.position.x + 70,this.position.y + 180);
 			for(var i = 0; i < 5; i++){

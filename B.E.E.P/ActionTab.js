@@ -15,7 +15,7 @@ class ActionTab{ // tebela de ações que serão executadas.
 			this.newButton = null; // a variável de controle fica vaga para um novo botão entrar.
 		}
 		rectMode(CORNER);
-		fill(100);
+		fill(0,35);
 		rect(this.position.x,this.position.y,560,200);	// bloco principal.	
 		for(var i = 0; i < 6; i++){
 			if(i < this.actionButtons.length){
@@ -38,7 +38,6 @@ class ActionTab{ // tebela de ações que serão executadas.
 					case 5:
 						image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 20,70,70);
 						break;
-
 				}
 			}
 			else{

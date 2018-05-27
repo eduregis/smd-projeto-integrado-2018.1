@@ -8,7 +8,7 @@ class P_DTab{ // tebela de ações que serão executadas.
 		this.limit = limit;
 	}
 	drawTab(){
-		fill(100);
+		fill(0,35);
 		rectMode(CORNER);
 		rect(this.position.x,this.position.y,560,110); // desenhamos o bloco que ficará atrás.
 		for(var i = 0; i < 6; i++){ // desenhamos os espações para os botões.
@@ -52,7 +52,7 @@ function p_DMouseEvents(){
 }
 
 function draw_P_Or_D(){ // aba de opções.
-	fill(100);
+	fill(0);
 	rect(620,335,200,110);
 	fill(0,255,255);
 	rect(640,355,70,70);

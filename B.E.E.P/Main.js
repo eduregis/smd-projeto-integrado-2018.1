@@ -14,18 +14,25 @@ var p_dTab; // tabela de procedimentos e decisões.
 var procedureTab; // tabela de procedimentos.
 var decisionTab; // tabela de decisões.
 
+var exitButton;
+var resetButton;
+var startButton;
+
 function preload(){
 	loadSprites();
 }
 
 function setup(){
 	createCanvas(1280,800);
+	exitButton = new ExitButton(1200,445,70,70);
+	resetButton = new ResetButton(1200,535,70,70);
+	startButton = new StartButton(1200,655,70,130);
 	centerGridX = 335;
 	centerGridY = 400;
 	actionTab = new ActionTab(9);
 	procedureTab = new ProcedureTab(10);
 	decisionTab = new DecisionTab(5,5);	
-	p_dTab = new P_DTab(1);
+	p_dTab = new P_DTab(1);	
 	sizeStageX = 5;
 	sizeStageY = 6;
 	background(0);
@@ -41,11 +48,14 @@ function setup(){
 }
 
 function draw(){
-	isometricGrid(); // desenha o grid isométrico.	
+	isometricGrid(); // desenha o grid isométrico.
+	exitButton.draw();
+	resetButton.draw();
+	startButton.draw();	
 	actionTab.drawTab();
 	p_dTab.drawTab();
 	procedureTab.drawTab();
-	decisionTab.drawTab();
+	decisionTab.drawTab();	
 	drawBlocks(); // desenha os blocos existentes no grid.
 	character.updateCharacter(); // desenha o personagem.
 	drawButtons();			
