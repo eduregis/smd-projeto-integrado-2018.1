@@ -22,6 +22,7 @@ var starter = false; // variável que inicia a sequencia de comandos
 var actionCode; // variável que pega o comando da tabela de ações e passa para o personagem.
 var actionIndex = 0; // variável que percorrerá a tabela de ações.
 var stayIndex = false; // variável que auxilia no processo de percorrer a tabela de ações.
+var endOfCommand = false; // variável que avisa quando um comando terminar de ser executado.
 
 function preload(){
 	loadSprites();
@@ -156,14 +157,19 @@ function colorGrid(){
 }
 
 function actionController(){
-	print("" + actionIndex);
 	if(actionIndex + 1 > actionTab.actionButtons.length) stayIndex = true;
+	if(endOfCommand){
+		print("teste");
+		starter = true;
+		endOfCommand = false;
+		//stayIndex = false;
+	}
 	if(starter){
 		if(actionCode == null){
 			switch(actionTab.actionButtons[actionIndex]){
 				case 0:
 					actionCode = 0;
-					character.i = 25;
+					character.i = 26;
 					character.move = true;
 					break;
 				case 1:
@@ -182,7 +188,7 @@ function actionController(){
 		}else{
 			actionCode = null;
 			starter = false;
-		}		
+		}
 	}
 }
 

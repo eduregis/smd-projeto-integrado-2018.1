@@ -19,7 +19,7 @@ class StartButton{
 					this.status = 0;
 				}else if(mouseIsPressed){
 					starter = true;
-					stayIndex = false;
+					stayIndex = false;//PROVISÓRIO!!!
 					this.status = 2;
 				}							
 				break;
