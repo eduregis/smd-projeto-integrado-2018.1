@@ -14,9 +14,14 @@ var p_dTab; // tabela de procedimentos e decisões.
 var procedureTab; // tabela de procedimentos.
 var decisionTab; // tabela de decisões.
 
-var exitButton;
-var resetButton;
-var startButton;
+var exitButton; // botão de sair.
+var resetButton; // botão de reiniciar a fase.
+var startButton; // botão de ativação.
+
+var starter = false; // variável que inicia a sequencia de comandos
+var actionCode; // variável que pega o comando da tabela de ações e passa para o personagem.
+var actionIndex = 0; // variável que percorrerá a tabela de ações.
+var stayIndex = false; // variável que auxilia no processo de percorrer a tabela de ações.
 
 function preload(){
 	loadSprites();
@@ -53,6 +58,7 @@ function draw(){
 	resetButton.draw();
 	startButton.draw();	
 	actionTab.drawTab();
+	actionController();
 	p_dTab.drawTab();
 	procedureTab.drawTab();
 	decisionTab.drawTab();	
@@ -143,19 +149,37 @@ function isometricGrid(){
 }
 
 function colorGrid(){
-	if((corG > 255) || (corG < 125)) // dá o efeito de neon
+	if((corG > 255) || (corG < 125)) // dá o efeito de neon.
 		corT = -corT;
 	corG += corT;	
 		stroke(0,corG,255);	
 }
 
-function keyReleased(){	
-	if((keyCode == 87) || (keyCode == 65) || (keyCode == 68) || (keyCode == 82)){ // recebendo os valores do teclado (W, A, D e R).
-		if((character.i == 0) && (!character.move)){
-			character.i = 25; // ajuste do contador para a dimensão da fase.
-			if (keyCode == 87) character.move = true;	// movimentando o personagem, só se move quando o comando for para cima.			
-			character.stayMove = true; // mexendo na variável de controle, para o personagewm receba o comando do jogador.
-		}	
-	}	
+function actionController(){
+	print("" + actionIndex);
+	if(starter){
+		if(actionCode == null){
+			switch(actionTab.actionButtons[actionIndex]){
+				case 0:
+					actionCode = 0;
+					character.i = 25;
+					character.move = true;
+					break;
+				case 1:
+					actionCode = 1;
+					break;
+				case 2:
+					actionCode = 2;
+					break;
+				default:
+					print("não tem nada aqui!");
+					break;
+			}
+		}else{
+			actionCode = null;
+			starter = false;
+		}		
+	}
 }
+
 

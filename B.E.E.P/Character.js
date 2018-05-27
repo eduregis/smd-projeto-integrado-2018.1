@@ -3,8 +3,7 @@ class Character{
 		this.position = createVector(x,y); // posição do personagem
 		this.positionGrid = createVector(int(sizeStageX/2),int(sizeStageY/2)); // posição do personagem no grid.
 		this.dim = 200/dim;	// dimensão no personagem, baseado no número de casas.
-		this.move = false; // variável de controle do movimento, utilizando a interpolação.
-		this.stayMove = false; // variável de controle que impede que outros comando sejam recebidos enquanto o personagem se desloca.
+		this.move = false; // variável de controle do movimento, utilizando a interpolação.		
 		this.i = 0;	// contador que permite continuidade ao movimento do personagem.
 		this.direction = 0; // variável que informa para que direção o personagem está olhando. 0-) frente, 1-) esquerda, 2-) trás, 3-) direita.
 		this.block = null; // variável que armazena o bloco que o personagem pode carregar.
@@ -17,34 +16,32 @@ class Character{
 		}else{
 			this.i--; // contador regressivo funcionando.
 		}
-		if(this.stayMove){ // stayMove sendo usado, para impedir que, enquanto ele se desloca, o jogador dê novos comandos ao personagem.
-			switch (keyCode){
-				case 87: // tecla W, para cima.
-					charCod = 1;					
-					break;
-				case 65: // tecla A, para à esquerda.
-					if (this.direction != 3){
-						this.direction++;
-						charCod++;
-					}else{
-						this.direction = 0;
-						charCod = 1;
-					}															
-					break;				
-				case 68: // tecla D, para a direita.
-					if (this.direction != 0){
-						this.direction--;
-						charCod--;
-					}else{
-						this.direction = 3;
-						charCod = 4;
-					}															
-					break;	
-				case 82: // tecla R, para pegar ou colocar um bloco.
-					charCod = 5;
-					break;				
-			}
-			this.stayMove = false; // mudando o valor de stayMove, para impedir que o jogador dê novos comandos.
+		switch (actionCode){
+			case 0: // tecla W, para cima.
+				charCod = 1;					
+				break;
+			case 1: // tecla A, para à esquerda.
+				if (this.direction != 3){
+					this.direction++;
+					charCod++;
+				}else{
+					this.direction = 0;
+					charCod = 1;
+				}
+
+				break;				
+			case 2: // tecla D, para a direita.
+				if (this.direction != 0){
+					this.direction--;
+					charCod--;
+				}else{
+					this.direction = 3;
+					charCod = 4;
+				}															
+				break;	
+			case 82: // tecla R, para pegar ou colocar um bloco.
+				charCod = 5;
+				break;			
 		}
 		this.checkBlockCollision(); // checa colisão com algum bloco.
 		this.moveCharacter(); // indo a parte de movimentação do personagem.
@@ -87,19 +84,15 @@ class Character{
 		switch (this.direction){
 				case 0:
 					image(spr_up,this.position.x - 21,this.position.y - 83,69,86);	
-					//triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y + this.dim/2, this.position.x + this.dim/2, this.position.y - this.dim/4); //placeholder.									
 					break;
 				case 1:
 					image(spr_left,this.position.x - 46,this.position.y - 83,69,86);
-					//triangle(this.position.x, this.position.y + this.dim/2, this.position.x - this.dim/2, this.position.y - this.dim/4, this.position.x + this.dim, this.position.y);  																		
 					break;				
 				case 2:
 					image(spr_down,this.position.x - 30,this.position.y - 83,52,86); 
-					//triangle(this.position.x - this.dim/2, this.position.y + this.dim/4, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim, this.position.y); 										
 					break;	
 				case 3:
 					image(spr_right,this.position.x - 20,this.position.y - 83,52,86);
-					//triangle(this.position.x - this.dim, this.position.y, this.position.x, this.position.y - this.dim/2, this.position.x + this.dim/2, this.position.y + this.dim/4)
 					break;				
 			}
 	}
@@ -114,28 +107,40 @@ class Character{
 						if(this.positionGrid.y > 0){ // verifica se o personagem está na borda do grid
 							this.position.x+=2;
 							this.position.y--; 
-							if (this.i == 1) this.positionGrid.y--; // quando está no fim do movimento, a posição no grid do personagem é atualizada.
+							if (this.i == 1){
+								this.positionGrid.y--; // quando está no fim do movimento, a posição no grid do personagem é atualizada.
+								actionIndex++;
+							} 
 						}
 						break;
 					case 1:						
 						if(this.positionGrid.x > 0){
 							this.position.x-=2;
 							this.position.y--; 
-							if (this.i == 1) this.positionGrid.x--;
+							if (this.i == 1) {
+								this.positionGrid.x--;
+								actionIndex++;
+							}
 						}
 						break;
 					case 2:						
 						if(this.positionGrid.y < sizeStageY){
 							this.position.x-=2;
 							this.position.y++; 
-							if (this.i == 1) this.positionGrid.y++;
+							if (this.i == 1){
+								this.positionGrid.y++;
+								actionIndex++;
 							}
+						}
 						break;
 					case 3: 
 						if(this.positionGrid.x < sizeStageX){
 							this.position.x+=2;
 							this.position.y++; 
-							if (this.i == 1) this.positionGrid.x++;
+							if (this.i == 1) {
+								this.positionGrid.x++;
+								actionIndex++;
+							}
 						}
 						break;
 					}					 
@@ -143,12 +148,24 @@ class Character{
 				break;
 			case 2:
 				this.drawCharacter(); // atualiza o desenha do personagem.
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;
+				}	
 				break;
 			case 3:
 				this.drawCharacter(); // atualiza o desenha do personagem.
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;
+				}	
 				break;
 			case 4:
 				this.drawCharacter(); // atualiza o desenha do personagem.
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;
+				}	
 				break;
 			case 5:				
 				if(this.block == null){ // checamos se já existe um bloco armazenado como personagem.
