@@ -110,7 +110,6 @@ class Character{
 							if (this.i == 1){
 								this.positionGrid.y--; // quando está no fim do movimento, a posição no grid do personagem é atualizada.
 								actionIndex++; // avança para o próximo comando da tabela de ações.
-								endOfCommand = true;
 							} 
 						}
 						break;
@@ -121,7 +120,6 @@ class Character{
 							if (this.i == 1) {
 								this.positionGrid.x--;
 								actionIndex++;
-								endOfCommand = true;
 							}
 						}
 						break;
@@ -132,7 +130,6 @@ class Character{
 							if (this.i == 1){
 								this.positionGrid.y++;
 								actionIndex++;
-								endOfCommand = true;
 							}
 						}
 						break;
@@ -143,7 +140,6 @@ class Character{
 							if (this.i == 1) {
 								this.positionGrid.x++;
 								actionIndex++;
-								endOfCommand = true;
 							}
 						}
 						break;
@@ -155,7 +151,6 @@ class Character{
 				if (!stayIndex){
 					actionIndex++;
 					stayIndex = true;
-					endOfCommand = true;
 				}	
 				break;
 			case 3:
@@ -163,7 +158,6 @@ class Character{
 				if (!stayIndex){
 					actionIndex++;
 					stayIndex = true;
-					endOfCommand = true;
 				}	
 				break;
 			case 4:
@@ -171,7 +165,6 @@ class Character{
 				if (!stayIndex){
 					actionIndex++;
 					stayIndex = true;
-					endOfCommand = true;
 				}	
 				break;
 			case 5:				
@@ -271,7 +264,6 @@ class Character{
 			if (!stayIndex){
 					actionIndex++;
 					stayIndex = true;
-					endOfCommand = true;
 				}			
 		}
 		textSize(16);
