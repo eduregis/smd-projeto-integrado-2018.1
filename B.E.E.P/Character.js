@@ -113,7 +113,7 @@ class Character{
 						if(this.positionGrid.y > 0){ // verifica se o personagem está na borda do grid
 							this.position.x+=2;
 							this.position.y--; 
-							if (this.i == 1){
+							if (this.i == 1){ // quando i for 1, significa que estamos no fim do movimento.
 								this.positionGrid.y--; // quando está no fim do movimento, a posição no grid do personagem é atualizada.
 								actionIndex++; // avança para o próximo comando da tabela de ações.
 							} 
@@ -177,28 +177,28 @@ class Character{
 				if(this.block == null){ // checamos se já existe um bloco armazenado como personagem.
 					switch(this.direction){// de acordo com a direção que o personagem estiver olhando, pegamos o bloco à sua frente.
 						case 0:
-							if((this.positionGrid.y > 0) && (grid[this.positionGrid.x][this.positionGrid.y - 1].id == 0)){ // impede que o personagem tente pegar algo fora do grid											
+							if((this.positionGrid.y > 0) && (grid[this.positionGrid.x][this.positionGrid.y - 1] != null)){ // impede que o personagem tente pegar algo fora do grid											
 								this.block = grid[this.positionGrid.x][this.positionGrid.y - 1]; // passamos o objeto para dentro do personagem.
 								grid[this.positionGrid.x][this.positionGrid.y - 1] = null; // excluímos o objeto do cenário.								
 							}
 							charCod = 1; // mantém a posição do personagem
 							break;
 						case 1:
-							if((this.positionGrid.x > 0) && (grid[this.positionGrid.x - 1][this.positionGrid.y].id == 0)){
+							if((this.positionGrid.x > 0) && (grid[this.positionGrid.x - 1][this.positionGrid.y] != null)){
 								this.block = grid[this.positionGrid.x - 1][this.positionGrid.y];
 								grid[this.positionGrid.x - 1][this.positionGrid.y] = null;								
 							}
 							charCod = 2;
 							break;
 						case 2:
-							if((this.positionGrid.y < sizeStageY) && (grid[this.positionGrid.x][this.positionGrid.y + 1].id == 0)){
+							if((this.positionGrid.y < sizeStageY) && (grid[this.positionGrid.x][this.positionGrid.y + 1] != null)){
 								this.block = grid[this.positionGrid.x][this.positionGrid.y + 1];
 								grid[this.positionGrid.x][this.positionGrid.y + 1] = null;								
 							}
 							charCod = 3;
 							break;
 						case 3:
-							if((this.positionGrid.x < sizeStageX) && (grid[this.positionGrid.x + 1][this.positionGrid.y].id == 0)){
+							if((this.positionGrid.x < sizeStageX) && (grid[this.positionGrid.x + 1][this.positionGrid.y] != null)){
 								this.block = grid[this.positionGrid.x + 1][this.positionGrid.y];
 								grid[this.positionGrid.x + 1][this.positionGrid.y] = null;								
 							}
@@ -273,27 +273,27 @@ class Character{
 					}
 				break;
 			case 6: // Atacar
-				switch(this.direction){// de acordo com a direção que o personagem estiver olhando, pegamos o bloco à sua frente.
+				switch(this.direction){// de acordo com a direção que o personagem estiver olhando, atacamos o inimigo à sua frente.
 					case 0:
-						if((this.positionGrid.y > 0) && (grid[this.positionGrid.x][this.positionGrid.y - 1].id != null)){ // impede que o personagem tente pegar algo fora do grid					
-							if (grid[this.positionGrid.x][this.positionGrid.y - 1].id == 1) grid[this.positionGrid.x][this.positionGrid.y - 1] = null; // excluímos o objeto do cenário.								
+						if((this.positionGrid.y > 0) && (grid[this.positionGrid.x][this.positionGrid.y - 1] != null)){ // impede que o personagem tente atacar fora do grid ou um campo vazio.					
+							if (grid[this.positionGrid.x][this.positionGrid.y - 1].id == 1) grid[this.positionGrid.x][this.positionGrid.y - 1] = null; // excluímos o inimigo do cenário.								
 						}
 						charCod = 1; // mantém a posição do personagem
 						break;
 					case 1:
-						if((this.positionGrid.x > 0) && (grid[this.positionGrid.x - 1][this.positionGrid.y].id != null)){
+						if((this.positionGrid.x > 0) && (grid[this.positionGrid.x - 1][this.positionGrid.y] != null)){
 							if (grid[this.positionGrid.x - 1][this.positionGrid.y].id == 1) grid[this.positionGrid.x - 1][this.positionGrid.y] = null;								
 						}
 						charCod = 2;
 							break;
 					case 2:
-						if((this.positionGrid.y < sizeStageY) && (grid[this.positionGrid.x][this.positionGrid.y + 1].id != null)){
+						if((this.positionGrid.y < sizeStageY) && (grid[this.positionGrid.x][this.positionGrid.y + 1] != null)){
 							if (grid[this.positionGrid.x][this.positionGrid.y + 1].id == 1) grid[this.positionGrid.x][this.positionGrid.y + 1] = null;								
 						}
 						charCod = 3;
 						break;
 					case 3:
-						if((this.positionGrid.x < sizeStageX) && (grid[this.positionGrid.x + 1][this.positionGrid.y].id != null)){
+						if((this.positionGrid.x < sizeStageX) && (grid[this.positionGrid.x + 1][this.positionGrid.y] != null)){
 							if (grid[this.positionGrid.x + 1][this.positionGrid.y].id == 1) grid[this.positionGrid.x + 1][this.positionGrid.y] = null;								
 						}
 						charCod = 4;
@@ -307,26 +307,26 @@ class Character{
 			case 7: //Pressionar botão
 				switch(this.direction){// de acordo com a direção que o personagem estiver olhando, pegamos o bloco à sua frente.
 					case 0:
-						if(this.positionGrid.y > 0){ // impede que o personagem tente pegar algo fora do grid					
-							grid[this.positionGrid.x][this.positionGrid.y - 1].status = 1; // excluímos o objeto do cenário.								
+						if ((this.positionGrid.y > 0) && (grid[this.positionGrid.x][this.positionGrid.y - 1] != null)){ // impede que o personagem tente pegar algo fora do grid					
+							if (grid[this.positionGrid.x][this.positionGrid.y - 1].id == 2) grid[this.positionGrid.x][this.positionGrid.y - 1].status = 1; // mudamos o status do botão, agora pressionado.								
 						}
 						charCod = 1; // mantém a posição do personagem
 						break;
 					case 1:
-						if (this.positionGrid.x > 0){
-							grid[this.positionGrid.x - 1][this.positionGrid.y].status = 1;								
+						if ((this.positionGrid.x > 0) && (grid[this.positionGrid.x - 1][this.positionGrid.y] != null)){
+							if (grid[this.positionGrid.x - 1][this.positionGrid.y].id == 2) grid[this.positionGrid.x - 1][this.positionGrid.y].status = 1;								
 						}
 						charCod = 2;
 							break;
 					case 2:
-						if(this.positionGrid.y < sizeStageY){
-							grid[this.positionGrid.x][this.positionGrid.y + 1].status = 1;								
+						if ((this.positionGrid.y < sizeStageY) && (grid[this.positionGrid.x][this.positionGrid.y + 1] != null)){
+							if (grid[this.positionGrid.x][this.positionGrid.y + 1].id == 2) grid[this.positionGrid.x][this.positionGrid.y + 1].status = 1;								
 						}
 						charCod = 3;
 						break;
 					case 3:
-						if(this.positionGrid.x < sizeStageX){
-							grid[this.positionGrid.x + 1][this.positionGrid.y].status = 1;								
+						if ((this.positionGrid.x < sizeStageX) && (grid[this.positionGrid.x + 1][this.positionGrid.y] != null)){
+							if (grid[this.positionGrid.x + 1][this.positionGrid.y].id == 2) grid[this.positionGrid.x + 1][this.positionGrid.y].status = 1;								
 						}
 						charCod = 4;
 						break;

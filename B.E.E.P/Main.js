@@ -47,7 +47,7 @@ function setup(){
 	addBlock(0,0);
 	//addEnemy(3,1);
 	addBlock(1,4);
-	addPressButton(2,1);
+	addBlock(2,1);
 	addBlock(4,1);
 	addBlock(4,4);
 	loadButtons();	
