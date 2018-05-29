@@ -42,13 +42,13 @@ class Button{
 				break;
 		}
 	}
-	basic(){
+	basic(){ // quando o mouse não está em cima do botão.
 		image(this.spr_off,this.position.x - 40,this.position.y - 40);
 	}
-	above(){		
-		image(this.spr_on,this.position.x - 40,this.position.y - 40);
+	above(){ // quando o mouse está em cima do botão.		
+		image(this.spr_on,this.position.x - 40,this.position.y - 40); 
 	}
-	click(){
+	click(){ // quando o botão é clicado.
 		if(buttonCode == this.id){
 			stroke(0);
 			fill(0); // cor do botão clicado.
@@ -116,6 +116,7 @@ function mousePressed(){
 		else
 			contMissButton++;
 	}
+	// o clique passa por 6 testes, para cada um dos botões arrastáveis, caso "erre", ou seja, não clique em nenhum dos botões, o mouse não recebe um botão de referência.
 	if(contMissButton == 6) buttonCode = null;	
 
 	p_DMouseEvents();

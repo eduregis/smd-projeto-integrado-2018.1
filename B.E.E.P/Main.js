@@ -28,44 +28,11 @@ function preload(){
 }
 
 function setup(){
-	createCanvas(1280,800);
-	exitButton = new ExitButton(1200,445,70,70);
-	resetButton = new ResetButton(1200,535,70,70);
-	startButton = new StartButton(1200,655,70,130);
-	centerGridX = 335;
-	centerGridY = 400;
-	actionTab = new ActionTab(9);
-	procedureTab = new ProcedureTab(10);
-	decisionTab = new DecisionTab(5,5);	
-	p_dTab = new P_DTab(1);	
-	sizeStageX = 5;
-	sizeStageY = 6;
-	background(0);
-	fillGridNull(); // enche a matriz de objetos nulos.
-	//fillGrid();
-	character = new Character(centerGridX,centerGridY,8);	
-	addBlock(0,0);
-	//addEnemy(3,1);
-	addBlock(1,4);
-	addBlock(2,1);
-	addBlock(4,1);
-	addBlock(4,4);
-	loadButtons();	
+	createCanvas(1280,800);		
 }
 
 function draw(){
-	isometricGrid(); // desenha o grid isométrico.
-	exitButton.draw();
-	resetButton.draw();
-	startButton.draw();	
-	actionTab.drawTab();
-	actionController();
-	p_dTab.drawTab();
-	procedureTab.drawTab();
-	decisionTab.drawTab();	
-	drawObjects(); // desenha os blocos existentes no grid.
-	character.updateCharacter(); // desenha o personagem.
-	drawButtons();			
+	drawLevel();			
 }
 
 function fillGridNull(){

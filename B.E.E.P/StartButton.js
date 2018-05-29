@@ -18,8 +18,8 @@ class StartButton{
 				if(!insideRect(mouseX,mouseY,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2, this.dimension.x, this.dimension.y)){
 					this.status = 0;
 				}else if(mouseIsPressed){
-					starter = true;
-					stayIndex = false;//PROVISÓRIO!!!
+					starter = true; // libera uma ação da tabela de ações.
+					stayIndex = false; // ajuda a manter a variável que percorre a tabela de ações no lugar.
 					this.status = 2;
 				}							
 				break;
@@ -32,19 +32,19 @@ class StartButton{
 				}				
 				break;
 		}
-	}
+	} // placeholder
 	basic(){
 		fill(100);
 		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
 		fill(0);
 		text("Ação",this.position.x, this.position.y);
-	}
+	} // placeholder
 	above(){
 		fill(50);
 		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
 		fill(0);
 		text("Ação",this.position.x, this.position.y);
-	}
+	} // placeholder
 	click(){
 		fill(0);
 		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);

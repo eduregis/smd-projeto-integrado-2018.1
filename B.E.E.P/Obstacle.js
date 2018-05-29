@@ -12,8 +12,8 @@ class Obstacle{
 		if(this.drawController){
 			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do bloco e faz os ajustes necessários. 
 				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
-					this.position.x += 50; 
-					this.position.y += 25;
+					this.position.x += 50; // ajuste horizontal.
+					this.position.y += 25; // ajuste vertical.
 				}			
 			}else if(this.positionGrid.x < int(sizeStageX/2)){
 				for(var i = this.positionGrid.x ; i < int(sizeStageX/2); i++){
@@ -36,14 +36,14 @@ class Obstacle{
 		}
 		switch(this.id){
 			case 0:
-				image(spr_block,this.position.x - 30,this.position.y - 45);
+				image(spr_block,this.position.x - 30,this.position.y - 45); // desenha o bloco.
 				break;
 			case 1:
-				image(spr_enemy_idle,this.position.x - 40,this.position.y - 60,85,85);
+				image(spr_enemy_idle,this.position.x - 40,this.position.y - 60,85,85); // desenha o inimigo, ainda sem animação.
 				break;
 			case 2:
-				if(this.status == 0) image(spr_press_btn_0,this.position.x - 15,this.position.y - 75);
-				else image(spr_press_btn_1,this.position.x - 15,this.position.y - 75);
+				if(this.status == 0) image(spr_press_btn_0,this.position.x - 15,this.position.y - 75); // desenha o botão normal.
+				else image(spr_press_btn_1,this.position.x - 15,this.position.y - 75); // desenha o botão pressionado.
 				break;		
 		}		
 	}

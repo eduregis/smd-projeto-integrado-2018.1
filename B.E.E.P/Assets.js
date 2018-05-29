@@ -1,15 +1,15 @@
 var spr_up, spr_left, spr_down, spr_right; // sprites do personagem.
 var spr_block; // sprite da caixa.
-var spr_btn_walk_0, spr_btn_walk_1;
-var spr_btn_turn_left_0, spr_btn_turn_left_1;
-var spr_btn_turn_right_0, spr_btn_turn_right_1;
-var spr_btn_grab_drop_0, spr_btn_grab_drop_1;
-var spr_btn_attack_0, spr_btn_attack_1;
-var spr_btn_press_0, spr_btn_press_1;
-var spr_enemy_idle;
-var spr_press_btn_0, spr_press_btn_1;
+var spr_btn_walk_0, spr_btn_walk_1; // botão de andar.
+var spr_btn_turn_left_0, spr_btn_turn_left_1; // botão de girar para a esquerda.
+var spr_btn_turn_right_0, spr_btn_turn_right_1; // botão de girar para a direita.
+var spr_btn_grab_drop_0, spr_btn_grab_drop_1; // botão de pegar e largar a caixa.
+var spr_btn_attack_0, spr_btn_attack_1; // botão de atacar o inimigo.
+var spr_btn_press_0, spr_btn_press_1; // botão de pressionar.
+var spr_enemy_idle; // sprite do inimigo parado.
+var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal e ativo.
 
-function loadSprites(){
+function loadSprites(){ // carrega os sprites respectivos.
 	spr_up = loadImage('assets/walk_up.png');
 	spr_left = loadImage('assets/walk_left.png');
 	spr_down = loadImage('assets/walk_down.png');

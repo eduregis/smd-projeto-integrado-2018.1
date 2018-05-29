@@ -1,8 +1,7 @@
 class Character{
-	constructor(x,y,dim){
+	constructor(x,y){
 		this.position = createVector(x,y); // posição do personagem
 		this.positionGrid = createVector(int(sizeStageX/2),int(sizeStageY/2)); // posição do personagem no grid.
-		this.dim = 200/dim;	// dimensão no personagem, baseado no número de casas.
 		this.move = false; // variável de controle do movimento, utilizando a interpolação.		
 		this.i = 0;	// contador que permite continuidade ao movimento do personagem.
 		this.direction = 0; // variável que informa para que direção o personagem está olhando. 0-) frente, 1-) esquerda, 2-) trás, 3-) direita.
