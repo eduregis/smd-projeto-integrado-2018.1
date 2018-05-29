@@ -37,18 +37,18 @@ class StartButton{
 		fill(100);
 		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
 		fill(0);
-		text("Iniciar",this.position.x, this.position.y);
+		text("Ação",this.position.x, this.position.y);
 	}
 	above(){
 		fill(50);
 		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
 		fill(0);
-		text("Iniciar",this.position.x, this.position.y);
+		text("Ação",this.position.x, this.position.y);
 	}
 	click(){
 		fill(0);
 		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
 		fill(0);
-		text("Iniciar",this.position.x, this.position.y);
+		text("Ação",this.position.x, this.position.y);
 	}
 }

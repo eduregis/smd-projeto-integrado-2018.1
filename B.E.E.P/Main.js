@@ -45,8 +45,9 @@ function setup(){
 	//fillGrid();
 	character = new Character(centerGridX,centerGridY,8);	
 	addBlock(0,0);
-	addBlock(1,1);
+	//addEnemy(3,1);
 	addBlock(1,4);
+	addPressButton(2,1);
 	addBlock(4,1);
 	addBlock(4,4);
 	loadButtons();	
@@ -62,7 +63,7 @@ function draw(){
 	p_dTab.drawTab();
 	procedureTab.drawTab();
 	decisionTab.drawTab();	
-	drawBlocks(); // desenha os blocos existentes no grid.
+	drawObjects(); // desenha os blocos existentes no grid.
 	character.updateCharacter(); // desenha o personagem.
 	drawButtons();			
 }
@@ -82,26 +83,6 @@ function fillGrid(){ // função auxiliar, preenche todo o grid com blocos, ser�
 		for(var j = 0; j <= sizeStageY; j++){
 			addBlock(i,j);	
 		}		
-	}
-}
-
-function addBlock(x,y){
-	if ((x >= 0) && (x <= sizeStageX) && (y >= 0) && (y <= sizeStageY)){ // impede que blocos fora do grid sejam criados.
-		if((x != character.positionGrid.x) || (y != character.positionGrid.y)){ // impede que blocos sejam criados em cima do personagem.
-			block = new Block(x, y); // cria um bloco na posição especificada.
-			grid[x][y] = block; // insere o bloco criado acima no grid.
-		}
-		
-	}	
-}
-
-function drawBlocks(){ // percorre a matriz do grid e desenha os blocos que lá existem.
-	for(var i = 0; i <= sizeStageX; i++){
-		for(var j = 0; j <= sizeStageY; j++){
-			if(grid[i][j] != null){ // checa se o objeto é nulo, se não, ele desenha o bloco.
-				grid[i][j].drawBlock(); 		
-			}		
-		}
 	}
 }
 
@@ -173,6 +154,12 @@ function actionController(){
 					break;
 				case 3:
 					actionCode = 3;
+					break;
+				case 4:
+					actionCode = 4;
+					break;
+				case 5:
+					actionCode = 5;
 					break;
 				default:
 					print("não tem nada aqui!");
