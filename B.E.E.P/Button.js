@@ -111,7 +111,7 @@ function drawButtons(){ // desenha os botões estáticos e que segue o mouse.
 function mousePressed(){ 
 	contMissButton = 0; // caso o clique não seja em nenhum botão, esta variável nos ajuda a deixar o campo do botão que segue o mouse nulo.
 	for (var i = 0; i < 6; i++){
-		if (insideRect(mouseX,mouseY,basicButtons[i].position.x - basicButtons[i].dimension.x/2, basicButtons[i].position.y - basicButtons[i].dimension.y/2, basicButtons[i].dimension.x, basicButtons[i].dimension.y))
+		if ((isLevel) && insideRect(mouseX,mouseY,basicButtons[i].position.x - basicButtons[i].dimension.x/2, basicButtons[i].position.y - basicButtons[i].dimension.y/2, basicButtons[i].dimension.x, basicButtons[i].dimension.y))
 			buttonCode = i;
 		else
 			contMissButton++;
@@ -124,19 +124,23 @@ function mousePressed(){
 }
 
 function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mouse volta a ser nulo.
-	if((mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 280) && (mouseY >= 60)){ // arrastando para a aba de ações.
+	if(pageCode == 0){
+		
+	}
+
+	if((isLevel) && (mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 280) && (mouseY >= 60)){ // arrastando para a aba de ações.
 		actionTab.newButton = mouseButton.id;			
 	}
 	buttonCode = null;
 
 	if(P_DKey == 1){ //arrastando para a aba de procedimentos, caso esteja aberta.
-		if((mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 620) && (mouseY >= 420)){
+		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 620) && (mouseY >= 420)){
 			procedureTab.newButton = mouseButton.id;			
 		}
 	}
 
 	if(P_DKey == 2){ //arrastando para a aba de procedimentos, caso esteja aberta.
-		if((mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 545) && (mouseY >= 475)){
+		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 545) && (mouseY >= 475)){
 			decisionTab.newButtonIf = mouseButton.id;			
 		}else if((mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 700) && (mouseY >= 610)){
 			decisionTab.newButtonElse = mouseButton.id;			

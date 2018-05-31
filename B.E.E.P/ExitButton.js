@@ -18,6 +18,9 @@ class ExitButton{
 				if(!insideRect(mouseX,mouseY,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2, this.dimension.x, this.dimension.y)){
 					this.status = 0;
 				}else if(mouseIsPressed){
+					pageCode = 0;
+					isLevel = false;
+					levelController = true;
 					this.status = 2;
 				}							
 				break;

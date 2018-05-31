@@ -8,8 +8,15 @@ var spr_btn_attack_0, spr_btn_attack_1; // botão de atacar o inimigo.
 var spr_btn_press_0, spr_btn_press_1; // botão de pressionar.
 var spr_enemy_idle; // sprite do inimigo parado.
 var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal e ativo.
+var bkg_menu, bkg_menu_start, bkg_menu_learn, bkg_menu_credits, bkg_menu_exit; // telas do começo de jogo.
 
 function loadSprites(){ // carrega os sprites respectivos.
+	bkg_menu = loadImage('assets/Beep_menu_principal.png');
+	bkg_menu_start = loadImage('assets/Beep_menu_iniciar.png');
+	bkg_menu_learn = loadImage('assets/Beep_menu_aprender.png');
+	bkg_menu_credits = loadImage('assets/Beep_menu_creditos.png');
+	bkg_menu_exit = loadImage('assets/Beep_menu_sair.png');
+
 	spr_up = loadImage('assets/walk_up.png');
 	spr_left = loadImage('assets/walk_left.png');
 	spr_down = loadImage('assets/walk_down.png');

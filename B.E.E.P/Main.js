@@ -28,11 +28,11 @@ function preload(){
 }
 
 function setup(){
-	createCanvas(1280,800);		
+	createCanvas(1280,800);	
 }
 
 function draw(){
-	drawLevel();			
+	drawLevel();				
 }
 
 function fillGridNull(){

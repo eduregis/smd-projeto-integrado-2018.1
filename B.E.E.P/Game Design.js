@@ -1,5 +1,6 @@
 var levelController = true; // para que as especificidades da fase seja passadas apenas uma vez, como se fosse no setup.
-var levelCode = 1; // id da fase.
+var pageCode = 0; // id da fase.
+var isLevel = false;
 
 function setupLevel(){ // função que simula um setup.
 	if(levelController){
@@ -7,8 +8,13 @@ function setupLevel(){ // função que simula um setup.
 		exitButton = new ExitButton(1205,445,70,70);
 		resetButton = new ResetButton(1205,535,70,70);
 		startButton = new StartButton(1205,655,70,130);
-		switch(levelCode){
-			case 1: 
+		switch(pageCode){
+			case 0: 
+				isLevel = false;
+				menu();
+				break;
+			case 1:
+				isLevel = true; 
 				levelDesign_01();
 				break;
 		}
@@ -18,18 +24,26 @@ function setupLevel(){ // função que simula um setup.
 
 function drawLevel(){
 	setupLevel(); // chama o setup da fase.
-	isometricGrid(); // desenha o grid isométrico.
-	exitButton.draw(); // desenha o botão de sair.
-	resetButton.draw(); // desenha o botão de resetar.
-	startButton.draw();	// desenha o botão de ação.
-	actionTab.drawTab(); // desenha a tabela de ações.
-	actionController(); // função que controla a sequencia de ações.
-	p_dTab.drawTab(); // desenha a tabela de escolha entre desição e procedimento.
-	procedureTab.drawTab(); // desenha a tabela de procedimentos.
-	decisionTab.drawTab();	 // desenha a tabela de desições.
-	drawObjects(); // desenha os blocos existentes no grid.
-	character.updateCharacter(); // desenha o personagem.
-	drawButtons(); // desenha os botões arrastáveis.
+	if(isLevel){
+		isometricGrid(); // desenha o grid isométrico.
+		exitButton.draw(); // desenha o botão de sair.
+		resetButton.draw(); // desenha o botão de resetar.
+		startButton.draw();	// desenha o botão de ação.
+		actionTab.drawTab(); // desenha a tabela de ações.
+		actionController(); // função que controla a sequencia de ações.
+		p_dTab.drawTab(); // desenha a tabela de escolha entre desição e procedimento.
+		procedureTab.drawTab(); // desenha a tabela de procedimentos.
+		decisionTab.drawTab();	 // desenha a tabela de desições.
+		drawObjects(); // desenha os blocos existentes no grid.
+		character.updateCharacter(); // desenha o personagem.
+		drawButtons(); // desenha os botões arrastáveis.
+	}else{
+		if(pageCode == 0) menu();
+	}
+}
+
+function menu(){
+	loadMenu();
 }
 
 function levelDesign_01(){
