@@ -17,7 +17,11 @@ class Character{
 		}
 		switch (actionCode){
 			case 0: // andar para frente do personagem.
-				charCod = 1;					
+				charCod = 1;
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;					
+				}					
 				break;
 			case 1: // vira à esquerda.
 				if (this.direction != 3){
@@ -27,7 +31,10 @@ class Character{
 					this.direction = 0;
 					charCod = 1;
 				}
-
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;					
+				}
 				break;				
 			case 2: // vira à direita.
 				if (this.direction != 0){
@@ -36,16 +43,32 @@ class Character{
 				}else{
 					this.direction = 3;
 					charCod = 4;
+				}
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;					
 				}															
 				break;	
 			case 3: //  pega ou coloca um bloco.
 				charCod = 5;
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;					
+				}
 				break;
 			case 4: //  pega ou coloca um bloco.
 				charCod = 6;
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;					
+				}
 				break;
 			case 5: //  pega ou coloca um bloco.
 				charCod = 7;
+				if (!stayIndex){
+					actionIndex++;
+					stayIndex = true;					
+				}
 				break;			
 		}
 		this.checkCollision(); // checa colisão com algum bloco.
@@ -114,7 +137,6 @@ class Character{
 							this.position.y--; 
 							if (this.i == 1){ // quando i for 1, significa que estamos no fim do movimento.
 								this.positionGrid.y--; // quando está no fim do movimento, a posição no grid do personagem é atualizada.
-								actionIndex++; // avança para o próximo comando da tabela de ações.
 							} 
 						}
 						break;
@@ -124,7 +146,6 @@ class Character{
 							this.position.y--; 
 							if (this.i == 1) {
 								this.positionGrid.x--;
-								actionIndex++;
 							}
 						}
 						break;
@@ -134,7 +155,6 @@ class Character{
 							this.position.y++; 
 							if (this.i == 1){
 								this.positionGrid.y++;
-								actionIndex++;
 							}
 						}
 						break;
@@ -144,7 +164,6 @@ class Character{
 							this.position.y++; 
 							if (this.i == 1) {
 								this.positionGrid.x++;
-								actionIndex++;
 							}
 						}
 						break;
@@ -153,24 +172,15 @@ class Character{
 				break;
 			case 2:
 				this.drawCharacter(); // atualiza o desenha do personagem.
-				if (!stayIndex){
-					actionIndex++;
-					stayIndex = true;
-				}	
+					
 				break;
 			case 3:
 				this.drawCharacter(); // atualiza o desenha do personagem.
-				if (!stayIndex){
-					actionIndex++;
-					stayIndex = true;
-				}	
+					
 				break;
 			case 4:
 				this.drawCharacter(); // atualiza o desenha do personagem.
-				if (!stayIndex){
-					actionIndex++;
-					stayIndex = true;
-				}	
+					
 				break;
 			case 5:				
 				if(this.block == null){ // checamos se já existe um bloco armazenado como personagem.
@@ -266,10 +276,7 @@ class Character{
 					}				
 				}
 				this.move = false;
-				if (!stayIndex){
-						actionIndex++;
-						stayIndex = true;
-					}
+				
 				break;
 			case 6: // Atacar
 				switch(this.direction){// de acordo com a direção que o personagem estiver olhando, atacamos o inimigo à sua frente.
@@ -298,10 +305,7 @@ class Character{
 						charCod = 4;
 						break;
 					}
-				if (!stayIndex){
-					actionIndex++;
-					stayIndex = true;					
-				}
+				
 			break;
 			case 7: //Pressionar botão
 				switch(this.direction){// de acordo com a direção que o personagem estiver olhando, pegamos o bloco à sua frente.
@@ -330,10 +334,7 @@ class Character{
 						charCod = 4;
 						break;
 					}
-				if (!stayIndex){
-					actionIndex++;
-					stayIndex = true;					
-				}
+				
 			break;				
 		}
 		

@@ -18,6 +18,8 @@ class ResetButton{
 				if(!insideRect(mouseX,mouseY,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2, this.dimension.x, this.dimension.y)){
 					this.status = 0;
 				}else if(mouseIsPressed){ // caso pressionado o botão, zera todos os vetores com botões.
+					grid = [];
+					fillGridNull();
 					levelController = true; // reseta a fase.
 					actionIndex = 0;
 					this.status = 2;
