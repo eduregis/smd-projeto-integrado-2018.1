@@ -129,6 +129,12 @@ function actionController(){
 				case 5:
 					actionCode = 5; // faz o personagem apertar botões, caso haja algum à sua frente. Caso aperte de novo, o botão não volta ao seu estado natural.
 					break;
+				case 6:
+					actionIndex++;
+					break;
+				case 7:
+					actionIndex++;
+					break;
 				default:
 					print("não tem nada aqui!"); // auxiliar, lembrar de remover na versão final.
 					actionCode--;

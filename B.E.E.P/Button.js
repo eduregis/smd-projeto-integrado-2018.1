@@ -1,7 +1,6 @@
 var buttonCode = null; // variável de controle para identificar os botões.
 var contMissButton; // variável de controle para selecionar os botões.
 var mouseButton = null; // botão que seguirá o mouse enquanto ele o arrasta.
-var P_DKey = 0; // variável que abre ou a aba de Procedimentos ou a aba de Decisões.
 
 class Button{
 	constructor(x,y,w,h,id,spr_on,spr_off){
@@ -12,7 +11,7 @@ class Button{
 		this.spr_off = spr_off; // guarda a imagem do botão desativado.
 		this.status = 0; // estado do botão, se este está normal, sob o mouse, ou clicado.
 	}
-	draw(){ // placeholders?
+	draw(){ 
 		rectMode(CENTER); 
 		textAlign(CENTER);
 		textSize(16);
@@ -99,11 +98,20 @@ function loadButtons(){ // carregando os botões.
 	basicButtons.push(button5);
 	button6 = new Button(600,700,70,70,5,spr_btn_press_1,spr_btn_press_0);
 	basicButtons.push(button6);
+	button7 = new Button(735,335,70,70,6,spr_btn_procedure_1,spr_btn_procedure_0);
+	basicButtons.push(button7);
+	button8 = new Button(735,335,70,70,7,spr_btn_decision_1,spr_btn_decision_0);
+	basicButtons.push(button8);
 }
 
 function drawButtons(){ // desenha os botões estáticos e que segue o mouse.
-	for(var i = 0; i < 6; i++){
+	for(var i = 0; i < 6; i++){		
 		basicButtons[i].draw();
+	}
+	if (P_DKey == 1){
+		basicButtons[6].draw();
+	}else if (P_DKey == 2){
+		basicButtons[7].draw();
 	}
 	drawMouseButton();	
 }
@@ -115,10 +123,18 @@ function mousePressed(){
 			buttonCode = i;
 		else
 			contMissButton++;
+	}		
+	// o clique passa por 8 testes, para cada um dos botões arrastáveis, caso "erre", ou seja, não clique em nenhum dos botões, o mouse não recebe um botão de referência.
+	if(contMissButton == 6) buttonCode = null;
+	if((isLevel) && insideRect(mouseX,mouseY,basicButtons[6].position.x - basicButtons[6].dimension.x/2, basicButtons[6].position.y - basicButtons[6].dimension.y/2, basicButtons[6].dimension.x, basicButtons[6].dimension.y)){
+		if(P_DKey == 1){
+			buttonCode = 6;
+		}else if (P_DKey == 2){
+			buttonCode = 7;
+		}else{
+			buttonCode = null;
+		}
 	}
-	// o clique passa por 6 testes, para cada um dos botões arrastáveis, caso "erre", ou seja, não clique em nenhum dos botões, o mouse não recebe um botão de referência.
-	if(contMissButton == 6) buttonCode = null;	
-
 	p_DMouseEvents();
 	procedureTabMouseEvents();	
 }
@@ -147,3 +163,4 @@ function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mous
 		}
 	}
 }
+

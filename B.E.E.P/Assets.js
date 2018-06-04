@@ -9,6 +9,8 @@ var spr_btn_press_0, spr_btn_press_1; // botão de pressionar.
 var spr_enemy_idle; // sprite do inimigo parado.
 var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal e ativo.
 var bkg_menu, bkg_menu_start, bkg_menu_learn, bkg_menu_credits, bkg_menu_exit; // telas do começo de jogo.
+var spr_btn_procedure_0, spr_btn_procedure_1;
+var spr_btn_decision_0, spr_btn_decision_1;
 
 function loadSprites(){ // carrega os sprites respectivos.
 	bkg_menu = loadImage('assets/Beep_menu_principal.png');
@@ -39,4 +41,10 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_btn_attack_1 = loadImage('assets/bot_atacar_02.png');
 	spr_btn_press_0 = loadImage('assets/bot_apertar.png');
 	spr_btn_press_1 = loadImage('assets/bot_apertar_02.png');
+
+	spr_btn_procedure_0 = loadImage('assets/bot_procedimento.png');
+	spr_btn_procedure_1 = loadImage('assets/bot_procedimento_02.png');
+	spr_btn_decision_0 = loadImage('assets/bot_decisao.png');
+	spr_btn_decision_1 = loadImage('assets/bot_decisao_02.png');
+
 }

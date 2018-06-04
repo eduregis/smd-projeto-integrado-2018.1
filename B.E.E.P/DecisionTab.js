@@ -51,6 +51,12 @@ class DecisionTab{ // tebela de ações que serão executadas.
 						case 5:
 							image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
+						case 6:
+							image(spr_btn_procedure_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
+						case 7:
+							image(spr_btn_decision_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							break;
 					}
 				}
 				else{
@@ -82,6 +88,12 @@ class DecisionTab{ // tebela de ações que serão executadas.
 							break;
 						case 5:
 							image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+						case 6:
+							image(spr_btn_procedure_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							break;
+						case 7:
+							image(spr_btn_decision_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 					}
 				}
