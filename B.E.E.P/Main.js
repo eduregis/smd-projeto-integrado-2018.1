@@ -93,7 +93,7 @@ function isometricGrid(){
 		hor -= 50*(sizeStageX + 1);
 		ver -= 25*(sizeStageX - 1);
 	}
-	// espaçamento entre as linhas baseado na quantidade de casas		
+	// espaçamento entre as linhas baseado na quantidade de casas.		
 }
 
 function colorGrid(){
@@ -104,37 +104,39 @@ function colorGrid(){
 }
 
 function actionController(){
-	if(actionIndex + 1 > actionTab.actionButtons.length) stayIndex = true;
-	if(starter){
-		if(actionCode == null){
-			switch(actionTab.actionButtons[actionIndex]){
-				case 0:
+	if(actionIndex + 1 > actionTab.actionButtons.length) stayIndex = true; // impede que o checador procure comandos fora do escopo do vetor.	
+	if(starter){ // se a variável de controle starter permite, ele inicia um novo código.
+		if(actionCode == null){ // no final de cada comando, actionCode volta para nulo, para que receba um novo comando a partir daqui.
+			switch(actionTab.actionButtons[actionIndex]){ // procura o id do comando na tabela de ações.
+				case 0: // move o personagem para a posição em que ele está para frente.
 					actionCode = 0;
-					character.i = 26;
-					character.move = true;
+					character.i = 26; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
+					character.move = true; // variável de controle para mover o personagem se e somente se esse comando for dado.
 					break;
 				case 1:
-					actionCode = 1;
+					actionCode = 1; // gira o personagem à esquerda.
 					break;
 				case 2:
-					actionCode = 2;
+					actionCode = 2; // gira o personagem à direita.
 					break;
 				case 3:
-					actionCode = 3;
+					actionCode = 3; // faz o personagem pegar caixas, se já não estiver carregando, e soltar caixas, se estiver carregando uma. Caso não tenha nada na frente e este não 
+					// estiver carregando nada, o comando não faz nada.
 					break;
 				case 4:
-					actionCode = 4;
+					actionCode = 4; // faz o personagem atacar inimigos, caso hja algum à sua frente.
 					break;
 				case 5:
-					actionCode = 5;
+					actionCode = 5; // faz o personagem apertar botões, caso haja algum à sua frente. Caso aperte de novo, o botão não volta ao seu estado natural.
 					break;
 				default:
-					print("não tem nada aqui!");
+					print("não tem nada aqui!"); // auxiliar, lembrar de remover na versão final.
+					actionCode--;
 					break;
 			}
 		}else{
-			actionCode = null;
-			starter = false;
+			actionCode = null; // colocar o valor do código de ação para nulo. Caso contrário, ele vai ficar repetindo a instrução para o personagem sem fim.
+			starter = false; // impedir que entre na função e deixe o código de ação não-nulo de novo, causando um loop.
 		}
 	}
 }

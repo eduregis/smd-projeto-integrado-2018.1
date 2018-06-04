@@ -21,7 +21,7 @@ class P_DTab{ // tebela de ações que serão executadas.
 		if (P_Or_D) draw_P_Or_D(); // se a variável auxiliar estiver ativada, desenhamos a aba de opções.
 	}
 }
-// ATENÇÃO!!! Os valores colocados aqui funcionam para uma casa apenas, para desenvolver mais casas, é preciso refazer essa parte orintada ao objeto.
+// ATENÇÃO!!! Os valores colocados aqui funcionam para uma casa apenas, para desenvolver mais casas, é preciso refazer essa parte orientada ao objeto.
 function p_DMouseEvents(){
 	if(P_Or_D){ // testa se a variável está ativa, para abrir a aba de opções.
 		if(insideRect(mouseX,mouseY,640,355,70,70)){ // caso clique no primeiro botão, este abrirá a aba de procedimentos.
