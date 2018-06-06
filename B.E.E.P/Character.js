@@ -19,7 +19,7 @@ class Character{
 			case 0: // andar para frente do personagem.
 				charCod = 1;
 				if (!stayIndex){
-					if(isProcedure) procedureIndex++;
+					if(currentTab == "Procedure") procedureIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}					
@@ -33,7 +33,7 @@ class Character{
 					charCod = 1;
 				}
 				if (!stayIndex){
-					if(isProcedure) procedureIndex++;
+					if(currentTab == "Procedure") procedureIndex++;
 					else actionIndex++;
 					stayIndex = true;										
 				}
@@ -47,7 +47,7 @@ class Character{
 					charCod = 4;
 				}
 				if (!stayIndex){
-					if(isProcedure) procedureIndex++;
+					if(currentTab == "Procedure") procedureIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}															
@@ -55,7 +55,7 @@ class Character{
 			case 3: //  pega ou coloca um bloco.
 				charCod = 5;
 				if (!stayIndex){
-					if(isProcedure) procedureIndex++;
+					if(currentTab == "Procedure") procedureIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}
@@ -63,7 +63,7 @@ class Character{
 			case 4: //  pega ou coloca um bloco.
 				charCod = 6;
 				if (!stayIndex){
-					if(isProcedure) procedureIndex++;
+					if(currentTab == "Procedure") procedureIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}
@@ -71,7 +71,7 @@ class Character{
 			case 5: //  pega ou coloca um bloco.
 				charCod = 7;
 				if (!stayIndex){
-					if(isProcedure) procedureIndex++;
+					if(currentTab == "Procedure") procedureIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}
