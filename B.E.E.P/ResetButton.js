@@ -56,6 +56,7 @@ function reset(){
 	grid = [];
 	fillGridNull();
 	levelController = true; // reseta a fase.
+	procedureIndex = 0;
 	actionIndex = 0;
 	P_DKey = 0;
 	basicButtons = [];

@@ -95,12 +95,12 @@ class ActionTab{ // tebela de ações que serão executadas.
 						else image(spr_btn_press_0,this.position.x - 520 + i*90, this.position.y + 110,70,70);
 						break;
 					case 6:
-						if(i == actionIndex - 1) image(spr_btn_procedure_1,this.position.x + 20 + i*90, this.position.y + 20,70,70);
-						else image(spr_btn_procedure_0,this.position.x + 20 + i*90, this.position.y + 20,70,70);
+						if (i == actionIndex - 1) image(spr_btn_procedure_1,this.position.x - 520 + i*90, this.position.y + 110,70,70);
+						else image(spr_btn_procedure_0,this.position.x - 520 + i*90, this.position.y + 110,70,70);
 						break;
 					case 7:
-						if(i == actionIndex - 1) image(spr_btn_decision_1,this.position.x + 20 + i*90, this.position.y + 20,70,70);
-						else image(spr_btn_decision_0,this.position.x + 20 + i*90, this.position.y + 20,70,70);
+						if (i == actionIndex - 1) image(spr_btn_decision_1,this.position.x - 520 + i*90, this.position.y + 110,70,70);
+						else image(spr_btn_decision_0,this.position.x - 520 + i*90, this.position.y + 110,70,70);
 						break;
 
 				}
