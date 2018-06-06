@@ -21,7 +21,9 @@ var startButton; // botão de ativação.
 var starter = false; // variável que inicia a sequencia de comandos
 var actionCode; // variável que pega o comando da tabela de ações e passa para o personagem.
 var actionIndex = 0; // variável que percorrerá a tabela de ações.
-var procedureIndex = 0; // variável que percorrerá a tabela de ações.
+var procedureIndex = 0; // variável que percorrerá a tabela de procedimentos.
+var decisionIfIndex = 0; // variável que percorrerá a tabela de decisões, se o teste da condicional funcionar.
+var decisionElseIndex = 0; // variável que percorrerá a tabela de decisões, se o teste da condicional não funcionar.
 var currentTab = "Action";
 var stayIndex = false; // variável que auxilia no processo de percorrer a tabela de ações.
 
@@ -105,27 +107,51 @@ function colorGrid(){
 		stroke(0,corG,255);	
 }
 
-function decisionTest(){
-	try{
-		if((character.direction == 0) && (grid[character.positionGrid.x][character.positionGrid.y - 1] != null)){
-			return true;
-		} else if((character.direction == 1) && (grid[character.positionGrid.x - 1][character.positionGrid.y] != null)){
-			return true;
-		} else if((character.direction == 2) && (grid[character.positionGrid.x][character.positionGrid.y + 1] != null)){
-			return true;
-		} else if((character.direction == 3) && (grid[character.positionGrid.x + 1][character.positionGrid.y] != null)){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	catch (e){
-		return false;
+function decisionTest(test){
+	switch (test){
+		case "general":
+			try{
+				if((character.direction == 0) && (grid[character.positionGrid.x][character.positionGrid.y - 1] != null)){
+					return true;
+				} else if((character.direction == 1) && (grid[character.positionGrid.x - 1][character.positionGrid.y] != null)){
+					return true;
+				} else if((character.direction == 2) && (grid[character.positionGrid.x][character.positionGrid.y + 1] != null)){
+					return true;
+				} else if((character.direction == 3) && (grid[character.positionGrid.x + 1][character.positionGrid.y] != null)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			catch (e){
+				return false;
+			}	
+			break;
+		case "block":
+			try{
+				if((character.direction == 0) && (grid[character.positionGrid.x][character.positionGrid.y - 1] != null) && (grid[character.positionGrid.x][character.positionGrid.y - 1].id == 0)){
+					return true;
+				} else if((character.direction == 1) && (grid[character.positionGrid.x - 1][character.positionGrid.y] != null) && (grid[character.positionGrid.x - 1][character.positionGrid.y].id == 0)){
+					return true;
+				} else if((character.direction == 2) && (grid[character.positionGrid.x][character.positionGrid.y + 1] != null) && (grid[character.positionGrid.x][character.positionGrid.y + 1].id == 0)){
+					return true;
+				} else if((character.direction == 3) && (grid[character.positionGrid.x + 1][character.positionGrid.y] != null) && (grid[character.positionGrid.x + 1][character.positionGrid.y].id == 0)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			catch (e){
+				return false;
+			}
+			break;
+		default:
+			break;
 	}	
 }
 
 function actionController(){
-	if (decisionTest()) print("teste");
+	print(currentTab);
 	if(actionIndex + 1 > actionTab.actionButtons.length) stayIndex = true; // impede que o checador procure comandos fora do escopo do vetor.	
 	if(starter){ // se a variável de controle starter permite, ele inicia um novo código.		
 		switch(currentTab){
@@ -157,7 +183,11 @@ function actionController(){
 							currentTab = "Procedure";
 							break;
 						case 7:
-							actionIndex++;
+							if (decisionTest("block")){
+								currentTab = "DecisionIf";
+							}else{
+								currentTab = "DecisionElse";
+							}
 							break;
 						default:
 							print("não tem nada aqui! a"); // auxiliar, lembrar de remover na versão final.
@@ -170,8 +200,7 @@ function actionController(){
 				}
 				break;
 			case "Procedure": // percorrerá a aba de procedimentos.
-				print("teste");
-				if(procedureIndex + 1 > procedureTab.actionButtons.length){ // quando oprocedminto chega ao fim, ela retorna para a aba de ações.
+				if(procedureIndex + 1 > procedureTab.actionButtons.length){ // quando o procedminto chega ao fim, ela retorna para a aba de ações.
 					currentTab = "Action";
 					actionIndex++;
 					procedureIndex = 0; // zera o percorredor de procedimentos, para que possamos usá-lo novamente.
@@ -202,6 +231,84 @@ function actionController(){
 						case 6:
 							procedureIndex = 0; // volta para a primeira posição da tabela de procedimento, gerando um loop.
 							break;										
+						default:
+							print("não tem nada aqui! p"); // auxiliar, lembrar de remover na versão final.
+							actionCode--;
+							break;
+					}
+				}else{
+				actionCode = null; // colocar o valor do código de ação para nulo. Caso contrário, ele vai ficar repetindo a instrução para o personagem sem fim.
+				starter = false; // impedir que entre na função e deixe o código de ação não-nulo de novo, causando um loop.
+				}
+				break;
+			case "DecisionIf":
+				if(decisionIfIndex + 1 > decisionTab.actionButtonsIf.length){ // quando o procedminto chega ao fim, ela retorna para a aba de ações.
+					currentTab = "Action";
+					actionIndex++;
+					decisionIfIndex = 0; // zera o percorredor de procedimentos, para que possamos usá-lo novamente.
+				} 
+				if(actionCode == null){ // no final de cada comando, actionCode volta para nulo, para que receba um novo comando a partir daqui.
+					switch(decisionTab.actionButtonsIf[decisionIfIndex]){ // procura o id do comando na tabela de ações.
+						case 0: // move o personagem para a posição em que ele está para frente.
+							actionCode = 0; 
+							character.i = 26; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
+							character.move = true; // variável de controle para mover o personagem se e somente se esse comando for dado.
+							break;
+						case 1:
+							actionCode = 1; // gira o personagem à esquerda.
+							break;
+						case 2:
+							actionCode = 2; // gira o personagem à direita.
+							break;
+						case 3:
+							actionCode = 3; // faz o personagem pegar caixas, se já não estiver carregando, e soltar caixas, se estiver carregando uma. Caso não tenha nada na frente e este não 
+							// estiver carregando nada, o comando não faz nada.
+							break;
+						case 4:
+							actionCode = 4; // faz o personagem atacar inimigos, caso hja algum à sua frente.
+							break;
+						case 5:
+							actionCode = 5; // faz o personagem apertar botões, caso haja algum à sua frente. Caso aperte de novo, o botão não volta ao seu estado natural.
+							break;														
+						default:
+							print("não tem nada aqui!"); // auxiliar, lembrar de remover na versão final.
+							actionCode--;
+							break;
+					}
+				}else{
+				actionCode = null; // colocar o valor do código de ação para nulo. Caso contrário, ele vai ficar repetindo a instrução para o personagem sem fim.
+				starter = false; // impedir que entre na função e deixe o código de ação não-nulo de novo, causando um loop.
+				}
+				break;
+			case "DecisionElse":
+				if(decisionElseIndex + 1 > decisionTab.actionButtonsElse.length){ // quando o procedminto chega ao fim, ela retorna para a aba de ações.
+					currentTab = "Action";
+					actionIndex++;
+					decisionElseIndex = 0; // zera o percorredor de procedimentos, para que possamos usá-lo novamente.
+				} 
+				if(actionCode == null){ // no final de cada comando, actionCode volta para nulo, para que receba um novo comando a partir daqui.
+					switch(decisionTab.actionButtonsElse[decisionElseIndex]){ // procura o id do comando na tabela de ações.
+						case 0: // move o personagem para a posição em que ele está para frente.
+							actionCode = 0; 
+							character.i = 26; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
+							character.move = true; // variável de controle para mover o personagem se e somente se esse comando for dado.
+							break;
+						case 1:
+							actionCode = 1; // gira o personagem à esquerda.
+							break;
+						case 2:
+							actionCode = 2; // gira o personagem à direita.
+							break;
+						case 3:
+							actionCode = 3; // faz o personagem pegar caixas, se já não estiver carregando, e soltar caixas, se estiver carregando uma. Caso não tenha nada na frente e este não 
+							// estiver carregando nada, o comando não faz nada.
+							break;
+						case 4:
+							actionCode = 4; // faz o personagem atacar inimigos, caso hja algum à sua frente.
+							break;
+						case 5:
+							actionCode = 5; // faz o personagem apertar botões, caso haja algum à sua frente. Caso aperte de novo, o botão não volta ao seu estado natural.
+							break;														
 						default:
 							print("não tem nada aqui! p"); // auxiliar, lembrar de remover na versão final.
 							actionCode--;

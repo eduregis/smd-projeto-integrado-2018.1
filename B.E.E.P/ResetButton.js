@@ -58,6 +58,8 @@ function reset(){
 	levelController = true; // reseta a fase.
 	procedureIndex = 0;
 	actionIndex = 0;
+	decisionIfIndex = 0;
+	decisionElseIndex = 0;
 	P_DKey = 0;
 	basicButtons = [];
 	loadButtons();

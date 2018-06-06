@@ -34,28 +34,36 @@ class DecisionTab{ // tebela de ações que serão executadas.
 				if(i < this.actionButtonsIf.length){
 					switch(this.actionButtonsIf[i]){
 						case 0:
-							image(spr_btn_walk_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_walk_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else image(spr_btn_walk_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 						case 1:
-							image(spr_btn_turn_left_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_turn_left_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else image(spr_btn_turn_left_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 						case 2:
-							image(spr_btn_turn_right_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_turn_right_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else  image(spr_btn_turn_right_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 						case 3:
-							image(spr_btn_grab_drop_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_grab_drop_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else  image(spr_btn_grab_drop_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 						case 4:
-							image(spr_btn_attack_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_attack_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else  image(spr_btn_attack_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 						case 5:
-							image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_press_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else  image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 						case 6:
-							image(spr_btn_procedure_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_procedure_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else image(spr_btn_procedure_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 						case 7:
-							image(spr_btn_decision_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							if(i == decisionIfIndex - 1) image(spr_btn_decision_1,this.position.x + 20 + i*90, this.position.y + 65,70,70);
+							else image(spr_btn_decision_0,this.position.x + 20 + i*90, this.position.y + 65,70,70);
 							break;
 					}
 				}
@@ -72,28 +80,36 @@ class DecisionTab{ // tebela de ações que serão executadas.
 				if(i < this.actionButtonsElse.length){
 					switch(this.actionButtonsElse[i]){
 						case 0:
-							image(spr_btn_walk_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_walk_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else  image(spr_btn_walk_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 						case 1:
-							image(spr_btn_turn_left_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_turn_left_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else  image(spr_btn_turn_left_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 						case 2:
-							image(spr_btn_turn_right_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_turn_right_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else image(spr_btn_turn_right_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 						case 3:
-							image(spr_btn_grab_drop_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_grab_drop_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else image(spr_btn_grab_drop_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 						case 4:
-							image(spr_btn_attack_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_attack_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else image(spr_btn_attack_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 						case 5:
-							image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_press_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else  image(spr_btn_press_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 						case 6:
-							image(spr_btn_procedure_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_procedure_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else image(spr_btn_procedure_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
 							break;
 						case 7:
-							image(spr_btn_decision_0,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							if(i == decisionElseIndex - 1) image(spr_btn_decision_1,this.position.x + 20 + i*90, this.position.y + 200,70,70);
+							else image(spr_btn_decision_0,this.position.x + 20 + i*90, this.position.y + 200,70,70)
 							break;
 					}
 				}

@@ -34,6 +34,8 @@ class Character{
 				}
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
+					else if (currentTab == "DecisionIf") decisionIfIndex++;
+					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
 					stayIndex = true;										
 				}
@@ -48,6 +50,8 @@ class Character{
 				}
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
+					else if (currentTab == "DecisionIf") decisionIfIndex++;
+					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}															
@@ -56,6 +60,8 @@ class Character{
 				charCod = 5;
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
+					else if (currentTab == "DecisionIf") decisionIfIndex++;
+					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}
@@ -64,6 +70,8 @@ class Character{
 				charCod = 6;
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
+					else if (currentTab == "DecisionIf") decisionIfIndex++;
+					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}
@@ -72,6 +80,8 @@ class Character{
 				charCod = 7;
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
+					else if (currentTab == "DecisionIf") decisionIfIndex++;
+					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
 					stayIndex = true;					
 				}
