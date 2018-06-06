@@ -60,6 +60,7 @@ function reset(){
 	actionIndex = 0;
 	decisionIfIndex = 0;
 	decisionElseIndex = 0;
+	currentTab = "Action";
 	P_DKey = 0;
 	basicButtons = [];
 	loadButtons();

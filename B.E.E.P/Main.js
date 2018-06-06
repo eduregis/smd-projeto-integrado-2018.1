@@ -145,7 +145,44 @@ function decisionTest(test){
 				return false;
 			}
 			break;
+		case "enemy":
+			try{
+				if((character.direction == 0) && (grid[character.positionGrid.x][character.positionGrid.y - 1] != null) && (grid[character.positionGrid.x][character.positionGrid.y - 1].id == 1)){
+					return true;
+				} else if((character.direction == 1) && (grid[character.positionGrid.x - 1][character.positionGrid.y] != null) && (grid[character.positionGrid.x - 1][character.positionGrid.y].id == 1)){
+					return true;
+				} else if((character.direction == 2) && (grid[character.positionGrid.x][character.positionGrid.y + 1] != null) && (grid[character.positionGrid.x][character.positionGrid.y + 1].id == 1)){
+					return true;
+				} else if((character.direction == 3) && (grid[character.positionGrid.x + 1][character.positionGrid.y] != null) && (grid[character.positionGrid.x + 1][character.positionGrid.y].id == 1)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			catch (e){
+				return false;
+			}
+			break;
+		case "pressButton":
+			try{
+				if((character.direction == 0) && (grid[character.positionGrid.x][character.positionGrid.y - 1] != null) && (grid[character.positionGrid.x][character.positionGrid.y - 1].id == 0)){
+					return true;
+				} else if((character.direction == 1) && (grid[character.positionGrid.x - 1][character.positionGrid.y] != null) && (grid[character.positionGrid.x - 1][character.positionGrid.y].id == 2)){
+					return true;
+				} else if((character.direction == 2) && (grid[character.positionGrid.x][character.positionGrid.y + 1] != null) && (grid[character.positionGrid.x][character.positionGrid.y + 1].id == 2)){
+					return true;
+				} else if((character.direction == 3) && (grid[character.positionGrid.x + 1][character.positionGrid.y] != null) && (grid[character.positionGrid.x + 1][character.positionGrid.y].id == 2)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			catch (e){
+				return false;
+			}
+			break;
 		default:
+		return false;
 			break;
 	}	
 }
@@ -246,6 +283,7 @@ function actionController(){
 					currentTab = "Action";
 					actionIndex++;
 					decisionIfIndex = 0; // zera o percorredor de procedimentos, para que possamos usá-lo novamente.
+					decisionElseIndex = 0;
 				} 
 				if(actionCode == null){ // no final de cada comando, actionCode volta para nulo, para que receba um novo comando a partir daqui.
 					switch(decisionTab.actionButtonsIf[decisionIfIndex]){ // procura o id do comando na tabela de ações.
@@ -284,6 +322,7 @@ function actionController(){
 				if(decisionElseIndex + 1 > decisionTab.actionButtonsElse.length){ // quando o procedminto chega ao fim, ela retorna para a aba de ações.
 					currentTab = "Action";
 					actionIndex++;
+					decisionIfIndex = 0;
 					decisionElseIndex = 0; // zera o percorredor de procedimentos, para que possamos usá-lo novamente.
 				} 
 				if(actionCode == null){ // no final de cada comando, actionCode volta para nulo, para que receba um novo comando a partir daqui.
