@@ -98,9 +98,9 @@ function loadButtons(){ // carregando os botões.
 	basicButtons.push(button5);
 	button6 = new Button(600,700,70,70,5,spr_btn_press_1,spr_btn_press_0);
 	basicButtons.push(button6);
-	button7 = new Button(735,335,70,70,6,spr_btn_procedure_1,spr_btn_procedure_0);
+	button7 = new Button(735,342,70,70,6,spr_btn_procedure_1,spr_btn_procedure_0);
 	basicButtons.push(button7);
-	button8 = new Button(735,335,70,70,7,spr_btn_decision_1,spr_btn_decision_0);
+	button8 = new Button(735,342,70,70,7,spr_btn_decision_1,spr_btn_decision_0);
 	basicButtons.push(button8);
 }
 
@@ -144,13 +144,13 @@ function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mous
 		
 	}
 
-	if((isLevel) && (mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 280) && (mouseY >= 60)){ // arrastando para a aba de ações.
+	if((isLevel) && (mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 240) && (mouseY >= 45)){ // arrastando para a aba de ações.
 		actionTab.newButton = mouseButton.id;			
 	}
 	buttonCode = null;
 
 	if(P_DKey == 1){ //arrastando para a aba de procedimentos, caso esteja aberta.
-		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 620) && (mouseY >= 420)){
+		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 640) && (mouseY >= 445)){
 			procedureTab.newButton = mouseButton.id;			
 		}
 	}

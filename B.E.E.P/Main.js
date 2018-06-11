@@ -82,7 +82,6 @@ function isometricGrid(){
 			}
 		}
 	}	
-	background(0);
 	colorGrid(); // função que altera as cores do grid
 	for(var i = 0; i < sizeStageY ; i++){ // criamos uma matriz parqa desenhar o grid	
 		for(var j = 0; j < sizeStageX ; j++){

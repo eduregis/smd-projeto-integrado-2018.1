@@ -1,6 +1,6 @@
 class ProcedureTab{ // tebela de ações que serão executadas.
 	constructor(limit){
-		this.position = createVector(680,410); // posição do bloco.
+		this.position = createVector(680,435); // posição do bloco.
 		this.actionButtons = []; // vetor com os ids dos comandos		
 		this.newButton = null; // variável de controle que receberá o novo comando a ser colocado no vetor.
 		this.limit = limit;
@@ -15,7 +15,7 @@ class ProcedureTab{ // tebela de ações que serão executadas.
 		if(P_DKey == 1){
 			fill(0,35);
 			rectMode(CORNER);
-			rect(this.position.x,this.position.y,470,200);
+			image(bkg_procedure_tab,680,405);
 			for(var i = 0; i < 5; i++){
 				if(i < this.actionButtons.length){
 					switch(this.actionButtons[i]){

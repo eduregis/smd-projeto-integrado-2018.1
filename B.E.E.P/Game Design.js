@@ -23,6 +23,7 @@ function setupLevel(){ // função que simula um setup.
 }
 
 function drawLevel(){
+	image(bkg_level,0,0);
 	setupLevel(); // chama o setup da fase.
 	if(isLevel){
 		isometricGrid(); // desenha o grid isométrico.

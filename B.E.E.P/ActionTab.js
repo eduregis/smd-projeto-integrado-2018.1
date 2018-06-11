@@ -1,6 +1,6 @@
 class ActionTab{ // tebela de ações que serão executadas.
 	constructor(limit){
-		this.position = createVector(680,60); // posição do bloco.
+		this.position = createVector(680,45); // posição do bloco.
 		this.actionButtons = []; // vetor com os ids dos comandos		
 		this.newButton = null; // variável de controle que receberá o novo comando a ser colocado no vetor.		
 		this.limit = limit;
@@ -16,7 +16,7 @@ class ActionTab{ // tebela de ações que serão executadas.
 		}
 		rectMode(CORNER);
 		fill(0,35);
-		rect(this.position.x,this.position.y,560,200);	// bloco principal.	
+		image(bkg_action_tab,680,15);	// bloco principal.	
 		for(var i = 0; i < 6; i++){
 			if(i < this.actionButtons.length){ // desenha os botões que estão na tabela de ações.
 				switch(this.actionButtons[i]){

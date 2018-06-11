@@ -3,13 +3,13 @@ var P_DKey = 0; // variável que abre ou a aba de Procedimentos ou a aba de Deci
 
 class P_DTab{ // tebela de ações que serão executadas.
 	constructor(limit){
-		this.position = createVector(680,280); // posição do bloco.
+		this.position = createVector(680,287); // posição do bloco.
 		this.limit = limit;
 	}
 	drawTab(){
 		fill(0,35);
 		rectMode(CORNER);
-		rect(this.position.x,this.position.y,560,110); // desenhamos o bloco que ficará atrás.
+		image(bkg_p_d_tab,680,255); // desenhamos o bloco que ficará atrás.
 		for(var i = 0; i < 6; i++){ // desenhamos os espações para os botões.
 			if(i < this.limit) // caso o limite não seja excedido.
 				if(P_DKey == 1){ // caso a aba de procedimentos seja acionada.
