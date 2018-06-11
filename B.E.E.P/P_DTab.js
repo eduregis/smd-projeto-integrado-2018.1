@@ -50,10 +50,6 @@ function draw_P_Or_D(){ // aba de opções.
 	fill(0);
 	rect(620,335,200,110);
 	fill(0,255,255);
-	rect(640,355,70,70);
-	rect(730,355,70,70);
-	fill(0);
-	textSize(40);
-	text("P",675,400);
-	text("D",765,400);	
+	image(spr_btn_procedure_0,640,355,70,70);
+	image(spr_btn_decision_0,730,355,70,70);		
 }

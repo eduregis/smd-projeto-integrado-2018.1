@@ -85,7 +85,8 @@ function isometricGrid(){
 	colorGrid(); // função que altera as cores do grid
 	for(var i = 0; i < sizeStageY ; i++){ // criamos uma matriz parqa desenhar o grid	
 		for(var j = 0; j < sizeStageX ; j++){
-			//desenhamos um losango partindo do vértice superior	
+			//desenhamos um losango partindo do vértice superior
+			image(spr_tile,hor - 50,ver,100,75);	
 			line(hor ,ver ,hor + 50 ,ver + 25);
 			line(hor ,ver ,hor - 50 ,ver + 25);
 			line(hor + 50 ,ver + 25, hor ,ver + 50);

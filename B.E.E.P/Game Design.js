@@ -4,10 +4,10 @@ var isLevel = false;
 
 function setupLevel(){ // função que simula um setup.
 	if(levelController){
-		//botões de sair, resetar e de ação.
-		exitButton = new ExitButton(1205,445,70,70);
-		resetButton = new ResetButton(1205,535,70,70);
-		startButton = new StartButton(1205,655,70,130);
+		//botões de sair, resetar e de ação.		
+		startButton = new StartButton(1205,472,70,80);
+		resetButton = new ResetButton(1205,555,70,40);
+		exitButton = new ExitButton(1205,617,70,40);		
 		switch(pageCode){
 			case 0: 
 				isLevel = false;

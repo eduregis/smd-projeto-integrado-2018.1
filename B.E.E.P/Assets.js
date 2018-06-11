@@ -16,6 +16,10 @@ var bkg_menu, bkg_menu_start, bkg_menu_learn, bkg_menu_credits, bkg_menu_exit; /
 
 var bkg_level, bkg_action_tab, bkg_p_d_tab, bkg_procedure_tab; // fundo da fase e tabelas.
 
+var spr_btn_start, spr_btn_reset, spr_btn_exit; // botões de ação, resetar e sair.
+
+var spr_tile; // chão da fase.
+
 var spr_block; // sprite da caixa.
 var spr_enemy_idle; // sprite do inimigo parado.
 var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal e ativo.
@@ -61,6 +65,12 @@ function loadSprites(){ // carrega os sprites respectivos.
 	bkg_action_tab = loadImage('assets/bkg_action_tab.png');
 	bkg_procedure_tab = loadImage('assets/bkg_procedure_tab.png');
 	bkg_p_d_tab = loadImage('assets/bkg_p_d_tab.png');
+
+	spr_btn_start = loadImage('assets/btn_start.png');
+	spr_btn_reset = loadImage('assets/btn_reset.png');
+	spr_btn_exit = loadImage('assets/btn_exit.png');
+
+	spr_tile = loadImage('assets/tile.png');
 
 	spr_block = loadImage('assets/block.png');
 	spr_enemy_idle = loadImage('assets/spr_enemy_idle.png');

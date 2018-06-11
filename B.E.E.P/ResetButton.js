@@ -33,10 +33,7 @@ class ResetButton{
 		}
 	}
 	basic(){
-		fill(100);
-		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
-		fill(0);
-		text("Resetar",this.position.x, this.position.y);
+		image(spr_btn_reset,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
 	}
 	above(){
 		fill(50);
