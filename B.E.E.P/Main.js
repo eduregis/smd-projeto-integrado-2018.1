@@ -5,7 +5,8 @@ var character; // personagem.
 
 var sizeStageX; 
 var sizeStageY;
-var grid = []; // matriz a ser preenchida com blocos.
+var grid = []; // matriz a ser preenchida com obstáculos.
+var gridProp = []; // matriz a ser preenchida com os colecionáveis.
 var basicButtons = []; // vetor com os botões de baixo.
 
 var centerGridX, centerGridY; // variáveis para controlar a posição do grid na tela.
@@ -49,11 +50,13 @@ function fillGridNull(){
 	}
 }
 
-function fillGrid(){ // função auxiliar, preenche todo o grid com blocos, será cortada em versões posteriores.
+function fillGridPropNull(){
 	for(var i = 0; i <= sizeStageX; i++){
+		var arrayAux = []; // vetor auxiliar que será anexado a matriz do grid.
 		for(var j = 0; j <= sizeStageY; j++){
-			addBlock(i,j);	
-		}		
+			arrayAux.push(null); // inserindo objetos nulos no vetor auxiliar.		
+		}
+		gridProp.push(arrayAux); // inserir vetor preenchido com objetos nulos na matriz do grid.
 	}
 }
 

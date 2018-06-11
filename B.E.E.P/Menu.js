@@ -1,9 +1,9 @@
 function loadMenu(){	
 	if (insideRect(mouseX,mouseY,795, 338, 400, 70)){
 		if (mouseIsPressed){
-			pageCode = "level_01"; 
+			pageCode = "levelChoice"; 
 			levelController = true;
-			isLevel = true;
+			isLevel = false;
 		} 
 		image(bkg_menu_start,0,0);
 	} else if (insideRect(mouseX,mouseY,795, 425, 400, 70)){
