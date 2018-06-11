@@ -127,16 +127,40 @@ class Character{
 	drawCharacter(){ // função que desenha o personagem.
 		switch (this.direction){
 				case 0:
-					image(spr_up,this.position.x - 21,this.position.y - 83,69,86);	
+					if(this.move){
+						if ((this.i <= 26) && (this.i > 17)) image(spr_up_0,this.position.x - 21,this.position.y - 83,69,86);
+						else if ((this.i <= 17) && (this.i > 8)) image(spr_up_1,this.position.x - 21,this.position.y - 83,69,86);
+						else image(spr_up_2,this.position.x - 21,this.position.y - 83,69,86);
+					} else{
+						image(spr_up_1,this.position.x - 21,this.position.y - 83,69,86);
+					}									
 					break;
 				case 1:
-					image(spr_left,this.position.x - 46,this.position.y - 83,69,86);
+					if(this.move){
+						if ((this.i <= 26) && (this.i > 17)) image(spr_left_0,this.position.x - 46,this.position.y - 83,69,86);
+						else if ((this.i <= 17) && (this.i > 8)) image(spr_left_1,this.position.x - 46,this.position.y - 83,69,86);
+						else image(spr_left_2,this.position.x - 46,this.position.y - 83,69,86);
+					} else{
+						image(spr_left_1,this.position.x - 46,this.position.y - 83,69,86);
+					}
 					break;				
 				case 2:
-					image(spr_down,this.position.x - 30,this.position.y - 83,52,86); 
+					if(this.move){
+						if ((this.i <= 26) && (this.i > 17)) image(spr_down_0,this.position.x - 30,this.position.y - 83,52,86);
+						else if ((this.i <= 17) && (this.i > 8)) image(spr_down_1,this.position.x - 30,this.position.y - 83,52,86);
+						else image(spr_down_2,this.position.x - 30,this.position.y - 83,52,86);
+					} else{
+						image(spr_down_1,this.position.x - 30,this.position.y - 83,52,86);
+					}
 					break;	
 				case 3:
-					image(spr_right,this.position.x - 20,this.position.y - 83,52,86);
+					if(this.move){
+						if ((this.i <= 26) && (this.i > 17)) image(spr_right_0,this.position.x - 20,this.position.y - 83,52,86);
+						else if ((this.i <= 17) && (this.i > 8)) image(spr_right_1,this.position.x - 20,this.position.y - 83,52,86);
+						else image(spr_right_2,this.position.x - 20,this.position.y - 83,52,86);
+					} else{
+						image(spr_right_1,this.position.x - 20,this.position.y - 83,52,86);
+					}					
 					break;				
 			}
 	}

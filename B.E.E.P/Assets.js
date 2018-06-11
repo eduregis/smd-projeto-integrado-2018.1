@@ -1,4 +1,7 @@
-var spr_up, spr_left, spr_down, spr_right; // sprites do personagem.
+var spr_up_0, spr_up_1, spr_up_2; // sprites do personagem andando para cima.
+var spr_left_0, spr_left_1, spr_left_2; // sprites do personagem andando para a esquerda.
+var spr_down_0, spr_down_1, spr_down_2; // sprites do personagem andando para baixo.
+var spr_right_0, spr_right_1, spr_right_2; // sprites do personagem andando para a direita.
 var spr_block; // sprite da caixa.
 var spr_btn_walk_0, spr_btn_walk_1; // botão de andar.
 var spr_btn_turn_left_0, spr_btn_turn_left_1; // botão de girar para a esquerda.
@@ -14,37 +17,45 @@ var spr_btn_decision_0, spr_btn_decision_1;
 
 function loadSprites(){ // carrega os sprites respectivos.
 	bkg_menu = loadImage('assets/Beep_menu_principal.png');
-	bkg_menu_start = loadImage('assets/Beep_menu_iniciar.png');
-	bkg_menu_learn = loadImage('assets/Beep_menu_aprender.png');
-	bkg_menu_credits = loadImage('assets/Beep_menu_creditos.png');
-	bkg_menu_exit = loadImage('assets/Beep_menu_sair.png');
+	bkg_menu_start = loadImage('assets/Beep_menu_start.png');
+	bkg_menu_learn = loadImage('assets/Beep_menu_learn.png');
+	bkg_menu_credits = loadImage('assets/Beep_menu_credits.png');
+	bkg_menu_exit = loadImage('assets/Beep_menu_exit.png');
 
-	spr_up = loadImage('assets/walk_up.png');
-	spr_left = loadImage('assets/walk_left.png');
-	spr_down = loadImage('assets/walk_down.png');
-	spr_right = loadImage('assets/walk_right.png');
+	spr_up_0 = loadImage('assets/walk_up_0.png');
+	spr_up_1 = loadImage('assets/walk_up_1.png');
+	spr_up_2 = loadImage('assets/walk_up_2.png');
+	spr_left_0 = loadImage('assets/walk_left_0.png');
+	spr_left_1 = loadImage('assets/walk_left_1.png');
+	spr_left_2 = loadImage('assets/walk_left_2.png');
+	spr_down_0 = loadImage('assets/walk_down_0.png');
+	spr_down_1 = loadImage('assets/walk_down_1.png');
+	spr_down_2 = loadImage('assets/walk_down_2.png');
+	spr_right_0 = loadImage('assets/walk_right_0.png');
+	spr_right_1 = loadImage('assets/walk_right_1.png');
+	spr_right_2 = loadImage('assets/walk_right_2.png');
 
-	spr_block = loadImage('assets/cubo.png');
+	spr_block = loadImage('assets/block.png');
 	spr_enemy_idle = loadImage('assets/spr_enemy_idle.png');
-	spr_press_btn_0 = loadImage('assets/botao_01.png');
-	spr_press_btn_1 = loadImage('assets/botao_02.png');
+	spr_press_btn_0 = loadImage('assets/press_button_0.png');
+	spr_press_btn_1 = loadImage('assets/press_button_1.png');
 
-	spr_btn_walk_0 = loadImage('assets/bot_andar.png');
-	spr_btn_walk_1 = loadImage('assets/bot_andar_02.png');
-	spr_btn_turn_left_0 = loadImage('assets/bot_girar_esq.png');
-	spr_btn_turn_left_1 = loadImage('assets/bot_girar_esq_02.png');
-	spr_btn_turn_right_0 = loadImage('assets/bot_girar_dir.png');
-	spr_btn_turn_right_1 = loadImage('assets/bot_girar_dir_02.png');
-	spr_btn_grab_drop_0 = loadImage('assets/bot_pegar.png');
-	spr_btn_grab_drop_1 = loadImage('assets/bot_pegar_02.png');
-	spr_btn_attack_0 = loadImage('assets/bot_atacar.png');
-	spr_btn_attack_1 = loadImage('assets/bot_atacar_02.png');
-	spr_btn_press_0 = loadImage('assets/bot_apertar.png');
-	spr_btn_press_1 = loadImage('assets/bot_apertar_02.png');
+	spr_btn_walk_0 = loadImage('assets/btn_walk_0.png');
+	spr_btn_walk_1 = loadImage('assets/btn_walk_1.png');
+	spr_btn_turn_left_0 = loadImage('assets/btn_turn_left_0.png');
+	spr_btn_turn_left_1 = loadImage('assets/btn_turn_left_1.png');
+	spr_btn_turn_right_0 = loadImage('assets/btn_turn_right_0.png');
+	spr_btn_turn_right_1 = loadImage('assets/btn_turn_right_1.png');
+	spr_btn_grab_drop_0 = loadImage('assets/btn_grab_drop_0.png');
+	spr_btn_grab_drop_1 = loadImage('assets/btn_grab_drop_1.png');
+	spr_btn_attack_0 = loadImage('assets/btn_attack_0.png');
+	spr_btn_attack_1 = loadImage('assets/btn_attack_1.png');
+	spr_btn_press_0 = loadImage('assets/btn_press_0.png');
+	spr_btn_press_1 = loadImage('assets/btn_press_1.png');
 
-	spr_btn_procedure_0 = loadImage('assets/bot_procedimento.png');
-	spr_btn_procedure_1 = loadImage('assets/bot_procedimento_02.png');
-	spr_btn_decision_0 = loadImage('assets/bot_decisao.png');
-	spr_btn_decision_1 = loadImage('assets/bot_decisao_02.png');
+	spr_btn_procedure_0 = loadImage('assets/btn_procedure_0.png');
+	spr_btn_procedure_1 = loadImage('assets/btn_procedure_1.png');
+	spr_btn_decision_0 = loadImage('assets/btn_decision_0.png');
+	spr_btn_decision_1 = loadImage('assets/btn_decision_1.png');
 
 }
