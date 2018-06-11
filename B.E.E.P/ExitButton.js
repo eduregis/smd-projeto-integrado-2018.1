@@ -19,7 +19,7 @@ class ExitButton{
 					this.status = 0;
 				}else if(mouseIsPressed){
 					reset();
-					pageCode = 0;
+					pageCode = "menu";
 					isLevel = false;
 					levelController = true;
 					this.status = 2;

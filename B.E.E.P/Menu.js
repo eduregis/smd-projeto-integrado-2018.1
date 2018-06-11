@@ -1,7 +1,7 @@
 function loadMenu(){	
 	if (insideRect(mouseX,mouseY,795, 338, 400, 70)){
 		if (mouseIsPressed){
-			pageCode = 1; 
+			pageCode = "level_01"; 
 			levelController = true;
 			isLevel = true;
 		} 

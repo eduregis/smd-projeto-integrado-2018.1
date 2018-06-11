@@ -1,5 +1,5 @@
 var levelController = true; // para que as especificidades da fase seja passadas apenas uma vez, como se fosse no setup.
-var pageCode = 0; // id da fase.
+var pageCode = "menu"; // id da fase.
 var isLevel = false;
 
 function setupLevel(){ // função que simula um setup.
@@ -9,11 +9,11 @@ function setupLevel(){ // função que simula um setup.
 		resetButton = new ResetButton(1205,555,70,40);
 		exitButton = new ExitButton(1205,617,70,40);		
 		switch(pageCode){
-			case 0: 
+			case "menu": 
 				isLevel = false;
 				menu();
 				break;
-			case 1:
+			case "level_01":
 				isLevel = true; 
 				levelDesign_01();
 				break;
@@ -39,7 +39,7 @@ function drawLevel(){
 		character.updateCharacter(); // desenha o personagem.
 		drawButtons(); // desenha os botões arrastáveis.
 	}else{
-		if(pageCode == 0) menu();
+		if(pageCode == "menu") menu();
 	}
 }
 

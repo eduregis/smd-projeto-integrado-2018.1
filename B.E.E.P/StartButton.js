@@ -3,8 +3,10 @@ class StartButton{
 		this.position = createVector(x,y);
 		this.dimension = createVector(w,h);
 		this.status = 0;
+		this.count = 0;
 	}
 	draw(){
+		if(this.count != 0) this.count--;
 		switch(this.status){
 			case 0:
 				this.basic(); // caso o mouse não esteja em cima do botão.
@@ -18,9 +20,12 @@ class StartButton{
 				if(!insideRect(mouseX,mouseY,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2, this.dimension.x, this.dimension.y)){
 					this.status = 0;
 				}else if(mouseIsPressed){
-					starter = true; // libera uma ação da tabela de ações.
-					stayIndex = false; // ajuda a manter a variável que percorre a tabela de ações no lugar.
-					this.status = 2;
+					if(this.count == 0){
+						starter = true; // libera uma ação da tabela de ações.
+						stayIndex = false; // ajuda a manter a variável que percorre a tabela de ações no lugar.
+						this.status = 2;
+						this.count = 26;
+					}					
 				}							
 				break;
 			case 2:
