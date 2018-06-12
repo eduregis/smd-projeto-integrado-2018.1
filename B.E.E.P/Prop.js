@@ -6,8 +6,7 @@ class Prop{
 		this.drawController = true;
 	}			
 
-	drawProp(){	
-		print(this.id);	
+	drawProp(){		
 		if(this.drawController){
 			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do bloco e faz os ajustes necessários. 
 				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
@@ -65,14 +64,17 @@ class Prop{
 function addProp(x,y,id){
 	if ((x >= 0) && (x <= sizeStageX) && (y >= 0) && (y <= sizeStageY)){ // impede que props fora do grid sejam criados.
 		if((x != character.positionGrid.x) || (y != character.positionGrid.y)){ // impede que props sejam criados em cima do personagem.
-			prop = new Prop(x, y, id); // cria um prop na posição especificada.
-			gridProp[x][y] = prop; // insere o prop criado acima no grid.
+			if(!learnLock[id]){ // o prop só será criado se sua variável booleana correspondente no vetor learnLock for falsa, se for verdadeira, é porque o jogador já pegou o prop.
+				prop = new Prop(x, y, id); // cria um prop na posição especificada.
+				gridProp[x][y] = prop; // insere o prop criado acima no grid.
+			}			
 		}		
 	}	
 }
 
 function drawProps(){ // percorre a matriz do grid e desenha os props que lá existem.
 	if(gridProp[character.positionGrid.x][character.positionGrid.y] != null){
+		character.prop = gridProp[character.positionGrid.x][character.positionGrid.y].id;
 		gridProp[character.positionGrid.x][character.positionGrid.y] = null;
 	}
 	for(var i = 0; i <= sizeStageX; i++){

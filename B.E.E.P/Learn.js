@@ -2,7 +2,6 @@ var learnLock = [true,true,true,true,false,false,false]; // vetor de booleanos q
 var learnIndex = 0; // endereço da página na seção de aprender.
 
 function loadLearn(){
-	print(learnIndex);
 	switch(learnIndex){
 		case 0:
 			if(learnLock[0]) image(bkg_learn_00,0,0);

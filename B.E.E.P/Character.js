@@ -6,9 +6,11 @@ class Character{
 		this.i = 0;	// contador que permite continuidade ao movimento do personagem.
 		this.direction = 0; // variável que informa para que direção o personagem está olhando. 0-) frente, 1-) esquerda, 2-) trás, 3-) direita.
 		this.block = null; // variável que armazena o bloco que o personagem pode carregar.
+		this.prop = null;
 	}
 
 	updateCharacter(){
+		print(learnLock);
 		this.drawCharacter(); // desenha o personagem mesmo se este estiver parado.
 		if (this.i==0){
 			this.move = false; // quando i chega a zero, significa que o personagem chegou no cruzamento desejado, então ele não irá mais se mover, até que outro comando seja dado.	

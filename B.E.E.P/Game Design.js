@@ -141,5 +141,6 @@ function levelDesign_03(){
 }
 
 function testVictory(value){
-	if (value == victoryCount) isVictory = true;
+	if (value == victoryCount) isVictory = true; // se o valor total corresponder ao necessário, será declarada vitória.
+	if(character.prop != null) learnLock[character.prop] = true; // abre a informação antes bloqueada na aba aprender.
 }
