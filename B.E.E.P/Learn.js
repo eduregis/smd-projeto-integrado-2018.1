@@ -31,7 +31,15 @@ function loadLearn(){
 			if(learnLock[6]) image(bkg_learn_06,0,0);
 			else image(bkg_learn_lock,0,0);
 			break;
-	}		
+	}
+	if (insideRect(mouseX,mouseY,700,600,250,102)){
+		image(spr_btn_back_1,700,600,250,102);
+		if(mouseIsPressed){
+			pageCode = "menu"; 
+			levelController = true;
+			isLevel = false;
+		}
+	}else image(spr_btn_back_0,700,600,250,102);		
 }
 
 function keyReleased(){
