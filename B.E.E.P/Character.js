@@ -1,10 +1,11 @@
 class Character{
 	constructor(x,y){
-		this.position = createVector(x,y); // posição do personagem
-		this.positionGrid = createVector(int(sizeStageX/2),int(sizeStageY/2)); // posição do personagem no grid.
+		this.position = createVector(centerGridX,centerGridY); // posição do personagem
+		this.positionGrid = createVector(x,y); // posição do personagem no grid.
 		this.move = false; // variável de controle do movimento, utilizando a interpolação.		
 		this.i = 0;	// contador que permite continuidade ao movimento do personagem.
 		this.direction = 0; // variável que informa para que direção o personagem está olhando. 0-) frente, 1-) esquerda, 2-) trás, 3-) direita.
+		this.drawController = true;
 		this.block = null; // variável que armazena o bloco que o personagem pode carregar.
 		this.prop = null;
 	}
@@ -127,6 +128,33 @@ class Character{
 	}
 
 	drawCharacter(){ // função que desenha o personagem.
+
+		if(this.drawController){ // esta função coloca o personagem na sua posição inicial.
+			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do personagem e faz os ajustes necessários. 
+				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
+					this.position.x += 50; // ajuste horizontal.
+					this.position.y += 25; // ajuste vertical.
+				}			
+			}else if(this.positionGrid.x < int(sizeStageX/2)){
+				for(var i = this.positionGrid.x ; i < int(sizeStageX/2); i++){
+					this.position.x -= 50;
+					this.position.y -= 25;
+				}
+			}
+			if(this.positionGrid.y > int(sizeStageY/2)){
+				for(var i = this.positionGrid.y; i > int(sizeStageY/2); i--){
+					this.position.x -= 50;
+					this.position.y += 25;
+				}			
+			}else if(this.positionGrid.y < int(sizeStageY/2)){
+				for(var i = this.positionGrid.y; i < int(sizeStageY/2); i++){
+					this.position.x += 50;
+					this.position.y -= 25;
+				}
+			}
+			this.drawController = false; // alterando a drawController.
+		}
+
 		switch (this.direction){
 				case 0:
 					if(this.move){

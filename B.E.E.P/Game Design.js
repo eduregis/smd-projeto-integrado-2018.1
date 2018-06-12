@@ -78,18 +78,18 @@ function learn(){
 
 function levelDesign_01(){
 	// define o centro do grid.
-	centerGridX = 315;
-	centerGridY = 400;
+	centerGridX = 325;
+	centerGridY = 350;
 	actionTab = new ActionTab(5); // define o limite de ações permitido para o jogador.
 	procedureTab = new ProcedureTab(0);  // define o limite de ações do procedimento permitido para o jogador.
 	decisionTab = new DecisionTab(0,0);	 // define o limite de ações por escolha para o jogador.
 	p_dTab = new P_DTab(1);	 // define o limite de procedimentos e/ou decisões permitido para o jogador.
 	// define as dimensões da fase.
 	sizeStageX = 3;
-	sizeStageY = 8;
+	sizeStageY = 5;
 	fillGridNull(); // enche a matriz de objetos nulos.
 	fillGridPropNull(); // enche a matriz de objetos nulos.	
-	character = new Character(centerGridX,centerGridY); // 	inicia o personagem numa posição determinada.
+	character = new Character(1,4); // inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
 	addPressButton(2,1);
 	addProp(1,2,4);			
