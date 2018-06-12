@@ -4,7 +4,8 @@ var isLevel = false;
 
 function setupLevel(){ // função que simula um setup.
 	if(levelController){
-		//botões de sair, resetar e de ação.		
+		//botões de sair, resetar e de ação.
+		victoryCount = 0; // zera a condição de vitória.		
 		startButton = new StartButton(1205,472,70,80);
 		resetButton = new ResetButton(1205,555,70,40);
 		exitButton = new ExitButton(1205,617,70,40);		
@@ -50,6 +51,7 @@ function drawLevel(){
 		drawObjects(); // desenha os blocos existentes no grid.
 		character.updateCharacter(); // desenha o personagem.
 		drawButtons(); // desenha os botões arrastáveis.
+		testVictory(1);
 	}else{
 		if(pageCode == "menu") menu();
 		else if (pageCode == "levelChoice") levelChoice();
@@ -68,23 +70,19 @@ function levelDesign_01(){
 	// define o centro do grid.
 	centerGridX = 335;
 	centerGridY = 400;
-	actionTab = new ActionTab(9); // define o limite de ações permitido para o jogador.
-	procedureTab = new ProcedureTab(10);  // define o limite de ações do procedimento permitido para o jogador.
-	decisionTab = new DecisionTab(5,5);	 // define o limite de ações por escolha para o jogador.
+	actionTab = new ActionTab(5); // define o limite de ações permitido para o jogador.
+	procedureTab = new ProcedureTab(0);  // define o limite de ações do procedimento permitido para o jogador.
+	decisionTab = new DecisionTab(0,0);	 // define o limite de ações por escolha para o jogador.
 	p_dTab = new P_DTab(1);	 // define o limite de procedimentos e/ou decisões permitido para o jogador.
 	// define as dimensões da fase.
-	sizeStageX = 5;
-	sizeStageY = 6;
+	sizeStageX = 3;
+	sizeStageY = 8;
 	fillGridNull(); // enche a matriz de objetos nulos.
 	fillGridPropNull(); // enche a matriz de objetos nulos.	
 	character = new Character(centerGridX,centerGridY); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
-	addBlock(0,0);
-	addEnemy(1,4);
-	addBlock(2,1);
-	addBlock(4,1);
-	addPressButton(4,4);	
-	loadButtons();
+	addPressButton(1,1);		
+	loadButtons();	
 }
 
 function levelDesign_02(){
@@ -129,4 +127,8 @@ function levelDesign_03(){
 	addBlock(4,1);
 	addPressButton(4,5);	
 	loadButtons();
+}
+
+function testVictory(value){
+	if (value == victoryCount) isVictory = true;
 }

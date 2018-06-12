@@ -50,6 +50,8 @@ class ResetButton{
 }
 
 function reset(){
+	victoryCount = 0;
+	isVictory = false;
 	grid = [];
 	fillGridNull();
 	levelController = true; // reseta a fase.

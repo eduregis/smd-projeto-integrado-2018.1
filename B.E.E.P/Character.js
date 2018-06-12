@@ -66,7 +66,7 @@ class Character{
 					stayIndex = true;					
 				}
 				break;
-			case 4: //  pega ou coloca um bloco.
+			case 4: //  ataca um inimigo.
 				charCod = 6;
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
@@ -76,7 +76,7 @@ class Character{
 					stayIndex = true;					
 				}
 				break;
-			case 5: //  pega ou coloca um bloco.
+			case 5: //  aperta um botão.
 				charCod = 7;
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
@@ -352,25 +352,37 @@ class Character{
 				switch(this.direction){// de acordo com a direção que o personagem estiver olhando, pegamos o bloco à sua frente.
 					case 0:
 						if ((this.positionGrid.y > 0) && (grid[this.positionGrid.x][this.positionGrid.y - 1] != null)){ // impede que o personagem tente pegar algo fora do grid					
-							if (grid[this.positionGrid.x][this.positionGrid.y - 1].id == 2) grid[this.positionGrid.x][this.positionGrid.y - 1].status = 1; // mudamos o status do botão, agora pressionado.								
+							if (grid[this.positionGrid.x][this.positionGrid.y - 1].id == 2){
+								if (grid[this.positionGrid.x][this.positionGrid.y - 1].status == 0) victoryCount++;
+								grid[this.positionGrid.x][this.positionGrid.y - 1].status = 1; // mudamos o status do botão, agora pressionado.	
+							} 							
 						}
 						charCod = 1; // mantém a posição do personagem
 						break;
 					case 1:
 						if ((this.positionGrid.x > 0) && (grid[this.positionGrid.x - 1][this.positionGrid.y] != null)){
-							if (grid[this.positionGrid.x - 1][this.positionGrid.y].id == 2) grid[this.positionGrid.x - 1][this.positionGrid.y].status = 1;								
+							if (grid[this.positionGrid.x - 1][this.positionGrid.y].id == 2){
+								if (grid[this.positionGrid.x - 1][this.positionGrid.y].status == 0) victoryCount++;
+								grid[this.positionGrid.x - 1][this.positionGrid.y].status = 1;	
+							}							
 						}
 						charCod = 2;
 							break;
 					case 2:
 						if ((this.positionGrid.y < sizeStageY) && (grid[this.positionGrid.x][this.positionGrid.y + 1] != null)){
-							if (grid[this.positionGrid.x][this.positionGrid.y + 1].id == 2) grid[this.positionGrid.x][this.positionGrid.y + 1].status = 1;								
+							if (grid[this.positionGrid.x][this.positionGrid.y + 1].id == 2){
+								if (grid[this.positionGrid.x][this.positionGrid.y + 1].status == 0) victoryCount++;
+								grid[this.positionGrid.x][this.positionGrid.y + 1].status = 1;
+							} 								
 						}
 						charCod = 3;
 						break;
 					case 3:
 						if ((this.positionGrid.x < sizeStageX) && (grid[this.positionGrid.x + 1][this.positionGrid.y] != null)){
-							if (grid[this.positionGrid.x + 1][this.positionGrid.y].id == 2) grid[this.positionGrid.x + 1][this.positionGrid.y].status = 1;								
+							if (grid[this.positionGrid.x + 1][this.positionGrid.y].id == 2){
+								if (grid[this.positionGrid.x + 1][this.positionGrid.y].status == 0) victoryCount++;
+								grid[this.positionGrid.x + 1][this.positionGrid.y].status = 1;
+							} 								
 						}
 						charCod = 4;
 						break;

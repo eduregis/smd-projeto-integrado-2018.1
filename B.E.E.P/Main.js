@@ -28,6 +28,9 @@ var decisionElseIndex = 0; // variável que percorrerá a tabela de decisões, s
 var currentTab = "Action";
 var stayIndex = false; // variável que auxilia no processo de percorrer a tabela de ações.
 
+var victoryCount = 0;
+var isVictory = false;
+
 function preload(){
 	loadSprites(); // carrega as imagens
 }
@@ -37,6 +40,7 @@ function setup(){
 }
 
 function draw(){
+	print(isVictory);
 	drawLevel();				
 }
 
@@ -104,10 +108,14 @@ function isometricGrid(){
 }
 
 function colorGrid(){
-	if((corG > 255) || (corG < 125)) // dá o efeito de neon.
-		corT = -corT;
-	corG += corT;	
+	if(!isVictory){
+		if((corG > 255) || (corG < 125)) corT = -corT;
+		corG += corT;	
 		stroke(0,corG,255);	
+	}else{
+		stroke(0,255,0);
+	}
+	
 }
 
 function decisionTest(test){
@@ -191,7 +199,6 @@ function decisionTest(test){
 }
 
 function actionController(){
-	print(currentTab);
 	if(actionIndex + 1 > actionTab.actionButtons.length) stayIndex = true; // impede que o checador procure comandos fora do escopo do vetor.	
 	if(starter){ // se a variável de controle starter permite, ele inicia um novo código.		
 		switch(currentTab){
