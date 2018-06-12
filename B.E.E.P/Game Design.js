@@ -18,6 +18,10 @@ function setupLevel(){ // função que simula um setup.
 				isLevel = false;
 				levelChoice();
 				break;
+			case "learn":
+				isLevel = false;
+				learn();
+				break;
 			case "level_01":
 				isLevel = true; 
 				levelDesign_01();
@@ -56,6 +60,7 @@ function drawLevel(){
 	}else{
 		if(pageCode == "menu") menu();
 		else if (pageCode == "levelChoice") levelChoice();
+		else if (pageCode == "learn") learn();
 	}
 }
 
@@ -67,9 +72,13 @@ function levelChoice(){
 	loadLevelChoice();
 }
 
+function learn(){
+	loadLearn();
+}
+
 function levelDesign_01(){
 	// define o centro do grid.
-	centerGridX = 335;
+	centerGridX = 315;
 	centerGridY = 400;
 	actionTab = new ActionTab(5); // define o limite de ações permitido para o jogador.
 	procedureTab = new ProcedureTab(0);  // define o limite de ações do procedimento permitido para o jogador.
@@ -82,8 +91,8 @@ function levelDesign_01(){
 	fillGridPropNull(); // enche a matriz de objetos nulos.	
 	character = new Character(centerGridX,centerGridY); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
-	addPressButton(1,1);
-	addProp(1,3,1);			
+	addPressButton(2,1);
+	addProp(1,2,4);			
 	loadButtons();	
 }
 

@@ -6,7 +6,8 @@ class Prop{
 		this.drawController = true;
 	}			
 
-	drawProp(){		
+	drawProp(){	
+		print(this.id);	
 		if(this.drawController){
 			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do bloco e faz os ajustes necessários. 
 				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
@@ -35,25 +36,25 @@ class Prop{
 		// Os desenhos entram aqui.
 		switch(this.id){
 			case 0:
-				image(spr_prop_00,this.position.x - 20,this.position.y - 45, 40, 40); // desenha o prop.
+				image(spr_prop_00,this.position.x - 30,this.position.y - 65, 60, 60); // desenha o prop de algoritmo.
 				break;
 			case 1:
-				image(spr_prop_01,this.position.x - 20,this.position.y - 45, 40, 40); // desenha o prop.
+				image(spr_prop_01,this.position.x - 30,this.position.y - 65, 60, 60); // desenha o prop de variável.
 				break;
 			case 2:
-				image(spr_prop_02,this.position.x - 20,this.position.y - 45, 40, 40); // desenha o prop.
+				image(spr_prop_02,this.position.x - 30,this.position.y - 65, 60, 60); // desenha o prop de fluxograma.
 				break;
 			case 3:
-				image(spr_prop_03,this.position.x - 20,this.position.y - 45, 40, 40); // desenha o prop.
+				image(spr_prop_03,this.position.x - 30,this.position.y - 65, 60, 60); // desenha o prop de interatividade.
 				break;
 			case 4:
-				image(spr_prop_04,this.position.x - 20,this.position.y - 45, 40, 40); // desenha o prop.
+				image(spr_prop_04,this.position.x - 30,this.position.y - 65, 60, 60); // desenha o prop de loop.
 				break;
 			case 5:
-				image(spr_prop_05,this.position.x - 20,this.position.y - 45, 40, 40); // desenha o prop.
+				image(spr_prop_05,this.position.x - 30,this.position.y - 65, 60, 60); // desenha o prop de condicional.
 				break;
 			case 6:
-				image(spr_prop_06,this.position.x - 20,this.position.y - 45, 40, 40); // desenha o prop.
+				image(spr_prop_06,this.position.x - 30,this.position.y - 65, 60, 60); // desenha o prop de operador lógico.
 				break;			
 			default:
 				break;		
@@ -61,10 +62,10 @@ class Prop{
 	}
 }
 
-function addProp(x,y){
+function addProp(x,y,id){
 	if ((x >= 0) && (x <= sizeStageX) && (y >= 0) && (y <= sizeStageY)){ // impede que props fora do grid sejam criados.
 		if((x != character.positionGrid.x) || (y != character.positionGrid.y)){ // impede que props sejam criados em cima do personagem.
-			prop = new Prop(x, y, 0); // cria um prop na posição especificada.
+			prop = new Prop(x, y, id); // cria um prop na posição especificada.
 			gridProp[x][y] = prop; // insere o prop criado acima no grid.
 		}		
 	}	

@@ -26,6 +26,8 @@ var spr_block; // sprite da caixa.
 var spr_enemy_idle; // sprite do inimigo parado.
 var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal e ativo.
 
+var bkg_learn_00, bkg_learn_01, bkg_learn_02, bkg_learn_03, bkg_learn_04, bkg_learn_05, bkg_learn_06, bkg_learn_lock; 
+
 function loadSprites(){ // carrega os sprites respectivos.
 	spr_up_0 = loadImage('assets/walk_up_0.png');
 	spr_up_1 = loadImage('assets/walk_up_1.png');
@@ -86,4 +88,14 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_enemy_idle = loadImage('assets/spr_enemy_idle.png');
 	spr_press_btn_0 = loadImage('assets/press_button_0.png');
 	spr_press_btn_1 = loadImage('assets/press_button_1.png');
+
+	bkg_learn_00 = loadImage('assets/bkg_learn_00.png');
+	bkg_learn_01 = loadImage('assets/bkg_learn_01.png');
+	bkg_learn_02 = loadImage('assets/bkg_learn_02.png');
+	bkg_learn_03 = loadImage('assets/bkg_learn_03.png');
+	bkg_learn_04 = loadImage('assets/bkg_learn_04.png');
+	bkg_learn_05 = loadImage('assets/bkg_learn_05.png');
+	bkg_learn_06 = loadImage('assets/bkg_learn_06.png');
+	bkg_learn_lock = loadImage('assets/bkg_learn_lock.png');
+	bkg_learn_unlock = loadImage('assets/bkg_learn_unlock.png');
 }
