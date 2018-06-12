@@ -8,7 +8,7 @@ class Obstacle{
 		
 	}			
 
-	drawObject(){
+	drawObstacle(){
 		if(this.drawController){
 			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do bloco e faz os ajustes necessários. 
 				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
@@ -54,8 +54,7 @@ function addBlock(x,y){
 		if((x != character.positionGrid.x) || (y != character.positionGrid.y)){ // impede que blocos sejam criados em cima do personagem.
 			block = new Obstacle(x, y, 0); // cria um bloco na posição especificada.
 			grid[x][y] = block; // insere o bloco criado acima no grid.
-		}
-		
+		}		
 	}	
 }
 
@@ -64,8 +63,7 @@ function addEnemy(x,y){
 		if((x != character.positionGrid.x) || (y != character.positionGrid.y)){ // impede que blocos sejam criados em cima do personagem.
 			block = new Obstacle(x, y, 1); // cria um bloco na posição especificada.
 			grid[x][y] = block; // insere o bloco criado acima no grid.
-		}
-		
+		}		
 	}	
 }
 
@@ -74,16 +72,15 @@ function addPressButton(x,y){
 		if((x != character.positionGrid.x) || (y != character.positionGrid.y)){ // impede que blocos sejam criados em cima do personagem.
 			block = new Obstacle(x, y, 2); // cria um bloco na posição especificada.
 			grid[x][y] = block; // insere o bloco criado acima no grid.
-		}
-		
+		}		
 	}	
 }
 
-function drawObjects(){ // percorre a matriz do grid e desenha os blocos que lá existem.
+function drawObstacles(){ // percorre a matriz do grid e desenha os blocos que lá existem.
 	for(var i = 0; i <= sizeStageX; i++){
 		for(var j = 0; j <= sizeStageY; j++){
 			if(grid[i][j] != null){ // checa se o objeto é nulo, se não, ele desenha o bloco.
-				grid[i][j].drawObject(); 		
+				grid[i][j].drawObstacle(); 		
 			}		
 		}
 	}

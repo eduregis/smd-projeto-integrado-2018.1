@@ -20,6 +20,8 @@ var spr_btn_start, spr_btn_reset, spr_btn_exit; // botões de ação, resetar e 
 
 var spr_tile; // chão da fase.
 
+var spr_prop_00, spr_prop_01, spr_prop_02, spr_prop_03, spr_prop_04, spr_prop_05, spr_prop_06;
+
 var spr_block; // sprite da caixa.
 var spr_enemy_idle; // sprite do inimigo parado.
 var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal e ativo.
@@ -71,6 +73,14 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_btn_exit = loadImage('assets/btn_exit.png');
 
 	spr_tile = loadImage('assets/tile.png');
+
+	spr_prop_00 = loadImage('assets/prop_00.png');
+	spr_prop_01 = loadImage('assets/prop_01.png');
+	spr_prop_02 = loadImage('assets/prop_02.png');
+	spr_prop_03 = loadImage('assets/prop_03.png');
+	spr_prop_04 = loadImage('assets/prop_04.png');
+	spr_prop_05 = loadImage('assets/prop_05.png');
+	spr_prop_06 = loadImage('assets/prop_06.png');
 
 	spr_block = loadImage('assets/block.png');
 	spr_enemy_idle = loadImage('assets/spr_enemy_idle.png');

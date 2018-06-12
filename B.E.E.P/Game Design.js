@@ -48,7 +48,8 @@ function drawLevel(){
 		p_dTab.drawTab(); // desenha a tabela de escolha entre desição e procedimento.
 		procedureTab.drawTab(); // desenha a tabela de procedimentos.
 		decisionTab.drawTab();	 // desenha a tabela de desições.
-		drawObjects(); // desenha os blocos existentes no grid.
+		drawObstacles(); // desenha os blocos existentes no grid.
+		drawProps();
 		character.updateCharacter(); // desenha o personagem.
 		drawButtons(); // desenha os botões arrastáveis.
 		testVictory(1);
@@ -81,7 +82,8 @@ function levelDesign_01(){
 	fillGridPropNull(); // enche a matriz de objetos nulos.	
 	character = new Character(centerGridX,centerGridY); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
-	addPressButton(1,1);		
+	addPressButton(1,1);
+	addProp(1,3,1);			
 	loadButtons();	
 }
 
