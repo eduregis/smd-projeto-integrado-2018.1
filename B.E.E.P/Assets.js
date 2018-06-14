@@ -119,5 +119,4 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_btn_learn_04 = loadImage('assets/btn_learn_04.png');
 	spr_btn_learn_05 = loadImage('assets/btn_learn_05.png');
 	spr_btn_learn_06 = loadImage('assets/btn_learn_06.png');
-
 }

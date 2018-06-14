@@ -1,4 +1,4 @@
-var learnLock = [true,true,true,true,false,false,false]; // vetor de booleanos que diz quais props estão liberados.
+var learnLock = [true,true,true,false,false,false,false]; // vetor de booleanos que diz quais props estão liberados.
 var learnIndex = 0; // endereço da página na seção de aprender.
 
 function loadLearn(){
@@ -55,35 +55,35 @@ function loadLearn(){
 		}
 	}else image(spr_btn_learn_01,204, 630, 153, 58);
 	
-	if (insideRect(mouseX,mouseY, 384, 630, 153, 58)){ // botão da aba ''.
+	if (insideRect(mouseX,mouseY, 384, 630, 153, 58)){ // botão da aba 'fluxograma'.
 		image(spr_btn_learn_02, 379, 628, 163, 62);
 		if(mouseIsPressed){
 			learnIndex = 2;
 		}
 	}else image(spr_btn_learn_02, 384, 630,153,58);
 
-	if (insideRect(mouseX,mouseY, 564, 630,153, 58)){ // botão da aba ''.
+	if (insideRect(mouseX,mouseY, 564, 630,153, 58)){ // botão da aba 'interatividade'.
 		image(spr_btn_learn_03, 559, 628, 163, 62);
 		if(mouseIsPressed){
 			learnIndex = 3;
 		}
 	}else image(spr_btn_learn_03, 564, 630, 153, 58);	
 
-	if (insideRect(mouseX,mouseY,744, 630,153,58)){ // botão da aba ''.
+	if (insideRect(mouseX,mouseY,744, 630,153,58)){ // botão da aba 'estruturas'.
 		image(spr_btn_learn_04,739, 628, 163, 62);
 		if(mouseIsPressed){
 			learnIndex = 4;
 		}
 	}else image(spr_btn_learn_04, 744, 630, 153, 58);
 
-	if (insideRect(mouseX,mouseY, 924, 630, 153, 58)){ // botão da aba ''.
+	if (insideRect(mouseX,mouseY, 924, 630, 153, 58)){ // botão da aba 'condicionantes'.
 		image(spr_btn_learn_05, 919, 628, 163, 62);
 		if(mouseIsPressed){
 			learnIndex = 5;
 		}
 	}else image(spr_btn_learn_05, 924, 630, 153, 58);
 
-	if (insideRect(mouseX,mouseY, 1104,630, 153, 58)){ // botão da aba ''.
+	if (insideRect(mouseX,mouseY, 1104,630, 153, 58)){ // botão da aba 'operadores lógicos'.
 		image(spr_btn_learn_06, 1099,628, 163, 62);
 		if(mouseIsPressed){
 			learnIndex = 6;

@@ -7,6 +7,7 @@ var sizeStageX;
 var sizeStageY;
 var grid = []; // matriz a ser preenchida com obstáculos.
 var gridProp = []; // matriz a ser preenchida com os colecionáveis.
+var gridPortal = []; // matriz a ser preenchida com portais.
 var basicButtons = []; // vetor com os botões de baixo.
 
 var centerGridX, centerGridY; // variáveis para controlar a posição do grid na tela.
@@ -60,6 +61,16 @@ function fillGridPropNull(){
 			arrayAux.push(null); // inserindo objetos nulos no vetor auxiliar.		
 		}
 		gridProp.push(arrayAux); // inserir vetor preenchido com objetos nulos na matriz do grid.
+	}
+}
+
+function fillGridPortalNull(){
+	for(var i = 0; i <= sizeStageX; i++){
+		var arrayAux = []; // vetor auxiliar que será anexado a matriz do grid.
+		for(var j = 0; j <= sizeStageY; j++){
+			arrayAux.push(null); // inserindo objetos nulos no vetor auxiliar.		
+		}
+		gridPortal.push(arrayAux); // inserir vetor preenchido com objetos nulos na matriz do grid.
 	}
 }
 

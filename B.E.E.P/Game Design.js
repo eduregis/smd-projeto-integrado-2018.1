@@ -34,6 +34,10 @@ function setupLevel(){ // função que simula um setup.
 				isLevel = true; 
 				levelDesign_03();
 				break;
+			case "level_04":
+				isLevel = true; 
+				levelDesign_04();
+				break;
 		}
 		levelController = false;
 	}
@@ -54,6 +58,7 @@ function drawLevel(){
 		decisionTab.drawTab();	 // desenha a tabela de desições.
 		drawObstacles(); // desenha os blocos existentes no grid.
 		drawProps();
+		drawPortals();
 		character.updateCharacter(); // desenha o personagem.
 		drawButtons(); // desenha os botões arrastáveis.
 		testVictory(1);
@@ -88,11 +93,12 @@ function levelDesign_01(){
 	sizeStageX = 3;
 	sizeStageY = 5;
 	fillGridNull(); // enche a matriz de objetos nulos.
-	fillGridPropNull(); // enche a matriz de objetos nulos.	
+	fillGridPropNull(); // enche a matriz de objetos nulos.
+	fillGridPortalNull(); // enche a matriz de objetos nulos.	
 	character = new Character(1,4); // inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
 	addPressButton(2,1);
-	addProp(1,2,4);			
+	addProp(1,2,3);			
 	loadButtons();	
 }
 
@@ -107,12 +113,13 @@ function levelDesign_02(){
 	sizeStageX = 6;
 	sizeStageY = 6;
 	fillGridNull(); // enche a matriz de objetos nulos.
-	fillGridPropNull(); // enche a matriz de objetos nulos.	
+	fillGridPropNull(); // enche a matriz de objetos nulos.
+	fillGridPortalNull(); // enche a matriz de objetos nulos.	
 	character = new Character(1,5); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
 	addBlock(1,4);
-	addProp(1,1,5);
-	// addPortal(5,2);		
+	addProp(1,1,4);
+	addPortal(5,2);		
 	loadButtons();
 }
 
