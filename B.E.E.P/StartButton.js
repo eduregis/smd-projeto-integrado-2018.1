@@ -39,18 +39,12 @@ class StartButton{
 		}
 	} // placeholder
 	basic(){
-		image(spr_btn_start,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
+		image(spr_btn_start_0,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
 	} // placeholder
 	above(){
-		fill(50);
-		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
-		fill(0);
-		text("Ação",this.position.x, this.position.y);
+		image(spr_btn_start_1,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
 	} // placeholder
 	click(){
-		fill(0);
-		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
-		fill(0);
-		text("Ação",this.position.x, this.position.y);
+		image(spr_btn_start_1,this.position.x - this.dimension.x/2 + 3, this.position.y - this.dimension.y/2 + 3,65,75);
 	}
 }

@@ -36,18 +36,12 @@ class ExitButton{
 		}
 	}
 	basic(){
-		image(spr_btn_exit,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
+		image(spr_btn_exit_0,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
 	}
 	above(){
-		fill(50);
-		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
-		fill(0);
-		text("Sair",this.position.x, this.position.y);
+		image(spr_btn_exit_1,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
 	}
 	click(){
-		fill(0);
-		rect(this.position.x, this.position.y, this.dimension.x, this.dimension.y);
-		fill(0);
-		text("Sair",this.position.x, this.position.y);
+		image(spr_btn_exit_1,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2,65,35);
 	}
 }

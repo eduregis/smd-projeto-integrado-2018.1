@@ -15,9 +15,9 @@ var spr_btn_press_0, spr_btn_press_1; // botão de pressionar.
 // sprites do menu principal.
 var bkg_menu, bkg_menu_start, bkg_menu_learn, bkg_menu_credits, bkg_menu_exit; // telas do começo de jogo.
 // sprites das abas.
-var bkg_level, bkg_action_tab, bkg_p_d_tab, bkg_procedure_tab; // fundo da fase e tabelas.
+var bkg_level, bkg_action_tab, bkg_p_d_tab, bkg_procedure_tab, bkg_decision_tab; // fundo da fase e tabelas.
 // sprites dos botões de execução.
-var spr_btn_start, spr_btn_reset, spr_btn_exit; // botões de ação, resetar e sair.
+var spr_btn_start_0, spr_btn_start_1, spr_btn_reset_0, spr_btn_reset_1, spr_btn_exit_0, spr_btn_exit_1; // botões de ação, resetar e sair.
 // sprite do chão.
 var spr_tile; // chão da fase.
 // sprites dos colecionáveis.
@@ -30,6 +30,8 @@ var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal 
 var bkg_learn_00, bkg_learn_01, bkg_learn_02, bkg_learn_03, bkg_learn_04, bkg_learn_05, bkg_learn_06, bkg_learn_lock; 
 // sprites do botão de voltar.
 var spr_btn_back_0, spr_btn_back_1;
+// sprites da aba de aprender.
+var spr_btn_learn_00, spr_btn_learn_01, spr_btn_learn_02, spr_btn_learn_03, spr_btn_learn_04, spr_btn_learn_05, spr_btn_learn_06;
 
 function loadSprites(){ // carrega os sprites respectivos.
 	// sprites de movimento.
@@ -73,10 +75,14 @@ function loadSprites(){ // carrega os sprites respectivos.
 	bkg_action_tab = loadImage('assets/bkg_action_tab.png');
 	bkg_procedure_tab = loadImage('assets/bkg_procedure_tab.png');
 	bkg_p_d_tab = loadImage('assets/bkg_p_d_tab.png');
+	bkg_decision_tab = loadImage('assets/bkg_decision_tab.png');
 	// sprites dos botões de execução.
-	spr_btn_start = loadImage('assets/btn_start.png');
-	spr_btn_reset = loadImage('assets/btn_reset.png');
-	spr_btn_exit = loadImage('assets/btn_exit.png');
+	spr_btn_start_0 = loadImage('assets/btn_start_0.png');
+	spr_btn_start_1 = loadImage('assets/btn_start_1.png');
+	spr_btn_reset_0 = loadImage('assets/btn_reset_0.png');
+	spr_btn_reset_1 = loadImage('assets/btn_reset_1.png');
+	spr_btn_exit_0 = loadImage('assets/btn_exit_0.png');
+	spr_btn_exit_1 = loadImage('assets/btn_exit_1.png');
 	// sprite do chão.
 	spr_tile = loadImage('assets/tile.png');
 	// sprites dos colecionáveis.
@@ -102,7 +108,16 @@ function loadSprites(){ // carrega os sprites respectivos.
 	bkg_learn_06 = loadImage('assets/bkg_learn_06.png');
 	bkg_learn_lock = loadImage('assets/bkg_learn_lock.png');
 	bkg_learn_unlock = loadImage('assets/bkg_learn_unlock.png');
-	//sprites do botão de voltar.
+	// sprites do botão de voltar.
 	spr_btn_back_0 = loadImage('assets/btn_back_0.png');
 	spr_btn_back_1 = loadImage('assets/btn_back_1.png');
+	// sprites das abas de aprender
+	spr_btn_learn_00 = loadImage('assets/btn_learn_00.png');
+	spr_btn_learn_01 = loadImage('assets/btn_learn_01.png');
+	spr_btn_learn_02 = loadImage('assets/btn_learn_02.png');
+	spr_btn_learn_03 = loadImage('assets/btn_learn_03.png');
+	spr_btn_learn_04 = loadImage('assets/btn_learn_04.png');
+	spr_btn_learn_05 = loadImage('assets/btn_learn_05.png');
+	spr_btn_learn_06 = loadImage('assets/btn_learn_06.png');
+
 }

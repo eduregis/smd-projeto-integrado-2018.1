@@ -12,13 +12,7 @@ class P_DTab{ // tebela de ações que serão executadas.
 		image(bkg_p_d_tab,680,255); // desenhamos o bloco que ficará atrás.
 		for(var i = 0; i < 6; i++){ // desenhamos os espações para os botões.
 			if(i < this.limit) // caso o limite não seja excedido.
-				if(P_DKey == 1){ // caso a aba de procedimentos seja acionada.
-					fill(0,255,0);
-				}else if (P_DKey == 2){ // caso a aba de decisões seja acionada.
-					fill(255,0,0);
-				}else{
-					fill(0);
-				}				
+				fill(0);				
 			else
 				fill(200); // caso o limite determinado seja excedido.
 			rect(this.position.x + 20 + i*90, this.position.y + 20,70,70);

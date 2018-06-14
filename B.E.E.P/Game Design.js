@@ -99,22 +99,20 @@ function levelDesign_01(){
 function levelDesign_02(){
 	centerGridX = 335;
 	centerGridY = 400;
-	actionTab = new ActionTab(10); // define o limite de ações permitido para o jogador.
-	procedureTab = new ProcedureTab(10);  // define o limite de ações do procedimento permitido para o jogador.
-	decisionTab = new DecisionTab(5,5);	 // define o limite de ações por escolha para o jogador.
+	actionTab = new ActionTab(4); // define o limite de ações permitido para o jogador.
+	procedureTab = new ProcedureTab(5);  // define o limite de ações do procedimento permitido para o jogador.
+	decisionTab = new DecisionTab(0,0);	 // define o limite de ações por escolha para o jogador.
 	p_dTab = new P_DTab(1);	 // define o limite de procedimentos e/ou decisões permitido para o jogador.
 	// define as dimensões da fase.
-	sizeStageX = 4;
-	sizeStageY = 5;
+	sizeStageX = 6;
+	sizeStageY = 6;
 	fillGridNull(); // enche a matriz de objetos nulos.
 	fillGridPropNull(); // enche a matriz de objetos nulos.	
-	character = new Character(centerGridX,centerGridY); // 	inicia o personagem numa posição determinada.
+	character = new Character(1,5); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
-	addBlock(1,1);
-	addEnemy(1,4);
-	addBlock(2,1);
-	addBlock(4,1);
-	addPressButton(4,5);	
+	addBlock(1,4);
+	addProp(1,1,5);
+	// addPortal(5,2);		
 	loadButtons();
 }
 
@@ -141,6 +139,8 @@ function levelDesign_03(){
 }
 
 function testVictory(value){
-	if (value == victoryCount) isVictory = true; // se o valor total corresponder ao necessário, será declarada vitória.
-	if(character.prop != null) learnLock[character.prop] = true; // abre a informação antes bloqueada na aba aprender.
+	if (value == victoryCount){
+		isVictory = true; // se o valor total corresponder ao necessário, será declarada vitória.
+		if(character.prop != null) learnLock[character.prop] = true; // abre a informação antes bloqueada na aba aprender.
+	} 
 }
