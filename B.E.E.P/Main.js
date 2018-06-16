@@ -38,11 +38,13 @@ function preload(){
 }
 
 function setup(){
-	createCanvas(1280,800);	
+	createCanvas(1280,800);
+	OST_0():
 }
 
 function draw(){
-	drawLevel();				
+	drawLevel();
+	jukebox();		
 }
 
 function fillGridNull(){

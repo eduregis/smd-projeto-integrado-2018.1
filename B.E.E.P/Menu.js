@@ -31,10 +31,7 @@ function loadMenu(){
 		image(bkg_menu_credits,0,0);
 	} else if (insideRect(mouseX,mouseY,795, 599, 400, 70)){
 		if (soundOverButtonMenuCount == 0) soundOverButtonMenu();
-		soundOverButtonMenuCount++;
-		if (mouseIsPressed){
-			soundClickButtonMenu();
-		}
+		soundOverButtonMenuCount++;		
 		image(bkg_menu_exit,0,0);
 	} else {
 		soundOverButtonMenuCount = 0;
@@ -48,7 +45,6 @@ function soundOverButtonMenu(){ // som de passar por cima do botão.
 }
 
 function soundClickButtonMenu(){ // som de passar por cima do botão.
-	buttonIsClicked = true;
 	snd_click_btn_menu.setVolume(0.1);
   	snd_click_btn_menu.play();
 }

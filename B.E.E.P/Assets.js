@@ -168,19 +168,53 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_btn_lvl_04_2 = loadImage('assets/btn_lvl_04_2.png');
 }
 
+// efeitos sonoros.
 var snd_over_btn_menu;
 var snd_char_move;
 var snd_press_btn;
 var snd_click_btn_menu;
 var snd_char_hit;
 var snd_block_portal;
+// músicas de fundo.
+var snd_ost_0, snd_ost_1; ost_number = 0;
 
 function loadSounds(){
 	soundFormats('mp3', 'ogg');
+	// efeitos sonoros
  	snd_over_btn_menu = loadSound('assets/snd_over_button_menu.mp3');
  	snd_char_move = loadSound('assets/snd_char_move.mp3');
  	snd_press_btn = loadSound('assets/snd_press_button.mp3');
  	snd_click_btn_menu = loadSound('assets/snd_click_button_menu.mp3');
  	snd_char_hit = loadSound('assets/snd_char_hit.mp3');
  	snd_block_portal = loadSound('assets/snd_block_portal.mp3');
+ 	// músicas de fundo
+ 	snd_ost_0 = loadSound('assets/snd_ost_0.mp3');
+ 	snd_ost_1 = loadSound('assets/snd_ost_1.mp3');
+}
+
+function OST_0(){ // primeira música.
+	snd_ost_0.setVolume(0.1);
+  	snd_ost_0.play();
+}
+
+function OST_1(){ // segunda música.
+	snd_ost_1.setVolume(0.1);
+  	snd_ost_1.play();
+}
+
+function jukebox(){
+	switch(ost_number){
+		case 0:
+			if(!snd_ost_0.isPlaying()){
+				OST_1();
+				ost_number = 1;
+			} 
+			break;
+		case 1:
+			if(!snd_ost_1.isPlaying()){
+				OST_0();
+				ost_number = 0;
+			}
+			break;
+	}		
 }
