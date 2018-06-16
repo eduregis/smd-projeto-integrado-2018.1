@@ -217,7 +217,7 @@ function actionController(){
 					switch(actionTab.actionButtons[actionIndex]){ // procura o id do comando na tabela de ações.
 						case 0: // move o personagem para a posição em que ele está para frente.
 							actionCode = 0;
-							character.i = 26; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
+							character.i = 25; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
 							character.move = true; // variável de controle para mover o personagem se e somente se esse comando for dado.
 							break;
 						case 1:
@@ -266,7 +266,7 @@ function actionController(){
 					switch(procedureTab.actionButtons[procedureIndex]){ // procura o id do comando na tabela de ações.
 						case 0: // move o personagem para a posição em que ele está para frente.
 							actionCode = 0; 
-							character.i = 26; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
+							character.i = 25; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
 							character.move = true; // variável de controle para mover o personagem se e somente se esse comando for dado.
 							break;
 						case 1:
@@ -309,7 +309,7 @@ function actionController(){
 					switch(decisionTab.actionButtonsIf[decisionIfIndex]){ // procura o id do comando na tabela de ações.
 						case 0: // move o personagem para a posição em que ele está para frente.
 							actionCode = 0; 
-							character.i = 26; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
+							character.i = 25; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
 							character.move = true; // variável de controle para mover o personagem se e somente se esse comando for dado.
 							break;
 						case 1:
@@ -349,7 +349,7 @@ function actionController(){
 					switch(decisionTab.actionButtonsElse[decisionElseIndex]){ // procura o id do comando na tabela de ações.
 						case 0: // move o personagem para a posição em que ele está para frente.
 							actionCode = 0; 
-							character.i = 26; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
+							character.i = 25; // colocar a variável i do personagem para 26, ela funciona como um contador, que regride em 1 a cada farme, quando chegar em 1, termina o movimento. 
 							character.move = true; // variável de controle para mover o personagem se e somente se esse comando for dado.
 							break;
 						case 1:

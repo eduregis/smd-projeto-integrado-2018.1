@@ -56,9 +56,9 @@ function drawLevel(){
 		p_dTab.drawTab(); // desenha a tabela de escolha entre desição e procedimento.
 		procedureTab.drawTab(); // desenha a tabela de procedimentos.
 		decisionTab.drawTab();	 // desenha a tabela de desições.
+		if(pageCode == "level_02") drawPortal_level02();		 
 		drawObstacles(); // desenha os blocos existentes no grid.
-		drawProps();
-		drawPortals();
+		drawProps();		
 		character.updateCharacter(); // desenha o personagem.
 		drawButtons(); // desenha os botões arrastáveis.
 		testVictory(1);
@@ -95,10 +95,10 @@ function levelDesign_01(){
 	fillGridNull(); // enche a matriz de objetos nulos.
 	fillGridPropNull(); // enche a matriz de objetos nulos.
 	fillGridPortalNull(); // enche a matriz de objetos nulos.	
-	character = new Character(1,4); // inicia o personagem numa posição determinada.
+	character = new Character(2,4); // inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
-	addPressButton(2,1);
-	addProp(1,2,3);			
+	addPressButton(1,1);
+	addProp(2,2,3);			
 	loadButtons();	
 }
 
@@ -114,15 +114,11 @@ function levelDesign_02(){
 	sizeStageY = 6;
 	fillGridNull(); // enche a matriz de objetos nulos.
 	fillGridPropNull(); // enche a matriz de objetos nulos.
-	fillGridPortalNull(); // enche a matriz de objetos nulos.	
+	fillGridPortalNull(); // enche a matriz de objetos nulos.		
 	character = new Character(1,5); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
-	addBlock(1,4);
-	addBlock(0,5);
-	addBlock(1,6);
-	addBlock(2,5);
-	addProp(1,1,4);
-	addPortal(5,2);		
+	addBlock(1,4);	
+	addProp(1,1,4);		
 	loadButtons();
 }
 
@@ -153,4 +149,22 @@ function testVictory(value){
 		isVictory = true; // se o valor total corresponder ao necessário, será declarada vitória.
 		if(character.prop != null) learnLock[character.prop] = true; // abre a informação antes bloqueada na aba aprender.
 	} 
+}
+
+function drawPortal_level02(){
+	victory_level02();	
+	fill(255,127,0,80);
+	stroke(255,127,0);
+	quad(485,400,535,425,485,450,435,425);
+	if(isVictory){
+
+	} 
+	
+}
+
+function victory_level02(){
+	if (grid[5][2] != null){
+		victoryCount = 1;
+		//grid[5][2] = null;
+	}
 }
