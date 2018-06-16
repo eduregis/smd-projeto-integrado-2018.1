@@ -3,6 +3,10 @@ var spr_up_0, spr_up_1, spr_up_2; // sprites do personagem andando para cima.
 var spr_left_0, spr_left_1, spr_left_2; // sprites do personagem andando para a esquerda.
 var spr_down_0, spr_down_1, spr_down_2; // sprites do personagem andando para baixo.
 var spr_right_0, spr_right_1, spr_right_2; // sprites do personagem andando para a direita.
+var spr_drag_up_0, spr_drag_up_1, spr_drag_up_2; // sprite do personagem carregando caixa para cima.
+var spr_drag_left_0, spr_drag_left_1, spr_drag_left_2; // sprite do personagem carregando caixa para cima.
+var spr_drag_down_0; // sprite do personagem carregando caixa para cima.
+var spr_drag_right_0; // sprite do personagem carregando caixa para cima.
 // sprites dos botões arrastáveis.
 var spr_btn_walk_0, spr_btn_walk_1; // botão de andar.
 var spr_btn_turn_left_0, spr_btn_turn_left_1; // botão de girar para a esquerda.
@@ -47,6 +51,14 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_right_0 = loadImage('assets/walk_right_0.png');
 	spr_right_1 = loadImage('assets/walk_right_1.png');
 	spr_right_2 = loadImage('assets/walk_right_2.png');
+	spr_drag_up_0 = loadImage('assets/drag_up_0.png');
+	spr_drag_up_1 = loadImage('assets/drag_up_1.png');
+	spr_drag_up_2 = loadImage('assets/drag_up_2.png');
+	spr_drag_left_0 = loadImage('assets/drag_left_0.png');
+	spr_drag_left_1 = loadImage('assets/drag_left_1.png');
+	spr_drag_left_2 = loadImage('assets/drag_left_2.png');
+	spr_drag_down_0 = loadImage('assets/drag_down_0.png');
+	spr_drag_right_0 = loadImage('assets/drag_right_0.png');
 	// sprites dos botões arrastáveis.
 	spr_btn_walk_0 = loadImage('assets/btn_walk_0.png');
 	spr_btn_walk_1 = loadImage('assets/btn_walk_1.png');

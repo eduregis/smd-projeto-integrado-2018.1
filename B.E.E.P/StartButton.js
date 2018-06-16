@@ -25,6 +25,7 @@ class StartButton{
 						stayIndex = false; // ajuda a manter a variável que percorre a tabela de ações no lugar.
 						this.status = 2;
 						this.count = 26;
+						if (actionCode == 5) animationCount = 0;
 					}					
 				}							
 				break;

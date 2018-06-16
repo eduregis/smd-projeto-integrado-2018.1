@@ -1,3 +1,5 @@
+var animationCount = 0;
+
 class Character{
 	constructor(x,y){
 		this.position = createVector(centerGridX,centerGridY); // posição do personagem
@@ -11,7 +13,6 @@ class Character{
 	}
 
 	updateCharacter(){
-		print(learnLock);
 		this.drawCharacter(); // desenha o personagem mesmo se este estiver parado.
 		if (this.i==0){
 			this.move = false; // quando i chega a zero, significa que o personagem chegou no cruzamento desejado, então ele não irá mais se mover, até que outro comando seja dado.	
@@ -128,7 +129,7 @@ class Character{
 	}
 
 	drawCharacter(){ // função que desenha o personagem.
-
+		if (this.block == null) animationCount = 0;
 		if(this.drawController){ // esta função coloca o personagem na sua posição inicial.
 			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do personagem e faz os ajustes necessários. 
 				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
@@ -154,43 +155,72 @@ class Character{
 			}
 			this.drawController = false; // alterando a drawController.
 		}
-
 		switch (this.direction){
 				case 0:
-					if(this.move){
-						if ((this.i <= 26) && (this.i > 17)) image(spr_up_0,this.position.x - 21,this.position.y - 83,69,86);
-						else if ((this.i <= 17) && (this.i > 8)) image(spr_up_1,this.position.x - 21,this.position.y - 83,69,86);
-						else image(spr_up_2,this.position.x - 21,this.position.y - 83,69,86);
-					} else{
-						image(spr_up_1,this.position.x - 21,this.position.y - 83,69,86);
-					}									
-					break;
+					if(this.block != null){
+						if(this.move){
+							image(spr_drag_up_2,this.position.x - 21,this.position.y - 103,102,105);
+						}else {
+							animationCount++;
+							if (animationCount < 8) image(spr_drag_up_0,this.position.x - 21,this.position.y - 83,102,86);
+							else if (animationCount < 16) image(spr_drag_up_1,this.position.x - 21,this.position.y - 83,102,86);
+							else image(spr_drag_up_2,this.position.x - 21,this.position.y - 103,102,105);
+						}						
+					}else{
+						if(this.move){
+							if ((this.i <= 26) && (this.i > 17)) image(spr_up_0,this.position.x - 21,this.position.y - 83,69,86);
+							else if ((this.i <= 17) && (this.i > 8)) image(spr_up_1,this.position.x - 21,this.position.y - 83,69,86);
+							else image(spr_up_2,this.position.x - 21,this.position.y - 83,69,86);
+						} else{
+							image(spr_up_1,this.position.x - 21,this.position.y - 83,69,86);
+						}				
+					}
+					break;					
 				case 1:
-					if(this.move){
-						if ((this.i <= 26) && (this.i > 17)) image(spr_left_0,this.position.x - 46,this.position.y - 83,69,86);
-						else if ((this.i <= 17) && (this.i > 8)) image(spr_left_1,this.position.x - 46,this.position.y - 83,69,86);
-						else image(spr_left_2,this.position.x - 46,this.position.y - 83,69,86);
-					} else{
-						image(spr_left_1,this.position.x - 46,this.position.y - 83,69,86);
+					if(this.block != null){
+						if(this.move){
+							image(spr_drag_left_2,this.position.x - 76,this.position.y - 103,102,105);
+						}else {
+							animationCount++;
+							if (animationCount < 8) image(spr_drag_left_0,this.position.x - 76,this.position.y - 83,102,86);
+							else if (animationCount < 16) image(spr_drag_left_1,this.position.x - 76,this.position.y - 83,102,86);
+							else image(spr_drag_left_2,this.position.x - 76,this.position.y - 103,102,105);
+						}						
+					}else{
+						if(this.move){
+							if ((this.i <= 26) && (this.i > 17)) image(spr_left_0,this.position.x - 46,this.position.y - 83,69,86);
+							else if ((this.i <= 17) && (this.i > 8)) image(spr_left_1,this.position.x - 46,this.position.y - 83,69,86);
+							else image(spr_left_2,this.position.x - 46,this.position.y - 83,69,86);
+						} else{
+							image(spr_left_1,this.position.x - 46,this.position.y - 83,69,86);
+						}				
 					}
-					break;				
+					break;		
 				case 2:
-					if(this.move){
-						if ((this.i <= 26) && (this.i > 17)) image(spr_down_0,this.position.x - 30,this.position.y - 83,52,86);
-						else if ((this.i <= 17) && (this.i > 8)) image(spr_down_1,this.position.x - 30,this.position.y - 83,52,86);
-						else image(spr_down_2,this.position.x - 30,this.position.y - 83,52,86);
-					} else{
-						image(spr_down_1,this.position.x - 30,this.position.y - 83,52,86);
-					}
+					if(this.block != null){
+						image(spr_drag_down_0,this.position.x - 74,this.position.y - 87,102,105);
+					} else {
+						if(this.move){
+							if ((this.i <= 26) && (this.i > 17)) image(spr_down_0,this.position.x - 30,this.position.y - 83,52,86);
+							else if ((this.i <= 17) && (this.i > 8)) image(spr_down_1,this.position.x - 30,this.position.y - 83,52,86);
+							else image(spr_down_2,this.position.x - 30,this.position.y - 83,52,86);
+						} else{
+							image(spr_down_1,this.position.x - 30,this.position.y - 83,52,86);
+						}
+					}					
 					break;	
 				case 3:
-					if(this.move){
-						if ((this.i <= 26) && (this.i > 17)) image(spr_right_0,this.position.x - 20,this.position.y - 83,52,86);
-						else if ((this.i <= 17) && (this.i > 8)) image(spr_right_1,this.position.x - 20,this.position.y - 83,52,86);
-						else image(spr_right_2,this.position.x - 20,this.position.y - 83,52,86);
-					} else{
-						image(spr_right_1,this.position.x - 20,this.position.y - 83,52,86);
-					}					
+					if(this.block != null){
+						image(spr_drag_right_0,this.position.x - 21,this.position.y - 87,102,105);
+					}else{
+						if(this.move){
+							if ((this.i <= 26) && (this.i > 17)) image(spr_right_0,this.position.x - 20,this.position.y - 83,52,86);
+							else if ((this.i <= 17) && (this.i > 8)) image(spr_right_1,this.position.x - 20,this.position.y - 83,52,86);
+							else image(spr_right_2,this.position.x - 20,this.position.y - 83,52,86);
+						} else{
+							image(spr_right_1,this.position.x - 20,this.position.y - 83,52,86);
+						}
+					}										
 					break;				
 			}
 	}

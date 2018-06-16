@@ -118,6 +118,9 @@ function levelDesign_02(){
 	character = new Character(1,5); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
 	addBlock(1,4);
+	addBlock(0,5);
+	addBlock(1,6);
+	addBlock(2,5);
 	addProp(1,1,4);
 	addPortal(5,2);		
 	loadButtons();
