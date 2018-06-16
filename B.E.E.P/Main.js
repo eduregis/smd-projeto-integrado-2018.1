@@ -39,7 +39,7 @@ function preload(){
 
 function setup(){
 	createCanvas(1280,800);
-	OST_0():
+	OST_0();
 }
 
 function draw(){

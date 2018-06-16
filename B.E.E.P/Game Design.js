@@ -1,6 +1,7 @@
 var levelController = true; // para que as especificidades da fase seja passadas apenas uma vez, como se fosse no setup.
 var pageCode = "menu"; // id da fase.
 var isLevel = false;
+var nextRoomCounter = 0;
 
 function setupLevel(){ // função que simula um setup.
 	if(levelController){
@@ -65,6 +66,7 @@ function drawLevel(){
 		character.updateCharacter(); // desenha o personagem.
 		drawButtons(); // desenha os botões arrastáveis.
 		testVictory(1);
+		goToNext();
 	}else{
 		blockBarrier = false;
 		gridProp = [];
@@ -181,6 +183,20 @@ function testVictory(value){
 		isVictory = true; // se o valor total corresponder ao necessário, será declarada vitória.
 		if(character.prop != null) learnLock[character.prop] = true; // abre a informação antes bloqueada na aba aprender.
 	} 
+}
+
+function goToNext(){
+	if(isVictory){
+		nextRoomCounter++;
+		if(nextRoomCounter == 100){
+			pageCode = "levelChoice"; 
+			levelController = true;
+			isLevel = false;
+			reset();			
+		}
+	}else{
+		nextRoomCounter = 0;
+	}
 }
 
 function drawPortal_level02(){

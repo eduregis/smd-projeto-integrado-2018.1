@@ -69,5 +69,22 @@ function loadLevelChoice(){
 		if (learnLock[5]) image(spr_btn_lvl_04_0,910,300);
 		else image(spr_btn_lvl_04_2,910,300);
 	}
-	if(missLevelChoiceButton == 4) soundOverButtonMenuCount = 0;
+
+	if (insideRect(mouseX,mouseY,900,700,250,102)){ // botão de voltar.
+		if (soundOverButtonMenuCount == 0) soundOverButtonMenu();
+		soundOverButtonMenuCount++;
+		image(spr_btn_back_1,900,700,250,102);
+		if(mouseIsPressed){
+			soundClickButtonMenu();
+			pageCode = "menu"; 
+			levelController = true;
+			isLevel = false;
+		}
+	}else {
+		missLevelChoiceButton++;
+		image(spr_btn_back_0, 900, 700, 250, 102);
+	}
+
+
+	if(missLevelChoiceButton == 5) soundOverButtonMenuCount = 0;
 }
