@@ -37,7 +37,10 @@ var spr_btn_back_0, spr_btn_back_1;
 // sprites da aba de aprender.
 var spr_btn_learn_00, spr_btn_learn_01, spr_btn_learn_02, spr_btn_learn_03, spr_btn_learn_04, spr_btn_learn_05, spr_btn_learn_06;
 //botões para entrar nas fases.
-var spr_btn_lvl_01_0, spr_btn_lvl_01_1, spr_btn_lvl_02_0, spr_btn_lvl_02_1, spr_btn_lvl_03_0, spr_btn_lvl_03_1,spr_btn_lvl_04_0, spr_btn_lvl_04_1;   
+var spr_btn_lvl_01_0, spr_btn_lvl_01_1;
+var spr_btn_lvl_02_0, spr_btn_lvl_02_1, spr_btn_lvl_02_2;
+var spr_btn_lvl_03_0, spr_btn_lvl_03_1, spr_btn_lvl_03_2;
+var spr_btn_lvl_04_0, spr_btn_lvl_04_1, spr_btn_lvl_04_2;   
 
 function loadSprites(){ // carrega os sprites respectivos.
 	// sprites de movimento.
@@ -138,8 +141,11 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_btn_lvl_01_1 = loadImage('assets/btn_lvl_01_1.png');
 	spr_btn_lvl_02_0 = loadImage('assets/btn_lvl_02_0.png');
 	spr_btn_lvl_02_1 = loadImage('assets/btn_lvl_02_1.png');
+	spr_btn_lvl_02_2 = loadImage('assets/btn_lvl_02_2.png');
 	spr_btn_lvl_03_0 = loadImage('assets/btn_lvl_03_0.png');
 	spr_btn_lvl_03_1 = loadImage('assets/btn_lvl_03_1.png');
+	spr_btn_lvl_03_2 = loadImage('assets/btn_lvl_03_2.png');
 	spr_btn_lvl_04_0 = loadImage('assets/btn_lvl_04_0.png');
 	spr_btn_lvl_04_1 = loadImage('assets/btn_lvl_04_1.png');
+	spr_btn_lvl_04_2 = loadImage('assets/btn_lvl_04_2.png');
 }
