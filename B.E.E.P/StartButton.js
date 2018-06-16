@@ -14,6 +14,7 @@ class StartButton{
 				this.basic(); // caso o mouse não esteja em cima do botão.
 				if(insideRect(mouseX,mouseY,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2, this.dimension.x, this.dimension.y)){
 					if(!mouseIsPressed) // impede que ao clicar em um botão, outros ao estarem sob o mouse, mudem de status.
+						soundOverButtonMenu();
 						this.status = 1;
 				}
 				break;

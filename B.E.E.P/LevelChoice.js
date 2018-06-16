@@ -25,6 +25,7 @@ function loadLevelChoice(){
 		if (learnLock[3]) image(spr_btn_lvl_02_1,370,300);
 		else image(spr_btn_lvl_02_2,370,300);
 		if((mouseIsPressed) && (antiBugLevelChoiceMenu) && (learnLock[3])){
+			soundClickButtonMenu();
 			pageCode = "level_02"; 
 			levelController = true;
 			isLevel = false;
@@ -41,6 +42,7 @@ function loadLevelChoice(){
 		if (learnLock[4]) image(spr_btn_lvl_03_1,640,300);
 		else image(spr_btn_lvl_03_2,640,300);
 		if((mouseIsPressed) && (antiBugLevelChoiceMenu) && (learnLock[4])){
+			soundClickButtonMenu();
 			pageCode = "level_03"; 
 			levelController = true;
 			isLevel = false;
@@ -57,6 +59,7 @@ function loadLevelChoice(){
 		if (learnLock[5]) image(spr_btn_lvl_04_1,910,300);
 		else image(spr_btn_lvl_04_2,910,300);
 		if((mouseIsPressed) && (antiBugLevelChoiceMenu) && (learnLock[5])){
+			soundClickButtonMenu();
 			pageCode = "level_04"; 
 			levelController = true;
 			isLevel = false;

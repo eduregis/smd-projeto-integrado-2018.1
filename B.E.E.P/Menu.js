@@ -48,6 +48,7 @@ function soundOverButtonMenu(){ // som de passar por cima do botão.
 }
 
 function soundClickButtonMenu(){ // som de passar por cima do botão.
+	buttonIsClicked = true;
 	snd_click_btn_menu.setVolume(0.1);
   	snd_click_btn_menu.play();
 }
