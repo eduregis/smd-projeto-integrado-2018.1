@@ -9,6 +9,7 @@ function loadMenu(){
 	} else if (insideRect(mouseX,mouseY,795, 425, 400, 70)){
 		if (mouseIsPressed){
 			pageCode = "learn"; 
+			learnIndex = 0;
 			levelController = true;
 			isLevel = false;
 		} 

@@ -47,6 +47,7 @@ function drawLevel(){
 	image(bkg_level,0,0);
 	setupLevel(); // chama o setup da fase.
 	if(isLevel){
+		antiBugLevelChoiceMenu = false;		
 		isometricGrid(); // desenha o grid isométrico.
 		exitButton.draw(); // desenha o botão de sair.
 		resetButton.draw(); // desenha o botão de resetar.
@@ -63,9 +64,21 @@ function drawLevel(){
 		drawButtons(); // desenha os botões arrastáveis.
 		testVictory(1);
 	}else{
-		if(pageCode == "menu") menu();
-		else if (pageCode == "levelChoice") levelChoice();
-		else if (pageCode == "learn") learn();
+		blockBarrier = false;
+		gridProp = [];
+		switch(pageCode){
+			case "menu":
+				menu();
+				antiBugLevelChoiceMenu = false;
+				break;
+			case "levelChoice":
+				levelChoice();
+				break;
+			case "learn":
+				learn();
+				antiBugLevelChoiceMenu = false;
+				break;
+		}
 	}
 }
 
@@ -93,8 +106,7 @@ function levelDesign_01(){
 	sizeStageX = 3;
 	sizeStageY = 5;
 	fillGridNull(); // enche a matriz de objetos nulos.
-	fillGridPropNull(); // enche a matriz de objetos nulos.
-	fillGridPortalNull(); // enche a matriz de objetos nulos.	
+	fillGridPropNull(); // enche a matriz de objetos nulos.	
 	character = new Character(2,4); // inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
 	addPressButton(1,1);
@@ -113,8 +125,7 @@ function levelDesign_02(){
 	sizeStageX = 6;
 	sizeStageY = 6;
 	fillGridNull(); // enche a matriz de objetos nulos.
-	fillGridPropNull(); // enche a matriz de objetos nulos.
-	fillGridPortalNull(); // enche a matriz de objetos nulos.		
+	fillGridPropNull(); // enche a matriz de objetos nulos.	
 	character = new Character(1,5); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
 	addBlock(1,4);	
@@ -134,7 +145,7 @@ function levelDesign_03(){
 	sizeStageY = 8;
 	fillGridNull(); // enche a matriz de objetos nulos.
 	fillGridPropNull(); // enche a matriz de objetos nulos.	
-	character = new Character(centerGridX,centerGridY); // 	inicia o personagem numa posição determinada.
+	character = new Character(1,5); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
 	addBlock(1,1);
 	addEnemy(1,4);

@@ -1,3 +1,5 @@
+var blockBarrier = false; // variável que impede que novos comandos sejam adicionados após o botão de ação ser acionado pela primeira vez. 
+
 class StartButton{
 	constructor(x,y,w,h){
 		this.position = createVector(x,y);
@@ -20,7 +22,8 @@ class StartButton{
 				if(!insideRect(mouseX,mouseY,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2, this.dimension.x, this.dimension.y)){
 					this.status = 0;
 				}else if(mouseIsPressed){
-					if(this.count == 0){
+					blockBarrier = true;
+					if(this.count == 0){						
 						starter = true; // libera uma ação da tabela de ações.
 						stayIndex = false; // ajuda a manter a variável que percorre a tabela de ações no lugar.
 						this.status = 2;
@@ -38,13 +41,13 @@ class StartButton{
 				}				
 				break;
 		}
-	} // placeholder
+	} 
 	basic(){
 		image(spr_btn_start_0,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
-	} // placeholder
+	} 
 	above(){
 		image(spr_btn_start_1,this.position.x - this.dimension.x/2, this.position.y - this.dimension.y/2);
-	} // placeholder
+	} 
 	click(){
 		image(spr_btn_start_1,this.position.x - this.dimension.x/2 + 3, this.position.y - this.dimension.y/2 + 3,65,75);
 	}

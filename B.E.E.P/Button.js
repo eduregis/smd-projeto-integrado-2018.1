@@ -140,23 +140,21 @@ function mousePressed(){
 }
 
 function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mouse volta a ser nulo.
-	if(pageCode == 0){
-		
-	}
-
-	if((isLevel) && (mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 240) && (mouseY >= 45)){ // arrastando para a aba de ações.
+	antiBugLevelChoiceMenu = true;
+	print(blockBarrier);
+	if((isLevel) && (mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 240) && (mouseY >= 45) && (!blockBarrier)){ // arrastando para a aba de ações.
 		actionTab.newButton = mouseButton.id;			
 	}
 	buttonCode = null;
 
 	if(P_DKey == 1){ //arrastando para a aba de procedimentos, caso esteja aberta.
-		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 640) && (mouseY >= 445)){
+		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 640) && (mouseY >= 445) && (!blockBarrier)){
 			procedureTab.newButton = mouseButton.id;			
 		}
 	}
 
 	if(P_DKey == 2){ //arrastando para a aba de procedimentos, caso esteja aberta.
-		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 545) && (mouseY >= 475)){
+		if((isLevel) && (mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 545) && (mouseY >= 475) && (!blockBarrier)){
 			decisionTab.newButtonIf = mouseButton.id;			
 		}else if((mouseX <= 1150) && (mouseX >= 680) && (mouseY <= 700) && (mouseY >= 610)){
 			decisionTab.newButtonElse = mouseButton.id;			

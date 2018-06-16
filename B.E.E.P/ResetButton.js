@@ -44,6 +44,7 @@ class ResetButton{
 }
 
 function reset(){
+	blockBarrier = false;
 	victoryCount = 0;
 	isVictory = false;
 	animationCount = 0;
