@@ -34,6 +34,7 @@ var isVictory = false;
 
 function preload(){
 	loadSprites(); // carrega as imagens
+	loadSounds(); // carrega os sons.
 }
 
 function setup(){

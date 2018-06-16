@@ -167,3 +167,10 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_btn_lvl_04_1 = loadImage('assets/btn_lvl_04_1.png');
 	spr_btn_lvl_04_2 = loadImage('assets/btn_lvl_04_2.png');
 }
+
+var snd_over_btn_menu;
+
+function loadSounds(){
+	soundFormats('mp3', 'ogg');
+ 	snd_over_btn_menu = loadSound('assets/snd_over_button_menu.mp3');
+}
