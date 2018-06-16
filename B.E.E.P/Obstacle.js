@@ -1,3 +1,5 @@
+var enemyAnimation = 0;
+
 class Obstacle{
 	constructor(x,y,id){
 		this.id = id;
@@ -9,6 +11,8 @@ class Obstacle{
 	}			
 
 	drawObstacle(){
+		if (enemyAnimation == 100) enemyAnimation = 0;
+		enemyAnimation++;
 		if(this.drawController){
 			if(this.positionGrid.x > int(sizeStageX/2)){ // verifica a posição do bloco e faz os ajustes necessários. 
 				for(var i = this.positionGrid.x ; i > int(sizeStageX/2); i--){ 
@@ -39,7 +43,9 @@ class Obstacle{
 				image(spr_block,this.position.x - 30,this.position.y - 45); // desenha o bloco.
 				break;
 			case 1:
-				image(spr_enemy_idle,this.position.x - 40,this.position.y - 60,85,85); // desenha o inimigo, ainda sem animação.
+				if (enemyAnimation < 33) image(spr_enemy_idle_0,this.position.x - 40,this.position.y - 60,85,85); // desenha o inimigo.
+				else if (enemyAnimation < 66) image(spr_enemy_idle_1,this.position.x - 40,this.position.y - 60,85,85);
+				else if (enemyAnimation < 100) image(spr_enemy_idle_2,this.position.x - 40,this.position.y - 60,85,85);
 				break;
 			case 2:
 				if(this.status == 0) image(spr_press_btn_0,this.position.x - 15,this.position.y - 75); // desenha o botão normal.

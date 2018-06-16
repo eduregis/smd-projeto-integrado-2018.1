@@ -155,7 +155,7 @@ class Character{
 			}
 			this.drawController = false; // alterando a drawController.
 		}
-		switch (this.direction){
+		switch (this.direction){ // verifica a direção em que o personagem está para fazer a animação.
 				case 0:
 					if(this.block != null){
 						if(this.move){

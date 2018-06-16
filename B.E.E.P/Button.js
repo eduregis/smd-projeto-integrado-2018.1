@@ -141,7 +141,6 @@ function mousePressed(){
 
 function mouseReleased(){ // ao terminar o comando de arrastar, o botão do mouse volta a ser nulo.
 	antiBugLevelChoiceMenu = true;
-	print(blockBarrier);
 	if((isLevel) && (mouseX <= 1380) && (mouseX >= 680) && (mouseY <= 240) && (mouseY >= 45) && (!blockBarrier)){ // arrastando para a aba de ações.
 		actionTab.newButton = mouseButton.id;			
 	}

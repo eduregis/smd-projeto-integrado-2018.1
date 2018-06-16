@@ -4,9 +4,13 @@ var spr_left_0, spr_left_1, spr_left_2; // sprites do personagem andando para a 
 var spr_down_0, spr_down_1, spr_down_2; // sprites do personagem andando para baixo.
 var spr_right_0, spr_right_1, spr_right_2; // sprites do personagem andando para a direita.
 var spr_drag_up_0, spr_drag_up_1, spr_drag_up_2; // sprite do personagem carregando caixa para cima.
-var spr_drag_left_0, spr_drag_left_1, spr_drag_left_2; // sprite do personagem carregando caixa para cima.
-var spr_drag_down_0; // sprite do personagem carregando caixa para cima.
-var spr_drag_right_0; // sprite do personagem carregando caixa para cima.
+var spr_drag_left_0, spr_drag_left_1, spr_drag_left_2; // sprite do personagem carregando caixa para a esquerda.
+var spr_drag_down_0; // sprite do personagem carregando caixa para baixo.
+var spr_drag_right_0; // sprite do personagem carregando caixa para a direita.
+var spr_press_up_0, spr_press_up_1, spr_press_up_2; // sprite do personagem acertando o item acima.
+var spr_press_left_0, spr_press_left_1, spr_press_left_2; // sprite do personagem acertando o item à esquerda.
+var spr_press_down_0, spr_press_down_1, spr_press_down_2; // sprite do personagem acertando o item abaixo.
+var spr_press_right_0, spr_press_right_1, spr_press_right_2; // sprite do personagem acertando o item à direita.
 // sprites dos botões arrastáveis.
 var spr_btn_walk_0, spr_btn_walk_1; // botão de andar.
 var spr_btn_turn_left_0, spr_btn_turn_left_1; // botão de girar para a esquerda.
@@ -28,7 +32,7 @@ var spr_tile; // chão da fase.
 var spr_prop_00, spr_prop_01, spr_prop_02, spr_prop_03, spr_prop_04, spr_prop_05, spr_prop_06;
 // sprites dos obstáculos.
 var spr_block; // sprite da caixa.
-var spr_enemy_idle; // sprite do inimigo parado.
+var spr_enemy_idle_0, spr_enemy_idle_1, spr_enemy_idle_2; // sprite do inimigo parado.
 var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal e ativo.
 // telas do menu aprender.
 var bkg_learn_00, bkg_learn_01, bkg_learn_02, bkg_learn_03, bkg_learn_04, bkg_learn_05, bkg_learn_06, bkg_learn_lock; 
@@ -64,6 +68,18 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_drag_left_2 = loadImage('assets/drag_left_2.png');
 	spr_drag_down_0 = loadImage('assets/drag_down_0.png');
 	spr_drag_right_0 = loadImage('assets/drag_right_0.png');
+	spr_press_up_0 = loadImage('assets/press_up_0.png');
+	spr_press_up_1 = loadImage('assets/press_up_1.png');
+	spr_press_up_2 = loadImage('assets/press_up_2.png');
+	spr_press_left_0 = loadImage('assets/press_left_0.png');
+	spr_press_left_1 = loadImage('assets/press_left_1.png');
+	spr_press_left_2 = loadImage('assets/press_left_2.png');
+	spr_press_down_0 = loadImage('assets/press_down_0.png');
+	spr_press_down_1 = loadImage('assets/press_down_1.png');
+	spr_press_down_2 = loadImage('assets/press_down_2.png');
+	spr_press_right_0 = loadImage('assets/press_right_0.png');
+	spr_press_right_1 = loadImage('assets/press_right_1.png');
+	spr_press_right_2 = loadImage('assets/press_right_2.png');
 	// sprites dos botões arrastáveis.
 	spr_btn_walk_0 = loadImage('assets/btn_walk_0.png');
 	spr_btn_walk_1 = loadImage('assets/btn_walk_1.png');
@@ -112,7 +128,9 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_prop_06 = loadImage('assets/prop_06.png');
 	// sprites dos obstáculos.
 	spr_block = loadImage('assets/block.png');
-	spr_enemy_idle = loadImage('assets/spr_enemy_idle.png');
+	spr_enemy_idle_0 = loadImage('assets/spr_enemy_idle_0.png');
+	spr_enemy_idle_1 = loadImage('assets/spr_enemy_idle_1.png');
+	spr_enemy_idle_2 = loadImage('assets/spr_enemy_idle_2.png');
 	spr_press_btn_0 = loadImage('assets/press_button_0.png');
 	spr_press_btn_1 = loadImage('assets/press_button_1.png');
 	// telas do menu aprender.
