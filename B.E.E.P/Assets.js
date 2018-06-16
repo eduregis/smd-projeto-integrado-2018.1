@@ -169,8 +169,18 @@ function loadSprites(){ // carrega os sprites respectivos.
 }
 
 var snd_over_btn_menu;
+var snd_char_move;
+var snd_press_btn;
+var snd_click_btn_menu;
+var snd_char_hit;
+var snd_block_portal;
 
 function loadSounds(){
 	soundFormats('mp3', 'ogg');
  	snd_over_btn_menu = loadSound('assets/snd_over_button_menu.mp3');
+ 	snd_char_move = loadSound('assets/snd_char_move.mp3');
+ 	snd_press_btn = loadSound('assets/snd_press_button.mp3');
+ 	snd_click_btn_menu = loadSound('assets/snd_click_button_menu.mp3');
+ 	snd_char_hit = loadSound('assets/snd_char_hit.mp3');
+ 	snd_block_portal = loadSound('assets/snd_block_portal.mp3');
 }

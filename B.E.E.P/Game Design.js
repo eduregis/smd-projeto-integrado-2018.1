@@ -184,14 +184,14 @@ function testVictory(value){
 }
 
 function drawPortal_level02(){
-	victory_level02();	
+	if (victoryCount == 0) victory_level02();	
 	fill(255,127,0,80);
 	stroke(255,127,0);
 	quad(485,400,535,425,485,450,435,425);	
 }
 
 function drawPortal_level03(){
-	victory_level03();	
+	if (victoryCount == 0) victory_level03();	
 	fill(255,127,0,80);
 	stroke(255,127,0);
 	quad(435,325,485,350,435,375,385,350);
@@ -200,7 +200,7 @@ function drawPortal_level03(){
 }
 
 function drawPortal_level04(){
-	victory_level04();	
+	if (victoryCount == 0) victory_level04();	
 	fill(255,127,0,80);
 	stroke(255,127,0);
 	quad(335,325,385,350,335,375,285,350);	
@@ -208,18 +208,26 @@ function drawPortal_level04(){
 
 function victory_level02(){
 	if (grid[5][2] != null){
+		soundBoxPortal();
 		victoryCount = 1;		
 	}
 }
 
 function victory_level03(){
 	if ((grid[3][1] != null) && (grid[1][3] != null) && (grid[3][5] != null)){
+		soundBoxPortal();
 		victoryCount = 1;		
 	}
 }
 
 function victory_level04(){
 	if ((grid[2][2] == null) && (grid[1][3] != null)){
+		soundBoxPortal();
 		victoryCount = 1;		
 	}
+}
+
+function soundBoxPortal(){ // som do bloco em cima do portal.
+	snd_block_portal.setVolume(0.1);
+  	snd_block_portal.play();
 }

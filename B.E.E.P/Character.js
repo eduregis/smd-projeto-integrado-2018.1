@@ -24,8 +24,11 @@ class Character{
 				charCod = 1;
 				if (!stayIndex){
 					if(currentTab == "Procedure") procedureIndex++;
+					else if (currentTab == "DecisionIf") decisionIfIndex++;
+					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
-					stayIndex = true;					
+					stayIndex = true;
+					soundCharMove();				
 				}					
 				break;
 			case 1: // vira à esquerda.
@@ -41,7 +44,8 @@ class Character{
 					else if (currentTab == "DecisionIf") decisionIfIndex++;
 					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
-					stayIndex = true;										
+					stayIndex = true;
+					soundCharMove();										
 				}
 				break;				
 			case 2: // vira à direita.
@@ -57,7 +61,8 @@ class Character{
 					else if (currentTab == "DecisionIf") decisionIfIndex++;
 					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
-					stayIndex = true;					
+					stayIndex = true;
+					soundCharMove();					
 				}															
 				break;	
 			case 3: //  pega ou coloca um bloco.
@@ -67,7 +72,8 @@ class Character{
 					else if (currentTab == "DecisionIf") decisionIfIndex++;
 					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
-					stayIndex = true;					
+					stayIndex = true;
+					soundCharMove();					
 				}
 				break;
 			case 4: //  ataca um inimigo.
@@ -77,7 +83,8 @@ class Character{
 					else if (currentTab == "DecisionIf") decisionIfIndex++;
 					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
-					stayIndex = true;					
+					stayIndex = true;
+					soundHitEnemy()				
 				}
 				break;
 			case 5: //  aperta um botão.
@@ -87,7 +94,8 @@ class Character{
 					else if (currentTab == "DecisionIf") decisionIfIndex++;
 					else if (currentTab == "DecisionElse") decisionElseIndex++;
 					else actionIndex++;
-					stayIndex = true;					
+					stayIndex = true;
+					soundPressButton();				
 				}
 				break;			
 		}
@@ -454,4 +462,19 @@ class Character{
 		fill(255);
 		text(this.positionGrid.x + " , " + this.positionGrid.y,40,40);// mostra em que posição do grid o personagem está.
 	}
+}
+
+function soundCharMove(){ // som de mover.
+	snd_char_move.setVolume(0.1);
+  	snd_char_move.play();
+}
+
+function soundPressButton(){ // som de pressionar do botão.
+	snd_press_btn.setVolume(0.1);
+  	snd_press_btn.play();
+}
+
+function soundHitEnemy(){ // som de acertar o inimigo.
+	snd_char_hit.setVolume(0.1);
+  	snd_char_hit.play();
 }
