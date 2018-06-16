@@ -57,7 +57,8 @@ function drawLevel(){
 		p_dTab.drawTab(); // desenha a tabela de escolha entre desição e procedimento.
 		procedureTab.drawTab(); // desenha a tabela de procedimentos.
 		decisionTab.drawTab();	 // desenha a tabela de desições.
-		if(pageCode == "level_02") drawPortal_level02();		 
+		if(pageCode == "level_02") drawPortal_level02();
+		if(pageCode == "level_03") drawPortal_level03();		 
 		drawObstacles(); // desenha os blocos existentes no grid.
 		drawProps();		
 		character.updateCharacter(); // desenha o personagem.
@@ -136,22 +137,21 @@ function levelDesign_02(){
 function levelDesign_03(){
 	centerGridX = 335;
 	centerGridY = 400;
-	actionTab = new ActionTab(12); // define o limite de ações permitido para o jogador.
-	procedureTab = new ProcedureTab(3);  // define o limite de ações do procedimento permitido para o jogador.
-	decisionTab = new DecisionTab(5,5);	 // define o limite de ações por escolha para o jogador.
+	actionTab = new ActionTab(4); // define o limite de ações permitido para o jogador.
+	procedureTab = new ProcedureTab(8);  // define o limite de ações do procedimento permitido para o jogador.
+	decisionTab = new DecisionTab(0,0);	 // define o limite de ações por escolha para o jogador.
 	p_dTab = new P_DTab(1);	 // define o limite de procedimentos e/ou decisões permitido para o jogador.
 	// define as dimensões da fase.
-	sizeStageX = 8;
-	sizeStageY = 8;
+	sizeStageX = 6;
+	sizeStageY = 6;
 	fillGridNull(); // enche a matriz de objetos nulos.
 	fillGridPropNull(); // enche a matriz de objetos nulos.	
-	character = new Character(1,5); // 	inicia o personagem numa posição determinada.
+	character = new Character(4,3); // 	inicia o personagem numa posição determinada.
 	// espaço para preencher a fase.
-	addBlock(1,1);
-	addEnemy(1,4);
-	addBlock(2,1);
-	addBlock(4,1);
-	addPressButton(4,5);	
+	addBlock(3,2);
+	addBlock(2,3);
+	addBlock(3,4);
+	addProp(3,3,5);		
 	loadButtons();
 }
 
@@ -166,16 +166,26 @@ function drawPortal_level02(){
 	victory_level02();	
 	fill(255,127,0,80);
 	stroke(255,127,0);
-	quad(485,400,535,425,485,450,435,425);
-	if(isVictory){
+	quad(485,400,535,425,485,450,435,425);	
+}
 
-	} 
-	
+function drawPortal_level03(){
+	victory_level03();	
+	fill(255,127,0,80);
+	stroke(255,127,0);
+	quad(435,325,485,350,435,375,385,350);
+	quad(235,325,285,350,235,375,185,350);
+	quad(235,425,285,450,235,475,185,450);		
 }
 
 function victory_level02(){
 	if (grid[5][2] != null){
-		victoryCount = 1;
-		//grid[5][2] = null;
+		victoryCount = 1;		
+	}
+}
+
+function victory_level03(){
+	if ((grid[3][1] != null) && (grid[1][3] != null) && (grid[3][5] != null)){
+		victoryCount = 1;		
 	}
 }
