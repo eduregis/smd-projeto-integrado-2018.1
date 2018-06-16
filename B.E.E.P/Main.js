@@ -240,7 +240,7 @@ function actionController(){
 							currentTab = "Procedure";
 							break;
 						case 7:
-							if (decisionTest("block")){
+							if (decisionTest("enemy")){
 								currentTab = "DecisionIf";
 							}else{
 								currentTab = "DecisionElse";

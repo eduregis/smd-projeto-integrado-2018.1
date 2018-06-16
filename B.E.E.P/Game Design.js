@@ -58,7 +58,8 @@ function drawLevel(){
 		procedureTab.drawTab(); // desenha a tabela de procedimentos.
 		decisionTab.drawTab();	 // desenha a tabela de desições.
 		if(pageCode == "level_02") drawPortal_level02();
-		if(pageCode == "level_03") drawPortal_level03();		 
+		if(pageCode == "level_03") drawPortal_level03();
+		if(pageCode == "level_04") drawPortal_level04();		 
 		drawObstacles(); // desenha os blocos existentes no grid.
 		drawProps();		
 		character.updateCharacter(); // desenha o personagem.
@@ -155,6 +156,26 @@ function levelDesign_03(){
 	loadButtons();
 }
 
+function levelDesign_04(){
+	centerGridX = 335;
+	centerGridY = 400;
+	actionTab = new ActionTab(7); // define o limite de ações permitido para o jogador.
+	procedureTab = new ProcedureTab(0);  // define o limite de ações do procedimento permitido para o jogador.
+	decisionTab = new DecisionTab(1,4);	 // define o limite de ações por escolha para o jogador.
+	p_dTab = new P_DTab(1);	 // define o limite de procedimentos e/ou decisões permitido para o jogador.
+	// define as dimensões da fase.
+	sizeStageX = 4;
+	sizeStageY = 8;
+	fillGridNull(); // enche a matriz de objetos nulos.
+	fillGridPropNull(); // enche a matriz de objetos nulos.	
+	character = new Character(2,7); // 	inicia o personagem numa posição determinada.
+	// espaço para preencher a fase.
+	addEnemy(2,2);
+	addBlock(3,3);
+	addProp(2,5,6);		
+	loadButtons();
+}
+
 function testVictory(value){
 	if (value == victoryCount){
 		isVictory = true; // se o valor total corresponder ao necessário, será declarada vitória.
@@ -178,6 +199,13 @@ function drawPortal_level03(){
 	quad(235,425,285,450,235,475,185,450);		
 }
 
+function drawPortal_level04(){
+	victory_level04();	
+	fill(255,127,0,80);
+	stroke(255,127,0);
+	quad(335,325,385,350,335,375,285,350);	
+}
+
 function victory_level02(){
 	if (grid[5][2] != null){
 		victoryCount = 1;		
@@ -186,6 +214,12 @@ function victory_level02(){
 
 function victory_level03(){
 	if ((grid[3][1] != null) && (grid[1][3] != null) && (grid[3][5] != null)){
+		victoryCount = 1;		
+	}
+}
+
+function victory_level04(){
+	if ((grid[2][2] == null) && (grid[1][3] != null)){
 		victoryCount = 1;		
 	}
 }
