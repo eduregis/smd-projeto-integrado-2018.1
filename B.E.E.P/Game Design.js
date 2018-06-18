@@ -39,6 +39,14 @@ function setupLevel(){ // função que simula um setup.
 				isLevel = true; 
 				levelDesign_04();
 				break;
+			case "instruction":
+				isLevel = false;
+				instructionCounter = 0;
+				instruction();
+				break;
+			case "credits":
+				isLevel = false;
+				credits();
 		}
 		levelController = false;
 	}
@@ -82,6 +90,12 @@ function drawLevel(){
 				learn();
 				antiBugLevelChoiceMenu = false;
 				break;
+			case "instruction":
+				instruction();
+				break;
+			case "credits":
+				credits();
+				break;
 		}
 	}
 }
@@ -96,6 +110,14 @@ function levelChoice(){
 
 function learn(){
 	loadLearn();
+}
+
+function instruction(){
+	loadInstruction();
+}
+
+function credits(){
+	loadCredits();
 }
 
 function levelDesign_01(){

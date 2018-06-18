@@ -44,7 +44,14 @@ var spr_btn_learn_00, spr_btn_learn_01, spr_btn_learn_02, spr_btn_learn_03, spr_
 var spr_btn_lvl_01_0, spr_btn_lvl_01_1;
 var spr_btn_lvl_02_0, spr_btn_lvl_02_1, spr_btn_lvl_02_2;
 var spr_btn_lvl_03_0, spr_btn_lvl_03_1, spr_btn_lvl_03_2;
-var spr_btn_lvl_04_0, spr_btn_lvl_04_1, spr_btn_lvl_04_2;   
+var spr_btn_lvl_04_0, spr_btn_lvl_04_1, spr_btn_lvl_04_2;  
+// instruções do beep.
+var level01_01, level01_02, level01_03, level01_04, level01_05, level01_06, level01_07, level01_08, level01_09, level01_10, level01_11;
+var level02_01, level02_02, level02_03, level02_04, level02_05, level02_06, level02_07, level02_08, level02_09;
+var level03_01, level03_02, level03_03, level03_04, level03_05;
+var level04_01, level04_02, level04_03, level04_04, level04_05;
+// créditos.
+var bkg_credits;
 
 function loadSprites(){ // carrega os sprites respectivos.
 	// sprites de movimento.
@@ -166,6 +173,42 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_btn_lvl_04_0 = loadImage('assets/btn_lvl_04_0.png');
 	spr_btn_lvl_04_1 = loadImage('assets/btn_lvl_04_1.png');
 	spr_btn_lvl_04_2 = loadImage('assets/btn_lvl_04_2.png');
+	// instruções do beep (fase 01).
+	level01_01 = loadImage('assets/level01_01.png');
+	level01_02 = loadImage('assets/level01_02.png');
+	level01_03 = loadImage('assets/level01_03.png');
+	level01_04 = loadImage('assets/level01_04.png');
+	level01_05 = loadImage('assets/level01_05.png');
+	level01_06 = loadImage('assets/level01_06.png');
+	level01_07 = loadImage('assets/level01_07.png');
+	level01_08 = loadImage('assets/level01_08.png');
+	level01_09 = loadImage('assets/level01_09.png');
+	level01_10 = loadImage('assets/level01_10.png');
+	level01_11 = loadImage('assets/level01_11.png');
+	// instruções do beep (fase 02).
+	level02_01 = loadImage('assets/level02_01.png');
+	level02_02 = loadImage('assets/level02_02.png');
+	level02_03 = loadImage('assets/level02_03.png');
+	level02_04 = loadImage('assets/level02_04.png');
+	level02_05 = loadImage('assets/level02_05.png');
+	level02_06 = loadImage('assets/level02_06.png');
+	level02_07 = loadImage('assets/level02_07.png');
+	level02_08 = loadImage('assets/level02_08.png');
+	level02_09 = loadImage('assets/level02_09.png');
+	// instruções do beep (fase 03).
+	level03_01 = loadImage('assets/level03_01.png');
+	level03_02 = loadImage('assets/level03_02.png');
+	level03_03 = loadImage('assets/level03_03.png');
+	level03_04 = loadImage('assets/level03_04.png');
+	level03_05 = loadImage('assets/level03_05.png');
+	// instruções do beep (fase 04).
+	level04_01 = loadImage('assets/level04_01.png');
+	level04_02 = loadImage('assets/level04_02.png');
+	level04_03 = loadImage('assets/level04_03.png');
+	level04_04 = loadImage('assets/level04_04.png');
+	level04_05 = loadImage('assets/level04_05.png');
+	// créditos.
+	bkg_credits = loadImage('assets/credits.png');
 }
 
 // efeitos sonoros.

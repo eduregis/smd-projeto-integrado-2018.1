@@ -27,6 +27,9 @@ function loadMenu(){
 		soundOverButtonMenuCount++;
 		if (mouseIsPressed){
 			soundClickButtonMenu();
+			pageCode = "credits"; 
+			levelController = true;
+			isLevel = false;
 		}
 		image(bkg_menu_credits,0,0);
 	} else if (insideRect(mouseX,mouseY,795, 599, 400, 70)){
