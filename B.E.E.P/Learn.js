@@ -1,4 +1,4 @@
-var learnLock = [true,true,true,true,true,true,false]; // vetor de booleanos que diz quais props estão liberados.
+var learnLock = [true,true,true,false,false,false,false]; // vetor de booleanos que diz quais props estão liberados.
 var learnIndex = 0; // endereço da página na seção de aprender.
 var missLearnButton = 0;
 
