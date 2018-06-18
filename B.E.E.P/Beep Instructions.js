@@ -127,5 +127,32 @@ function loadInstruction(){
 			}			
 			break;
 	}
-	
+	if (insideRect(mouseX,mouseY,900,700,250,102)){ // botão de voltar.
+		if (soundOverButtonMenuCount == 0) soundOverButtonMenu();
+		soundOverButtonMenuCount++;
+		image(spr_btn_skip_1,900,700,250,102);
+		if(mouseIsPressed){
+			switch(instructionCode){
+				case 1:
+					pageCode = "level_01";
+					break;
+				case 2:
+					pageCode = "level_02";
+					break;
+				case 3:
+					pageCode = "level_03";
+					break;
+				case 4:
+					pageCode = "level_04";
+					break;
+			}
+			soundClickButtonMenu();			 
+			levelController = true;
+			isLevel = false;
+		}
+	}else {
+		soundOverButtonMenuCount = 0;
+		image(spr_btn_skip_0, 900, 700, 250, 102);
+	}
+
 }

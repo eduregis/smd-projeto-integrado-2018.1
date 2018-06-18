@@ -222,26 +222,20 @@ function goToNext(){
 }
 
 function drawPortal_level02(){
-	if (victoryCount == 0) victory_level02();	
-	fill(255,127,0,80);
-	stroke(255,127,0);
-	quad(485,400,535,425,485,450,435,425);	
+	if (victoryCount == 0) victory_level02();
+	image(spr_portal,435,385);	
 }
 
 function drawPortal_level03(){
-	if (victoryCount == 0) victory_level03();	
-	fill(255,127,0,80);
-	stroke(255,127,0);
-	quad(435,325,485,350,435,375,385,350);
-	quad(235,325,285,350,235,375,185,350);
-	quad(235,425,285,450,235,475,185,450);		
+	if (victoryCount == 0) victory_level03();
+	image(spr_portal,385,310);	
+	image(spr_portal,185,310);
+	image(spr_portal,185,410);
 }
 
 function drawPortal_level04(){
 	if (victoryCount == 0) victory_level04();	
-	fill(255,127,0,80);
-	stroke(255,127,0);
-	quad(335,325,385,350,335,375,285,350);	
+	image(spr_portal,285,310);
 }
 
 function victory_level02(){

@@ -30,6 +30,8 @@ var spr_btn_start_0, spr_btn_start_1, spr_btn_reset_0, spr_btn_reset_1, spr_btn_
 var spr_tile; // chão da fase.
 // sprites dos colecionáveis.
 var spr_prop_00, spr_prop_01, spr_prop_02, spr_prop_03, spr_prop_04, spr_prop_05, spr_prop_06;
+// sprite do portal.
+var spr_portal;
 // sprites dos obstáculos.
 var spr_block; // sprite da caixa.
 var spr_enemy_idle_0, spr_enemy_idle_1, spr_enemy_idle_2; // sprite do inimigo parado.
@@ -38,6 +40,8 @@ var spr_press_btn_0, spr_press_btn_1; // sprites do botão pressionável normal 
 var bkg_learn_00, bkg_learn_01, bkg_learn_02, bkg_learn_03, bkg_learn_04, bkg_learn_05, bkg_learn_06, bkg_learn_lock; 
 // sprites do botão de voltar.
 var spr_btn_back_0, spr_btn_back_1;
+// sprites do botão de pular as instruções do beep.
+var spr_btn_skip_0, spr_btn_skip_1;
 // sprites da aba de aprender.
 var spr_btn_learn_00, spr_btn_learn_01, spr_btn_learn_02, spr_btn_learn_03, spr_btn_learn_04, spr_btn_learn_05, spr_btn_learn_06;
 //botões para entrar nas fases.
@@ -133,6 +137,8 @@ function loadSprites(){ // carrega os sprites respectivos.
 	spr_prop_04 = loadImage('assets/prop_04.png');
 	spr_prop_05 = loadImage('assets/prop_05.png');
 	spr_prop_06 = loadImage('assets/prop_06.png');
+	// sprite do portal.
+	spr_portal = loadImage('assets/portal.png');
 	// sprites dos obstáculos.
 	spr_block = loadImage('assets/block.png');
 	spr_enemy_idle_0 = loadImage('assets/spr_enemy_idle_0.png');
@@ -150,6 +156,9 @@ function loadSprites(){ // carrega os sprites respectivos.
 	bkg_learn_06 = loadImage('assets/bkg_learn_06.png');
 	bkg_learn_lock = loadImage('assets/bkg_learn_lock.png');
 	bkg_learn_unlock = loadImage('assets/bkg_learn_unlock.png');
+	// sprites do botão de pular as instruções do beep.
+	spr_btn_skip_0 = loadImage('assets/btn_skip_0.png');
+	spr_btn_skip_1 = loadImage('assets/btn_skip_1.png');
 	// sprites do botão de voltar.
 	spr_btn_back_0 = loadImage('assets/btn_back_0.png');
 	spr_btn_back_1 = loadImage('assets/btn_back_1.png');
