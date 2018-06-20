@@ -154,5 +154,4 @@ function loadInstruction(){
 		soundOverButtonMenuCount = 0;
 		image(spr_btn_skip_0, 900, 700, 250, 102);
 	}
-
 }

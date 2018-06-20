@@ -89,6 +89,5 @@ function loadLevelChoice(){
 		image(spr_btn_back_0, 900, 700, 250, 102);
 	}
 
-
 	if(missLevelChoiceButton == 5) soundOverButtonMenuCount = 0;
 }

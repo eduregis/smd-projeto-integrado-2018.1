@@ -387,7 +387,3 @@ function actionController(){
 		}
 	}
 }
-
-
-
-

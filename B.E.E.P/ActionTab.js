@@ -102,7 +102,6 @@ class ActionTab{ // tebela de ações que serão executadas.
 						if (i == actionIndex - 1) image(spr_btn_decision_1,this.position.x - 520 + i*90, this.position.y + 110,70,70);
 						else image(spr_btn_decision_0,this.position.x - 520 + i*90, this.position.y + 110,70,70);
 						break;
-
 				}
 			}
 			else{
